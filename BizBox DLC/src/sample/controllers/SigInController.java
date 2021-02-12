@@ -46,7 +46,7 @@ public class SigInController {
         if(checkLogAndPassInDB(userLogin,userPassword)){
             SignInButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeletPayment.fxml"));
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingAmbulatory.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {
@@ -55,7 +55,7 @@ public class SigInController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.showAndWait();
+            stage.show();
         }
         else {
             JOptionPane.showMessageDialog(null,"НЕ ВЕРНЫЕ ДАННЫЕ");

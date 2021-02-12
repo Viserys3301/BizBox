@@ -264,6 +264,21 @@ public class RecoveryUltrasoundController {
             String servicesId= UltrasoundTable.getSelectionModel().getSelectedItem().getId();
             recoveryUltrasound(servicesId);
         });
+
+        FindServicesButton.setOnAction(event -> {
+            for (int i = 0; i <UltrasoundTable.getItems().size() ; i++) {
+                servicesData.clear();
+            }
+            //СТРОКА ПОИСКА
+            String servicesName = TranIdArea.getText();
+
+            findServices(servicesName);
+
+
+            UltrasoundNameId.setCellValueFactory(new PropertyValueFactory<Services, String>("Name"));
+            UltrasoundId.setCellValueFactory(new PropertyValueFactory<Services, String>("ID"));
+            UltrasoundTable.setItems(servicesData);
+        });
     }
 
     private void recoveryUltrasound(String servicesId){

@@ -57,7 +57,7 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Label fx:id="infoLabel" layoutX="276.0" layoutY="131.0" prefHeight="34.0" prefWidth="101.0" text="ГОТОВО" textFill="LIMEGREEN">
+      <Label fx:id="infoLabel" layoutX="276.0" layoutY="131.0" prefHeight="34.0" prefWidth="101.0" textFill="LIMEGREEN">
          <font>
             <Font size="23.0" />
          </font>

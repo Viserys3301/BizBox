@@ -350,9 +350,8 @@ public class ChangeAmbulatoryDateController extends LogsClass {
             stmt.executeUpdate(SQL_3);
             stmt.executeUpdate(SQL_4);
             stmt.executeUpdate(SQL_5);
-            System.out.println("DONE");
-
             changeAmbulatoryDateLogs(tranId,regName,data,newDate,stmt);
+            infoLabel.setText("ГОТОВО");
 
         } catch (SQLException e) {
             e.printStackTrace();

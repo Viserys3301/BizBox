@@ -15,8 +15,8 @@ import javafx.stage.Stage;
 import javax.swing.*;
 
 public class SigInController {
-    private String login ;
-    private String password ;
+    private String login ="0000";
+    private String password = "Ba#sE5Ke";
 
     @FXML
     private ResourceBundle resources;
@@ -62,7 +62,10 @@ public class SigInController {
         }
     }
     private Boolean checkLogAndPassInDB(String userLogin,String userPassword){
-        String SQL = "SELECT [Login] , [Password] FROM BizBoxDLC_Users";
-        return true;
+//       if(userLogin.equalsIgnoreCase(login) && userPassword.equalsIgnoreCase(password)){
+//           return true;
+//       }else return false;
+
+       return true;
     }
 }

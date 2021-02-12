@@ -257,7 +257,7 @@ public class EnabledUltrasoundController {
                 ultrasoundId = executeQuery.getString("PK_psPatledgers");
             }
             String SQL_2 = "UPDATE psExamResultMstr SET isCheckedOut = 0 WHERE PK_psExamResultMstr = " + ultrasoundId;
-
+            infoLabel.setText("ГОТОВО");
         } catch (SQLException e) {
             e.printStackTrace();
         }

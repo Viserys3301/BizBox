@@ -14,8 +14,6 @@ public class Main extends Application {
           Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/StartFrame.fxml")); //СТАРТ
       // Parent root = FXMLLoader.load(getClass().getResource("sample/fxmlFiles/DeletPayment.fxml"));   //УДАЛЕНИЕ ПЛАТЕЖА
     // Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/ChangeDoctor.fxml"));   //ИЗМЕНЕНИЕ ВРАЧА
-
-
        // Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/ZeroingAmbulatory.fxml")); //ОБНУДЕНИЕ АМБУЛАТОРИИ
       //  Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/ZeroingCorpClient.fxml")); //ОБНУДЕНИЕ КОРП
      //   Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/ChangeAmbulatoryDate.fxml")); //ИЗМЕНЕНИЕ ДАТЫ АМБУЛАТОРИИ

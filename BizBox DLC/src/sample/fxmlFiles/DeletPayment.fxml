@@ -57,7 +57,7 @@
         </menus>
       </MenuBar>
       <TextField fx:id="TranIdArea" layoutX="316.0" layoutY="61.0" prefHeight="25.0" prefWidth="225.0" />
-      <Text fx:id="titleArea" layoutX="105.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите ID транзакции:" wrappingWidth="203.244140625">
+      <Text fx:id="titleArea2" layoutX="105.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите ID транзакции:" wrappingWidth="203.244140625">
          <font>
             <Font size="18.0" />
          </font>

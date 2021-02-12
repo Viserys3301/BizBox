@@ -69,7 +69,7 @@
       <RadioButton fx:id="RadioReg03" layoutX="241.0" layoutY="37.0" mnemonicParsing="false" text="Reg03" />
       <RadioButton fx:id="RadioReg04" layoutX="308.0" layoutY="37.0" mnemonicParsing="false" text="Reg04" />
       <RadioButton fx:id="RadioReg05" layoutX="374.0" layoutY="37.0" mnemonicParsing="false" text="Reg05" />
-      <Label fx:id="infoLabel" layoutX="18.0" layoutY="207.0" prefHeight="34.0" prefWidth="581.0" text="ГОТОВО" textFill="LIMEGREEN">
+      <Label fx:id="infoLabel" layoutX="18.0" layoutY="207.0" prefHeight="34.0" prefWidth="581.0" textFill="LIMEGREEN">
          <font>
             <Font size="23.0" />
          </font>

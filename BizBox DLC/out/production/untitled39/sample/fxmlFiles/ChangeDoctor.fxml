@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.ChangeDoctorController">
+<AnchorPane fx:id="ChangeDoctorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.ChangeDoctorController">
    <children>
       <MenuBar fx:id="MainMenuBar" layoutX="-9.0" layoutY="2.0" prefHeight="25.0" prefWidth="609.0">
         <menus>
@@ -59,7 +59,7 @@
         </menus>
       </MenuBar>
       <TextField fx:id="TranIdArea" layoutX="269.0" layoutY="69.0" prefHeight="25.0" prefWidth="225.0" />
-      <Text fx:id="titleArea" layoutX="56.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите ID транзакции:" wrappingWidth="203.244140625">
+      <Text fx:id="titleArea2" layoutX="56.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите ID транзакции:" wrappingWidth="203.244140625">
          <font>
             <Font size="18.0" />
          </font>
@@ -77,7 +77,7 @@
       </Label>
       <Label fx:id="InfoQery" layoutX="452.0" layoutY="36.0" prefHeight="19.0" prefWidth="122.0" text="ИЗМЕНЕНИЕ ВРАЧА" textFill="#0099ff" />
       <Button fx:id="changeDoctorButton" layoutX="500.0" layoutY="69.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="82.0" text="Изменить" />
-      <Text fx:id="titleArea1" layoutX="11.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите Ф.И.О. врача:" wrappingWidth="203.244140625">
+      <Text fx:id="titleDocArea2" layoutX="11.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите Ф.И.О. врача:" wrappingWidth="203.244140625">
          <font>
             <Font size="18.0" />
          </font>

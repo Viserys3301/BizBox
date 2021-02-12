@@ -127,6 +127,115 @@ public class EnabledUltrasoundController {
     @FXML
     void initialize() {
 
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////-----ПЕРЕКЛЮЧЕНИЕ ОКОН-----//////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        QeryMenuZeroingAmbulatoryId.setOnAction(event -> {
+            EnabledUltrasoundButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingAmbulatory.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+        QeryMenuChangePaymentId.setOnAction(event -> {
+            EnabledUltrasoundButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangePayment.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+        QeryMenuChangeDoctorId.setOnAction(event -> {
+            EnabledUltrasoundButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeDoctor.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+        QeryMenuChangeAmbulatoryDateId.setOnAction(event -> {
+            EnabledUltrasoundButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeAmbulatoryDate.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+        QeryMenuChangeBirthdateId.setOnAction(event -> {
+            EnabledUltrasoundButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeBirthdate.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+        QeryMenuEnabledUltrasoundId.setOnAction(event -> {
+            EnabledUltrasoundButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/EnabledUltrasound.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+        QeryMenuRecoveryUltrasoundId.setOnAction(event -> {
+            EnabledUltrasoundButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/RecoveryUltrasound.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         EnabledUltrasoundButton.setOnAction(event -> {
             String tranId = TranIdArea.getText();
             enabledUltrasound(tranId);
@@ -148,7 +257,7 @@ public class EnabledUltrasoundController {
                 ultrasoundId = executeQuery.getString("PK_psPatledgers");
             }
             String SQL_2 = "UPDATE psExamResultMstr SET isCheckedOut = 0 WHERE PK_psExamResultMstr = " + ultrasoundId;
-
+            infoLabel.setText("ГОТОВО");
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -1,5 +1,6 @@
 package sample.controllers;
 
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -12,15 +13,17 @@ import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import sample.LogsClass;
 
 import javax.xml.soap.Text;
 
-public class ZeroingAmbulatoryController extends LogsClass {
+public class ZeroingAmbulatoryController extends LogsClass   {
 
     //СОЕДИНЕНИЕ С БАЗОЙ
     private String instanceName = "10.0.9.4\\hcdbsrv";
@@ -148,8 +151,125 @@ public class ZeroingAmbulatoryController extends LogsClass {
     private Button clearButton;
 
     @FXML
-    void initialize() {
+    private AnchorPane ChangeDoctorPane;
 
+    @FXML
+    private void loadSecond(ActionEvent event) throws IOException {
+        AnchorPane pane =  FXMLLoader.load(getClass().getResource("fxmlFiles/ZeroingAmbulatory.fxml"));
+        ChangeDoctorPane.getChildren().setAll(pane);
+    }
+
+
+    @FXML
+    void initialize() {
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////-----ПЕРЕКЛЮЧЕНИЕ ОКОН-----//////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        QeryMenuZeroingAmbulatoryId.setOnAction(event -> {
+            clearButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingAmbulatory.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+                QeryMenuChangePaymentId.setOnAction(event -> {
+                    clearButton.getScene().getWindow().hide();
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangePayment.fxml"));
+                    try {
+                        loader.load();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Parent root = loader.getRoot();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.show();
+                });
+
+        QeryMenuChangeDoctorId.setOnAction(event -> {
+            clearButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeDoctor.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+                QeryMenuChangeAmbulatoryDateId.setOnAction(event -> {
+                    clearButton.getScene().getWindow().hide();
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeAmbulatoryDate.fxml"));
+                    try {
+                        loader.load();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Parent root = loader.getRoot();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.show();
+                });
+        QeryMenuChangeBirthdateId.setOnAction(event -> {
+            clearButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeBirthdate.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+                QeryMenuEnabledUltrasoundId.setOnAction(event -> {
+                    clearButton.getScene().getWindow().hide();
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("/sample/fxmlFiles/EnabledUltrasound.fxml"));
+                    try {
+                        loader.load();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Parent root = loader.getRoot();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.show();
+                });
+        QeryMenuRecoveryUltrasoundId.setOnAction(event -> {
+            clearButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/RecoveryUltrasound.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         TranIdArea.setDisable(true);
         //РЕГИСТРАТОРЫ
@@ -231,4 +351,5 @@ public class ZeroingAmbulatoryController extends LogsClass {
 
 
     }
+
 }

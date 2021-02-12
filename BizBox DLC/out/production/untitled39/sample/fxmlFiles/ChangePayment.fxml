@@ -59,7 +59,7 @@
         </menus>
       </MenuBar>
       <TextField fx:id="TranIdArea" layoutX="241.0" layoutY="117.0" prefHeight="25.0" prefWidth="225.0" />
-      <Text fx:id="titleArea" layoutX="19.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите Ф.И.О пациента:" wrappingWidth="249.244140625">
+      <Text fx:id="titleArea2" layoutX="19.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите Ф.И.О пациента:" wrappingWidth="249.244140625">
          <font>
             <Font size="18.0" />
          </font>

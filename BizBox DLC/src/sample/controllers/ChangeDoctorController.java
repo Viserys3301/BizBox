@@ -163,7 +163,7 @@ public class ChangeDoctorController extends LogsClass {
     private Button changeDoctorButton;
 
     @FXML
-    private Text titleArea1;
+    private Text titleDocArea;
 
     @FXML
     private TextField FindDocTextFild;

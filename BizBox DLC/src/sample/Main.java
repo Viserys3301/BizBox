@@ -7,13 +7,15 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import sample.controllers.ChangeDoctorController;
 
+import java.util.ArrayList;
+
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
        //   Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/StartFrame.fxml")); //СТАРТ
-       Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/DeletPayment.fxml"));   //УДАЛЕНИЕ ПЛАТЕЖА
-    // Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/ChangeDoctor.fxml"));   //ИЗМЕНЕНИЕ ВРАЧА
+      // Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/DeletPayment.fxml"));   //УДАЛЕНИЕ ПЛАТЕЖА RE------------------------------------------
+     Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/ChangeDoctor.fxml"));   //ИЗМЕНЕНИЕ ВРАЧА
        // Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/ZeroingAmbulatory.fxml")); //ОБНУДЕНИЕ АМБУЛАТОРИИ
       //  Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/ZeroingCorpClient.fxml")); //ОБНУДЕНИЕ КОРП
      //   Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/ChangeAmbulatoryDate.fxml")); //ИЗМЕНЕНИЕ ДАТЫ АМБУЛАТОРИИ

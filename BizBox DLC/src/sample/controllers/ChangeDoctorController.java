@@ -17,6 +17,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import sample.LogsClass;
 
@@ -59,6 +61,15 @@ public class ChangeDoctorController extends LogsClass {
 
 
     private ObservableList<Doctors> usersData = FXCollections.observableArrayList();
+
+    @FXML
+    private ResourceBundle resources;
+
+    @FXML
+    private URL location;
+
+    @FXML
+    private AnchorPane ChangeDoctorPane;
 
     @FXML
     private MenuBar MainMenuBar;
@@ -133,37 +144,10 @@ public class ChangeDoctorController extends LogsClass {
     private TextField TranIdArea;
 
     @FXML
-    private Text titleArea;
-
-    @FXML
-    private RadioButton RadioReg00;
-
-    @FXML
-    private RadioButton RadioReg01;
-
-    @FXML
-    private RadioButton RadioReg02;
-
-    @FXML
-    private RadioButton RadioReg03;
-
-    @FXML
-    private RadioButton RadioReg04;
-
-    @FXML
-    private RadioButton RadioReg05;
-
-    @FXML
-    private Label infoLabel;
-
-    @FXML
     private Label InfoQery;
 
     @FXML
     private Button changeDoctorButton;
-
-    @FXML
-    private Text titleDocArea;
 
     @FXML
     private TextField FindDocTextFild;
@@ -179,6 +163,34 @@ public class ChangeDoctorController extends LogsClass {
 
     @FXML
     private TableColumn<Doctors, String> DocTablesCollumName;
+
+    @FXML
+    private MenuButton selectRegistrations;
+
+    @FXML
+    private MenuItem selectReg00;
+
+    @FXML
+    private MenuItem selectReg01;
+
+    @FXML
+    private MenuItem selectReg02;
+
+    @FXML
+    private MenuItem selectReg03;
+
+    @FXML
+    private MenuItem selectReg04;
+
+    @FXML
+    private MenuItem selectReg05;
+
+    @FXML
+    private MenuItem selectAdmin;
+
+    @FXML
+    private ImageView aceptImageId;
+
 
 
 
@@ -300,46 +312,37 @@ public class ChangeDoctorController extends LogsClass {
 
         TranIdArea.setDisable(true);
         FindDocTextFild.setDisable(true);
+        changeDoctorButton.setDisable(true);
         //РЕГИСТРАТОРЫ
-        ToggleGroup group = new ToggleGroup();
-        RadioReg00.setToggleGroup(group);
-        RadioReg01.setToggleGroup(group);
-        RadioReg02.setToggleGroup(group);
-        RadioReg03.setToggleGroup(group);
-        RadioReg04.setToggleGroup(group);
-        RadioReg05.setToggleGroup(group);
-
 
         //ВЫБОР РЕГИСТРАТОРОВ
-        RadioReg00.setOnAction(event1 -> {
+        selectReg00.setOnAction(event1 -> {
             regName = "Reg00";
-            TranIdArea.setDisable(false);
-            FindDocTextFild.setDisable(false);
+            onButton();
         });
-        RadioReg01.setOnAction(event1 -> {
+        selectReg01.setOnAction(event1 -> {
             regName = "Reg01";
-            TranIdArea.setDisable(false);
-            FindDocTextFild.setDisable(false);
+            onButton();
         });
-        RadioReg02.setOnAction(event1 -> {
+        selectReg02.setOnAction(event1 -> {
             regName = "Reg02";
-            TranIdArea.setDisable(false);
-            FindDocTextFild.setDisable(false);
+            onButton();
         });
-        RadioReg03.setOnAction(event1 -> {
+        selectReg03.setOnAction(event1 -> {
             regName = "Reg03";
-            TranIdArea.setDisable(false);
-            FindDocTextFild.setDisable(false);
+            onButton();
         });
-        RadioReg04.setOnAction(event1 -> {
+        selectReg04.setOnAction(event1 -> {
             regName = "Reg04";
-            TranIdArea.setDisable(false);
-            FindDocTextFild.setDisable(false);
+            onButton();
         });
-        RadioReg05.setOnAction(event1 -> {
+        selectReg05.setOnAction(event1 -> {
             regName = "Reg05";
-            TranIdArea.setDisable(false);
-            FindDocTextFild.setDisable(false);
+            onButton();
+        });
+        selectAdmin.setOnAction(event1 -> {
+            regName = "Admin";
+            onButton();
         });
 
 
@@ -373,6 +376,11 @@ public class ChangeDoctorController extends LogsClass {
 
 
     }
+    private void onButton(){
+        TranIdArea.setDisable(false);
+        FindDocTextFild.setDisable(false);
+        changeDoctorButton.setDisable(false);
+    }
 
     private void initData(Doctors doctors) {
         usersData.add(doctors);
@@ -388,7 +396,7 @@ public class ChangeDoctorController extends LogsClass {
             //Логи
             changeDoctorLogs(regName,DockChangeVar,tranID,doctorID,stmt);
 
-            infoLabel.setText("ГОТОВО");
+            aceptImageId.setVisible(true);
             stmt.close();
             con.close();
         } catch (SQLException e) {

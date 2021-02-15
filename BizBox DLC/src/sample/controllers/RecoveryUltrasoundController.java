@@ -22,6 +22,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class RecoveryUltrasoundController {
@@ -46,12 +47,6 @@ public class RecoveryUltrasoundController {
 
 
     private ObservableList<Services> servicesData = FXCollections.observableArrayList();
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private MenuBar MainMenuBar;
@@ -123,9 +118,6 @@ public class RecoveryUltrasoundController {
     private MenuItem OptionsMenuAboutId;
 
     @FXML
-    private Label infoLabel;
-
-    @FXML
     private Label InfoQery;
 
     @FXML
@@ -146,6 +138,8 @@ public class RecoveryUltrasoundController {
     @FXML
     private Button FindServicesButton;
 
+    @FXML
+    private ImageView aceptImageId;
 
     @FXML
     void initialize() {
@@ -153,7 +147,6 @@ public class RecoveryUltrasoundController {
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////-----ПЕРЕКЛЮЧЕНИЕ ОКОН-----//////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
         QeryMenuZeroingAmbulatoryId.setOnAction(event -> {
             RecoveryUltrasoundButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
@@ -259,6 +252,7 @@ public class RecoveryUltrasoundController {
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        RecoveryUltrasoundButton.setDisable(true);
 
         RecoveryUltrasoundButton.setOnAction(event -> {
             String servicesId= UltrasoundTable.getSelectionModel().getSelectedItem().getId();
@@ -266,6 +260,7 @@ public class RecoveryUltrasoundController {
         });
 
         FindServicesButton.setOnAction(event -> {
+            RecoveryUltrasoundButton.setDisable(false);
             for (int i = 0; i <UltrasoundTable.getItems().size() ; i++) {
                 servicesData.clear();
             }
@@ -290,7 +285,7 @@ public class RecoveryUltrasoundController {
         try {
             stmt = con.createStatement();
             stmt.executeUpdate(SQL);
-            infoLabel.setText("ГОТОВО");
+            aceptImageId.setVisible(true);
             stmt.close();
             con.close();
         } catch (SQLException e) {

@@ -7,11 +7,12 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EnabledUltrasoundController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EnabledUltrasoundController">
    <children>
       <MenuBar fx:id="MainMenuBar" layoutX="-9.0" layoutY="2.0" prefHeight="25.0" prefWidth="609.0">
         <menus>
@@ -55,14 +56,16 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Label fx:id="infoLabel" layoutX="276.0" layoutY="131.0" prefHeight="34.0" prefWidth="101.0" textFill="LIMEGREEN">
+      <Label fx:id="InfoQery" layoutX="227.0" layoutY="112.0" prefHeight="20.0" prefWidth="149.0" text="РАЗБЛОКИРОВКА УЗИ" textFill="#0099ff">
          <font>
-            <Font size="23.0" />
-         </font>
-      </Label>
-      <Label fx:id="InfoQery" layoutX="436.0" layoutY="36.0" prefHeight="19.0" prefWidth="138.0" text="РАЗБЛОКИРОВКА УЗИ" textFill="#0099ff" />
-      <TextField fx:id="TranIdArea" layoutX="279.0" layoutY="92.0" prefHeight="25.0" prefWidth="260.0" />
-      <Text layoutX="65.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите ID транзакции:" wrappingWidth="212.13671875" />
-      <Button fx:id="EnabledUltrasoundButton" layoutX="413.0" layoutY="136.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="126.0" text="Разблокировать" />
+            <Font size="14.0" />
+         </font></Label>
+      <TextField fx:id="TranIdArea" alignment="CENTER" layoutX="170.0" layoutY="149.0" prefHeight="25.0" prefWidth="260.0" promptText="Введите ID транзакции" />
+      <Button fx:id="EnabledUltrasoundButton" layoutX="233.0" layoutY="188.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="126.0" text="Разблокировать" />
+      <ImageView fx:id="aceptImageId" fitHeight="150.0" fitWidth="200.0" layoutX="221.0" layoutY="227.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../res/3.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

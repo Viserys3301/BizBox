@@ -71,9 +71,9 @@
       <Button fx:id="findPatientPayment" layoutX="485.0" layoutY="148.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" text="Поиск" />
       <TableView fx:id="PatPaymentTable" layoutX="12.0" layoutY="179.0" prefHeight="213.0" prefWidth="575.0">
         <columns>
-          <TableColumn fx:id="PatPaymentTableName" prefWidth="286.0" text="Имя" />
-          <TableColumn fx:id="PatPaymentTableCash" prefWidth="146.0" text="Наличный" />
-            <TableColumn fx:id="PatPaymentTableCard" prefWidth="142.0" text="Безналичный" />
+          <TableColumn fx:id="PatPaymentTableName" prefWidth="211.0" text="Имя" />
+          <TableColumn fx:id="PatPaymentTableCash" prefWidth="174.0" text="Безналичный" />
+            <TableColumn fx:id="PatPaymentTableCard" prefWidth="189.0" text="Наличный" />
         </columns>
       </TableView>
       <MenuButton fx:id="selectRegistrations" layoutX="22.0" layoutY="101.0" mnemonicParsing="false" text="Регистраторы">

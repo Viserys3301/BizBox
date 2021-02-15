@@ -2,19 +2,51 @@ package sample.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.*;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import javax.xml.soap.Text;
 
 public class ChangePaymentController {
-    String regName = "";
+    private String regName = "";
+    private boolean isCard;
+    //ID РЕГИСТРАТОРА
+
+    private String DockChangeVar="'Изменение платежа'";
+
+    //СОЕДИНЕНИЕ С БАЗОЙ
+    private String instanceName = "10.0.9.4\\hcdbsrv";
+    private String databaseName = "HCDB";
+    private String userName = "sa";
+    private String pass = "Ba#sE5Ke";
+    private String connectionUrl = "jdbc:sqlserver://%1$s;databaseName=%2$s;user=%3$s;password=%4$s;";
+    private String connectionString = String.format(connectionUrl, instanceName, databaseName, userName, pass);
+    Connection con;
+
+    {
+        try {
+            con = DriverManager.getConnection(connectionString);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    private ObservableList<Payments> paymentData = FXCollections.observableArrayList();
 
     @FXML
     private ResourceBundle resources;
@@ -110,16 +142,16 @@ public class ChangePaymentController {
     private Button findPatientPayment;
 
     @FXML
-    private TableView<?> PatPaymentTable;
+    private TableView<Payments> PatPaymentTable;
 
     @FXML
-    private TableColumn<?, ?> PatPaymentTableName;
+    private TableColumn<Payments, String> PatPaymentTableName;
 
     @FXML
-    private TableColumn<?, ?> PatPaymentTableCash;
+    private TableColumn<Payments, String> PatPaymentTableCash;
 
     @FXML
-    private TableColumn<?, ?> PatPaymentTableCard;
+    private TableColumn<Payments, String> PatPaymentTableCard;
 
     @FXML
     private ImageView aceptImageId;
@@ -150,6 +182,10 @@ public class ChangePaymentController {
 
     @FXML
     void initialize() {
+        ToggleGroup group = new ToggleGroup();
+        ChangeToCard.setToggleGroup(group);
+        ChangeToCash.setToggleGroup(group);
+
         changePaymentButton.setDisable(true);
         findPatientPayment.setDisable(true);
         TranIdArea.setDisable(true);
@@ -293,6 +329,38 @@ public class ChangePaymentController {
             regName = "Admin";
             onButton();
         });
+
+        findPatientPayment.setOnAction(event -> {
+            for (int i = 0; i <PatPaymentTable.getItems().size() ; i++) {
+                paymentData.clear();
+            }
+            //СТРОКА ПОИСКА
+            String patName = TranIdArea.getText();
+
+            findPayment(patName);
+
+            PatPaymentTableName.setCellValueFactory(new PropertyValueFactory<Payments, String>("Name"));
+            PatPaymentTableCash.setCellValueFactory(new PropertyValueFactory<Payments, String>("cash"));
+            PatPaymentTableCard.setCellValueFactory(new PropertyValueFactory<Payments, String>("card"));
+            PatPaymentTable.setItems(paymentData);
+
+
+        });
+        ChangeToCash.setOnAction(event -> {
+            isCard = false;
+            System.out.println(isCard);
+        });
+        ChangeToCard.setOnAction(event -> {
+            isCard = true;
+            System.out.println(isCard);
+        });
+
+
+
+        changePaymentButton.setOnAction(event -> {
+            String paymentId= PatPaymentTable.getSelectionModel().getSelectedItem().getId();
+            changePayment(paymentId,isCard);
+        });
     }
     private void onButton(){
         changePaymentButton.setDisable(false);
@@ -301,5 +369,58 @@ public class ChangePaymentController {
         ChangeToCash.setDisable(false);
         ChangeToCard.setDisable(false);
 
+    }
+
+    private void initData(Payments payments) {
+        paymentData.add(payments);
+    }
+
+    private void findPayment(String patName){
+        try {
+            Statement stmt = con.createStatement();
+            String SQL = "SELECT payername, cashamount, cardamount,PK_TRXNO FROM faCRMstr WHERE payername like" + "'" + patName + "%'";
+            ResultSet executeQuery = stmt.executeQuery(SQL);
+
+
+            while (executeQuery.next()) {
+                initData(new Payments(executeQuery.getString("payername"),
+                                      executeQuery.getString("cashamount"),
+                                      executeQuery.getString("cardamount"),
+                                      executeQuery.getString("PK_TRXNO")));
+            }
+
+            stmt.close();
+            //  con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+
+    private void changePayment(String tranId,boolean isCard){
+        Statement stmt = null;
+        try {
+            stmt = con.createStatement();
+            if(isCard){
+                //НАЛ НА БЕЗНАЛ
+                String SQL = "UPDATE faCRMstr SET cardamount = cashamount,cashamount = 0  WHERE PK_TRXNO =" + tranId;
+                stmt.executeUpdate(SQL);
+            }
+            else if(!isCard){
+                //БЕЗНАЛ НА НАЛ
+                String SQL = "UPDATE faCRMstr SET cashamount = cardamount,cardamount = 0  WHERE PK_TRXNO =" + tranId;
+                stmt.executeUpdate(SQL);
+            }
+
+
+            //Логи
+           // changeDoctorLogs(regName,DockChangeVar,tranID,doctorID,stmt);
+
+            aceptImageId.setVisible(true);
+            stmt.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

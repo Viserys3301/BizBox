@@ -342,7 +342,7 @@ public class ChangeDoctorController extends LogsClass {
         });
         selectAdmin.setOnAction(event1 -> {
             regName = "Admin";
-            onButton();
+
         });
 
 

@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import sample.LogsClass;
@@ -118,46 +119,37 @@ public class ZeroingAmbulatoryController extends LogsClass   {
     private TextField TranIdArea;
 
     @FXML
-    private Text titleArea;
-
-    @FXML
     private Button ZeroingClientButton;
-
-    @FXML
-    private RadioButton RadioReg00;
-
-    @FXML
-    private RadioButton RadioReg01;
-
-    @FXML
-    private RadioButton RadioReg02;
-
-    @FXML
-    private RadioButton RadioReg03;
-
-    @FXML
-    private RadioButton RadioReg04;
-
-    @FXML
-    private RadioButton RadioReg05;
-
-    @FXML
-    private Label infoLabel;
 
     @FXML
     private Label InfoQery;
 
     @FXML
-    private Button clearButton;
+    private MenuButton selectRegistrations;
 
     @FXML
-    private AnchorPane ChangeDoctorPane;
+    private MenuItem selectReg00;
 
     @FXML
-    private void loadSecond(ActionEvent event) throws IOException {
-        AnchorPane pane =  FXMLLoader.load(getClass().getResource("fxmlFiles/ZeroingAmbulatory.fxml"));
-        ChangeDoctorPane.getChildren().setAll(pane);
-    }
+    private MenuItem selectReg01;
+
+    @FXML
+    private MenuItem selectReg02;
+
+    @FXML
+    private MenuItem selectReg03;
+
+    @FXML
+    private MenuItem selectReg04;
+
+    @FXML
+    private MenuItem selectReg05;
+
+    @FXML
+    private MenuItem selectAdmin;
+
+    @FXML
+    private ImageView aceptImageId;
 
 
     @FXML
@@ -167,7 +159,7 @@ public class ZeroingAmbulatoryController extends LogsClass   {
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         QeryMenuZeroingAmbulatoryId.setOnAction(event -> {
-            clearButton.getScene().getWindow().hide();
+            ZeroingClientButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingAmbulatory.fxml"));
             try {
@@ -182,7 +174,7 @@ public class ZeroingAmbulatoryController extends LogsClass   {
         });
 
                 QeryMenuChangePaymentId.setOnAction(event -> {
-                    clearButton.getScene().getWindow().hide();
+                    ZeroingClientButton.getScene().getWindow().hide();
                     FXMLLoader loader = new FXMLLoader();
                     loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangePayment.fxml"));
                     try {
@@ -197,7 +189,7 @@ public class ZeroingAmbulatoryController extends LogsClass   {
                 });
 
         QeryMenuChangeDoctorId.setOnAction(event -> {
-            clearButton.getScene().getWindow().hide();
+            ZeroingClientButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeDoctor.fxml"));
             try {
@@ -211,7 +203,7 @@ public class ZeroingAmbulatoryController extends LogsClass   {
             stage.show();
         });
                 QeryMenuChangeAmbulatoryDateId.setOnAction(event -> {
-                    clearButton.getScene().getWindow().hide();
+                    ZeroingClientButton.getScene().getWindow().hide();
                     FXMLLoader loader = new FXMLLoader();
                     loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeAmbulatoryDate.fxml"));
                     try {
@@ -225,7 +217,7 @@ public class ZeroingAmbulatoryController extends LogsClass   {
                     stage.show();
                 });
         QeryMenuChangeBirthdateId.setOnAction(event -> {
-            clearButton.getScene().getWindow().hide();
+            ZeroingClientButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeBirthdate.fxml"));
             try {
@@ -239,7 +231,7 @@ public class ZeroingAmbulatoryController extends LogsClass   {
             stage.show();
         });
                 QeryMenuEnabledUltrasoundId.setOnAction(event -> {
-                    clearButton.getScene().getWindow().hide();
+                    ZeroingClientButton.getScene().getWindow().hide();
                     FXMLLoader loader = new FXMLLoader();
                     loader.setLocation(getClass().getResource("/sample/fxmlFiles/EnabledUltrasound.fxml"));
                     try {
@@ -253,7 +245,7 @@ public class ZeroingAmbulatoryController extends LogsClass   {
                     stage.show();
                 });
         QeryMenuRecoveryUltrasoundId.setOnAction(event -> {
-            clearButton.getScene().getWindow().hide();
+            ZeroingClientButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/RecoveryUltrasound.fxml"));
             try {
@@ -272,56 +264,44 @@ public class ZeroingAmbulatoryController extends LogsClass   {
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         TranIdArea.setDisable(true);
-        //РЕГИСТРАТОРЫ
-        ToggleGroup group = new ToggleGroup();
-        RadioReg00.setToggleGroup(group);
-        RadioReg01.setToggleGroup(group);
-        RadioReg02.setToggleGroup(group);
-        RadioReg03.setToggleGroup(group);
-        RadioReg04.setToggleGroup(group);
-        RadioReg05.setToggleGroup(group);
+        ZeroingClientButton.setDisable(true);
 
         //ВЫБОР РЕГИСТРАТОРОВ
-        RadioReg00.setOnAction(event1 -> {
+        selectReg00.setOnAction(event1 -> {
             regName = "Reg00";
-            TranIdArea.setDisable(false);
+            onButton();
 
         });
-        RadioReg01.setOnAction(event1 -> {
+        selectReg01.setOnAction(event1 -> {
             regName = "Reg01";
-            TranIdArea.setDisable(false);
+            onButton();
 
         });
-        RadioReg02.setOnAction(event1 -> {
+        selectReg02.setOnAction(event1 -> {
             regName = "Reg02";
-            TranIdArea.setDisable(false);
+            onButton();
 
         });
-        RadioReg03.setOnAction(event1 -> {
+        selectReg03.setOnAction(event1 -> {
             regName = "Reg03";
-            TranIdArea.setDisable(false);
+            onButton();
 
         });
-        RadioReg04.setOnAction(event1 -> {
+        selectReg04.setOnAction(event1 -> {
             regName = "Reg04";
-            TranIdArea.setDisable(false);
+            onButton();
 
         });
-        RadioReg05.setOnAction(event1 -> {
+        selectReg05.setOnAction(event1 -> {
             regName = "Reg05";
-            TranIdArea.setDisable(false);
+            onButton();
 
         });
 
-        clearButton.setOnAction(event -> {
-            TranIdArea.setText("");
-            infoLabel.setText("");
-            RadioReg00.setSelected(false);
-            RadioReg01.setSelected(false);
-            RadioReg02.setSelected(false);
-            RadioReg03.setSelected(false);
-            RadioReg04.setSelected(false);
-            RadioReg05.setSelected(false);
+        selectAdmin.setOnAction(event1 -> {
+            regName = "Admin";
+            onButton();
+
         });
 
         ZeroingClientButton.setOnAction(event -> {
@@ -330,6 +310,10 @@ public class ZeroingAmbulatoryController extends LogsClass   {
         });
     }
 
+    private void onButton(){
+        TranIdArea.setDisable(false);
+        ZeroingClientButton.setDisable(false);
+    }
 
     private void zeroingClient(String tranID){
         String SQL = "UPDATE psPatitem SET prevprice = renprice,renprice = 0 WHERE FK_TRXNO =" + tranID;
@@ -342,7 +326,7 @@ public class ZeroingAmbulatoryController extends LogsClass   {
             stmt.executeUpdate(SQL);
             stmt.executeUpdate(SQL_2);
             stmt.executeUpdate(SQL_3);
-            infoLabel.setText("ПЛАТЁЖ ОБНУЛЁН ");
+            aceptImageId.setVisible(true);
             stmt.close();
             con.close();
         } catch (SQLException ex) {

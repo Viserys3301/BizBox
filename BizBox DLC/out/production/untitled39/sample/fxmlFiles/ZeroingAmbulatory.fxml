@@ -4,15 +4,16 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.ZeroingAmbulatoryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.ZeroingAmbulatoryController">
    <children>
       <MenuBar fx:id="MainMenuBar" layoutX="-9.0" layoutY="2.0" prefHeight="25.0" prefWidth="609.0">
         <menus>
@@ -56,25 +57,27 @@
           </Menu>
         </menus>
       </MenuBar>
-      <TextField fx:id="TranIdArea" layoutX="316.0" layoutY="61.0" prefHeight="25.0" prefWidth="225.0" />
-      <Text fx:id="titleArea2" layoutX="105.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите ID транзакции:" wrappingWidth="203.244140625">
+      <TextField fx:id="TranIdArea" alignment="CENTER" layoutX="191.0" layoutY="125.0" prefHeight="25.0" prefWidth="225.0" promptText="Введите ID транзакции" />
+      <Button fx:id="ZeroingClientButton" layoutX="308.0" layoutY="158.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" text="Обнулить" />
+      <Label fx:id="InfoQery" layoutX="229.0" layoutY="93.0" prefHeight="20.0" prefWidth="155.0" text="ОБНУЛЕНИЕ ПЛАТЕЖА" textFill="#0099ff">
          <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Button fx:id="ZeroingClientButton" layoutX="456.0" layoutY="100.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Обнулить" />
-      <RadioButton fx:id="RadioReg00" layoutX="14.0" layoutY="104.0" mnemonicParsing="false" text="Reg00" />
-      <RadioButton fx:id="RadioReg01" layoutX="94.0" layoutY="104.0" mnemonicParsing="false" text="Reg01" />
-      <RadioButton fx:id="RadioReg02" layoutX="166.0" layoutY="104.0" mnemonicParsing="false" text="Reg02" />
-      <RadioButton fx:id="RadioReg03" layoutX="241.0" layoutY="104.0" mnemonicParsing="false" text="Reg03" />
-      <RadioButton fx:id="RadioReg04" layoutX="308.0" layoutY="104.0" mnemonicParsing="false" text="Reg04" />
-      <RadioButton fx:id="RadioReg05" layoutX="374.0" layoutY="104.0" mnemonicParsing="false" text="Reg05" />
-      <Label fx:id="infoLabel" layoutX="13.0" layoutY="183.0" prefHeight="34.0" prefWidth="581.0" text="" textFill="LIMEGREEN">
-         <font>
-            <Font size="23.0" />
-         </font>
-      </Label>
-      <Label fx:id="InfoQery" layoutX="432.0" layoutY="36.0" prefHeight="19.0" prefWidth="142.0" text="ОБНУЛЕНИЕ ПЛАТЕЖА" textFill="#0099ff" />
-      <Button fx:id="clearButton" layoutX="456.0" layoutY="139.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Очистить" />
+            <Font size="14.0" />
+         </font></Label>
+      <MenuButton fx:id="selectRegistrations" layoutX="191.0" layoutY="158.0" mnemonicParsing="false" text="Регистраторы">
+        <items>
+          <MenuItem fx:id="selectReg00" mnemonicParsing="false" text="Reg00" />
+            <MenuItem fx:id="selectReg01" mnemonicParsing="false" text="Reg01" />
+            <MenuItem fx:id="selectReg02" mnemonicParsing="false" text="Reg02" />
+            <MenuItem fx:id="selectReg03" mnemonicParsing="false" text="Reg03" />
+            <MenuItem fx:id="selectReg04" mnemonicParsing="false" text="Reg04" />
+            <MenuItem fx:id="selectReg05" mnemonicParsing="false" text="Reg05" />
+            <MenuItem fx:id="selectAdmin" mnemonicParsing="false" text="Admin" />
+        </items>
+      </MenuButton>
+      <ImageView fx:id="aceptImageId" fitHeight="150.0" fitWidth="200.0" layoutX="233.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../res/3.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

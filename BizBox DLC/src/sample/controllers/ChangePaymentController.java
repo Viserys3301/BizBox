@@ -7,20 +7,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import javax.xml.soap.Text;
 
 public class ChangePaymentController {
+    String regName = "";
+
+    @FXML
+    private ResourceBundle resources;
+
+    @FXML
+    private URL location;
 
     @FXML
     private MenuBar MainMenuBar;
@@ -95,31 +95,7 @@ public class ChangePaymentController {
     private TextField TranIdArea;
 
     @FXML
-    private Text titleArea;
-
-    @FXML
     private Button changePaymentButton;
-
-    @FXML
-    private RadioButton RadioReg00;
-
-    @FXML
-    private RadioButton RadioReg01;
-
-    @FXML
-    private RadioButton RadioReg02;
-
-    @FXML
-    private RadioButton RadioReg03;
-
-    @FXML
-    private RadioButton RadioReg04;
-
-    @FXML
-    private RadioButton RadioReg05;
-
-    @FXML
-    private Label infoLabel;
 
     @FXML
     private Label InfoQery;
@@ -146,7 +122,40 @@ public class ChangePaymentController {
     private TableColumn<?, ?> PatPaymentTableCard;
 
     @FXML
+    private ImageView aceptImageId;
+
+    @FXML
+    private MenuButton selectRegistrations;
+
+    @FXML
+    private MenuItem selectReg00;
+
+    @FXML
+    private MenuItem selectReg01;
+
+    @FXML
+    private MenuItem selectReg02;
+
+    @FXML
+    private MenuItem selectReg03;
+
+    @FXML
+    private MenuItem selectReg04;
+
+    @FXML
+    private MenuItem selectReg05;
+
+    @FXML
+    private MenuItem selectAdmin;
+
+    @FXML
     void initialize() {
+        changePaymentButton.setDisable(true);
+        findPatientPayment.setDisable(true);
+        TranIdArea.setDisable(true);
+        ChangeToCash.setDisable(true);
+        ChangeToCard.setDisable(true);
+
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////-----ПЕРЕКЛЮЧЕНИЕ ОКОН-----//////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -252,8 +261,45 @@ public class ChangePaymentController {
             stage.show();
         });
 
+
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        selectReg00.setOnAction(event -> {
+            regName = "Reg00";
+            onButton();
+        });
+        selectReg01.setOnAction(event -> {
+            regName = "Reg01";
+            onButton();
+        });
+        selectReg02.setOnAction(event -> {
+            regName = "Reg02";
+            onButton();
+        });
+        selectReg03.setOnAction(event -> {
+            regName = "Reg03";
+            onButton();
+        });
+        selectReg04.setOnAction(event -> {
+            regName = "Reg04";
+            onButton();
+        });
+        selectReg05.setOnAction(event -> {
+            regName = "Reg05";
+            onButton();
+        });
+        selectAdmin.setOnAction(event -> {
+            regName = "Admin";
+            onButton();
+        });
+    }
+    private void onButton(){
+        changePaymentButton.setDisable(false);
+        findPatientPayment.setDisable(false);
+        TranIdArea.setDisable(false);
+        ChangeToCash.setDisable(false);
+        ChangeToCard.setDisable(false);
+
     }
 }

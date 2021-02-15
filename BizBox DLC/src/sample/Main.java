@@ -17,9 +17,9 @@ public class Main extends Application {
       // Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/DeletPayment.fxml"));   //УДАЛЕНИЕ ПЛАТЕЖА RE------------------------------------------
     // Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/ChangeDoctor.fxml"));   //ИЗМЕНЕНИЕ ВРАЧА RE--------------------------
      //   Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/ZeroingAmbulatory.fxml")); //ОБНУДЕНИЕ АМБУЛАТОРИИ RE------------------------------
-        Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/ZeroingCorpClient.fxml")); //ОБНУДЕНИЕ КОРП RE------------------------
+     //   Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/ZeroingCorpClient.fxml")); //ОБНУДЕНИЕ КОРП RE------------------------
       //  Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/ChangeAmbulatoryDate.fxml")); //ИЗМЕНЕНИЕ ДАТЫ АМБУЛАТОРИИ RE----------------------------------
-        // Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/ChangePayment.fxml")); //ИЗМЕНЕНИЕ ПЛАТЕЖА НАЛ БЕЗНАЛ
+         Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/ChangePayment.fxml")); //ИЗМЕНЕНИЕ ПЛАТЕЖА НАЛ БЕЗНАЛ
       //Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/EnabledUltrasound.fxml")); //РАЗБЛОКИРОВКА УЗИ RE------------------------------------
     //   Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/RecoveryUltrasound.fxml")); //ВОЗВРАТ УЗИ RE-----------------------------------
      //    Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/ChangeBirthdate.fxml")); //ИЗМЕНЕНИЕ ДАТЫ РОЖДЕНИЯ

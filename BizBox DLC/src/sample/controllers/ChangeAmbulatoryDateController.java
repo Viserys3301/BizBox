@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import sample.LogsClass;
@@ -41,12 +42,6 @@ public class ChangeAmbulatoryDateController extends LogsClass {
         }
     }
 
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private MenuBar MainMenuBar;
@@ -121,33 +116,6 @@ public class ChangeAmbulatoryDateController extends LogsClass {
     private TextField TranIdArea;
 
     @FXML
-    private Text titleArea;
-
-    @FXML
-    private Button clearButton;
-
-    @FXML
-    private RadioButton RadioReg00;
-
-    @FXML
-    private RadioButton RadioReg01;
-
-    @FXML
-    private RadioButton RadioReg02;
-
-    @FXML
-    private RadioButton RadioReg03;
-
-    @FXML
-    private RadioButton RadioReg04;
-
-    @FXML
-    private RadioButton RadioReg05;
-
-    @FXML
-    private Label infoLabel;
-
-    @FXML
     private Label InfoQery;
 
     @FXML
@@ -163,6 +131,34 @@ public class ChangeAmbulatoryDateController extends LogsClass {
     private TextField DateYerId;
 
     @FXML
+    private MenuButton selectRegistrations;
+
+    @FXML
+    private MenuItem selectReg00;
+
+    @FXML
+    private MenuItem selectReg01;
+
+    @FXML
+    private MenuItem selectReg02;
+
+    @FXML
+    private MenuItem selectReg03;
+
+    @FXML
+    private MenuItem selectReg04;
+
+    @FXML
+    private MenuItem selectReg05;
+
+    @FXML
+    private MenuItem selectAdmin;
+
+
+    @FXML
+    private ImageView aceptImageId;
+
+    @FXML
     void initialize() {
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -170,7 +166,7 @@ public class ChangeAmbulatoryDateController extends LogsClass {
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         QeryMenuZeroingAmbulatoryId.setOnAction(event -> {
-            clearButton.getScene().getWindow().hide();
+            ChangeAmbulatoryDateButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingAmbulatory.fxml"));
             try {
@@ -185,7 +181,7 @@ public class ChangeAmbulatoryDateController extends LogsClass {
         });
 
         QeryMenuChangePaymentId.setOnAction(event -> {
-            clearButton.getScene().getWindow().hide();
+            ChangeAmbulatoryDateButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangePayment.fxml"));
             try {
@@ -200,7 +196,7 @@ public class ChangeAmbulatoryDateController extends LogsClass {
         });
 
         QeryMenuChangeDoctorId.setOnAction(event -> {
-            clearButton.getScene().getWindow().hide();
+            ChangeAmbulatoryDateButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeDoctor.fxml"));
             try {
@@ -214,7 +210,7 @@ public class ChangeAmbulatoryDateController extends LogsClass {
             stage.show();
         });
         QeryMenuChangeAmbulatoryDateId.setOnAction(event -> {
-            clearButton.getScene().getWindow().hide();
+            ChangeAmbulatoryDateButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeAmbulatoryDate.fxml"));
             try {
@@ -228,7 +224,7 @@ public class ChangeAmbulatoryDateController extends LogsClass {
             stage.show();
         });
         QeryMenuChangeBirthdateId.setOnAction(event -> {
-            clearButton.getScene().getWindow().hide();
+            ChangeAmbulatoryDateButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeBirthdate.fxml"));
             try {
@@ -242,7 +238,7 @@ public class ChangeAmbulatoryDateController extends LogsClass {
             stage.show();
         });
         QeryMenuEnabledUltrasoundId.setOnAction(event -> {
-            clearButton.getScene().getWindow().hide();
+            ChangeAmbulatoryDateButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/EnabledUltrasound.fxml"));
             try {
@@ -256,7 +252,7 @@ public class ChangeAmbulatoryDateController extends LogsClass {
             stage.show();
         });
         QeryMenuRecoveryUltrasoundId.setOnAction(event -> {
-            clearButton.getScene().getWindow().hide();
+            ChangeAmbulatoryDateButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/RecoveryUltrasound.fxml"));
             try {
@@ -281,52 +277,47 @@ public class ChangeAmbulatoryDateController extends LogsClass {
         DateMonthId.setDisable(true);
         DateYerId.setDisable(true);
 
-        //РЕГИСТРАТОРЫ
-        ToggleGroup group = new ToggleGroup();
-        RadioReg00.setToggleGroup(group);
-        RadioReg01.setToggleGroup(group);
-        RadioReg02.setToggleGroup(group);
-        RadioReg03.setToggleGroup(group);
-        RadioReg04.setToggleGroup(group);
-        RadioReg05.setToggleGroup(group);
 
         //ВЫБОР РЕГИСТРАТОРОВ
-        RadioReg00.setOnAction(event1 -> {
+        selectReg00.setOnAction(event1 -> {
             regName = "Reg00";
             Onvisible();
         });
-        RadioReg01.setOnAction(event1 -> {
+        selectReg01.setOnAction(event1 -> {
             regName = "Reg01";
             Onvisible();
         });
-        RadioReg02.setOnAction(event1 -> {
+        selectReg02.setOnAction(event1 -> {
             regName = "Reg02";
             Onvisible();
         });
-        RadioReg03.setOnAction(event1 -> {
+        selectReg03.setOnAction(event1 -> {
             regName = "Reg03";
             Onvisible();
         });
-        RadioReg04.setOnAction(event1 -> {
+        selectReg04.setOnAction(event1 -> {
             regName = "Reg04";
             Onvisible();
         });
-        RadioReg05.setOnAction(event1 -> {
+        selectReg05.setOnAction(event1 -> {
             regName = "Reg05";
             Onvisible();
         });
 
-
-        clearButton.setOnAction(event -> {
-            TranIdArea.setText("");
-            infoLabel.setText("");
-            RadioReg00.setSelected(false);
-            RadioReg01.setSelected(false);
-            RadioReg02.setSelected(false);
-            RadioReg03.setSelected(false);
-            RadioReg04.setSelected(false);
-            RadioReg05.setSelected(false);
+        selectAdmin.setOnAction(event1 -> {
+            regName = "Admin";
+            Onvisible();
         });
+
+        ChangeAmbulatoryDateButton.setOnAction(event -> {
+            String tranId = TranIdArea.getText();
+            String newDay = DateDayId.getText();
+            String newMonth = DateMonthId.getText();
+            String newYer = DateYerId.getText();
+            String newDate = "'" + newYer + "/" + newMonth + "/" + newDay + "'";
+            changeAmbulatoryDate(tranId,newDate);
+        });
+
 
     }
 
@@ -343,16 +334,14 @@ public class ChangeAmbulatoryDateController extends LogsClass {
             String SQL_4 = "UPDATE faCRMstr SET ordate =" + newDate + ", postdate =" + newDate + " WHERE FK_psPatRegisters = " + tranId;
             String SQL_5 = "UPDATE psPatRegisters SET registrydate =" + newDate + " WHERE PK_psPatRegisters = " + tranId;
 
-
-            //УДАЛЕНИЕ ДОЧЕРНИХ ПЛАТЕЖЕЙ
             stmt.executeUpdate(SQL);
             stmt.executeUpdate(SQL_2);
             stmt.executeUpdate(SQL_3);
             stmt.executeUpdate(SQL_4);
             stmt.executeUpdate(SQL_5);
             changeAmbulatoryDateLogs(tranId,regName,data,newDate,stmt);
-            infoLabel.setText("ГОТОВО");
 
+            aceptImageId.setVisible(true);
         } catch (SQLException e) {
             e.printStackTrace();
         }

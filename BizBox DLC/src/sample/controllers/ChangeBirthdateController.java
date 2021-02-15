@@ -7,13 +7,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -98,31 +93,7 @@ public class ChangeBirthdateController {
     private TextField TranIdArea;
 
     @FXML
-    private Text titleArea;
-
-    @FXML
     private Button ChangeBirthdateButton;
-
-    @FXML
-    private RadioButton RadioReg00;
-
-    @FXML
-    private RadioButton RadioReg01;
-
-    @FXML
-    private RadioButton RadioReg02;
-
-    @FXML
-    private RadioButton RadioReg03;
-
-    @FXML
-    private RadioButton RadioReg04;
-
-    @FXML
-    private RadioButton RadioReg05;
-
-    @FXML
-    private Label infoLabel;
 
     @FXML
     private Label InfoQery;
@@ -135,6 +106,34 @@ public class ChangeBirthdateController {
 
     @FXML
     private TextField DateYerId;
+
+    @FXML
+    private MenuButton selectRegistrations;
+
+    @FXML
+    private MenuItem selectReg00;
+
+    @FXML
+    private MenuItem selectReg01;
+
+    @FXML
+    private MenuItem selectReg02;
+
+    @FXML
+    private MenuItem selectReg03;
+
+    @FXML
+    private MenuItem selectReg04;
+
+    @FXML
+    private MenuItem selectReg05;
+
+    @FXML
+    private MenuItem selectAdmin;
+
+    @FXML
+    private ImageView aceptImageId;
+
 
     @FXML
     void initialize() {
@@ -247,4 +246,6 @@ public class ChangeBirthdateController {
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     }
+
+    
 }

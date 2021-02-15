@@ -1,12 +1,38 @@
 package sample.controllers;
 
 import java.net.URL;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 
 
 public class ZeroingCorpClientController {
+    //ИНФОРМАЦИЯ ПО ДЕЙСТВИЮ
+    private String pay = "'Удаление платежа'";
+
+    //СОЕДИНЕНИЕ С БАЗОЙ
+    private String instanceName = "10.0.9.4\\hcdbsrv";
+    private String databaseName = "HCDB";
+    private String userName = "sa";
+    private String pass = "Ba#sE5Ke";
+    private String connectionUrl = "jdbc:sqlserver://%1$s;databaseName=%2$s;user=%3$s;password=%4$s;";
+    private String connectionString = String.format(connectionUrl, instanceName, databaseName, userName, pass);
+    Connection con;
+
+    {
+        try {
+            con = DriverManager.getConnection(connectionString);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private String regName;
 
@@ -32,94 +58,107 @@ public class ZeroingCorpClientController {
     private Button ZeroingClientButton;
 
     @FXML
-    private RadioButton RadioReg00;
-
-    @FXML
-    private RadioButton RadioReg01;
-
-    @FXML
-    private RadioButton RadioReg02;
-
-    @FXML
-    private RadioButton RadioReg03;
-
-    @FXML
-    private RadioButton RadioReg04;
-
-    @FXML
-    private RadioButton RadioReg05;
-
-    @FXML
-    private Label infoLabel;
-
-    @FXML
     private Label InfoQery;
 
     @FXML
-    private Button clearButton;
+    private MenuButton selectRegistrations;
+
+    @FXML
+    private MenuItem selectReg00;
+
+    @FXML
+    private MenuItem selectReg01;
+
+    @FXML
+    private MenuItem selectReg02;
+
+    @FXML
+    private MenuItem selectReg03;
+
+    @FXML
+    private MenuItem selectReg04;
+
+    @FXML
+    private MenuItem selectReg05;
+
+    @FXML
+    private MenuItem selectAdmin;
+
+    @FXML
+    private ImageView aceptImageId;
 
     @FXML
     void initialize() {
 
         TranIdArea.setDisable(true);
-        //РЕГИСТРАТОРЫ
-        ToggleGroup group = new ToggleGroup();
-        RadioReg00.setToggleGroup(group);
-        RadioReg01.setToggleGroup(group);
-        RadioReg02.setToggleGroup(group);
-        RadioReg03.setToggleGroup(group);
-        RadioReg04.setToggleGroup(group);
-        RadioReg05.setToggleGroup(group);
-
-
-
-
+        ZeroingClientButton.setDisable(true);
 
         //ВЫБОР РЕГИСТРАТОРОВ
-        RadioReg00.setOnAction(event1 -> {
+        selectReg00.setOnAction(event1 -> {
             regName = "Reg00";
-            TranIdArea.setDisable(false);
+            onButton();
 
         });
-        RadioReg01.setOnAction(event1 -> {
+        selectReg01.setOnAction(event1 -> {
             regName = "Reg01";
-            TranIdArea.setDisable(false);
+            onButton();
 
         });
-        RadioReg02.setOnAction(event1 -> {
+        selectReg02.setOnAction(event1 -> {
             regName = "Reg02";
-            TranIdArea.setDisable(false);
+            onButton();
 
         });
-        RadioReg03.setOnAction(event1 -> {
+        selectReg03.setOnAction(event1 -> {
             regName = "Reg03";
-            TranIdArea.setDisable(false);
+            onButton();
 
         });
-        RadioReg04.setOnAction(event1 -> {
+        selectReg04.setOnAction(event1 -> {
             regName = "Reg04";
-            TranIdArea.setDisable(false);
+            onButton();
 
         });
-        RadioReg05.setOnAction(event1 -> {
+        selectReg05.setOnAction(event1 -> {
             regName = "Reg05";
-            TranIdArea.setDisable(false);
+            onButton();
 
         });
 
-        clearButton.setOnAction(event -> {
-            TranIdArea.setText("");
-            infoLabel.setText("");
-            RadioReg00.setSelected(false);
-            RadioReg01.setSelected(false);
-            RadioReg02.setSelected(false);
-            RadioReg03.setSelected(false);
-            RadioReg04.setSelected(false);
-            RadioReg05.setSelected(false);
+        selectAdmin.setOnAction(event1 -> {
+            regName = "Admin";
+            onButton();
+
         });
+
+        ZeroingClientButton.setOnAction(event -> {
+            String tranId = TranIdArea.getText();
+            zeroingClient(tranId,regName);
+        });
+
     }
 
-    private void zeroingClient(){
+    private void onButton(){
+        TranIdArea.setDisable(false);
+        ZeroingClientButton.setDisable(false);
+    }
 
+    private void zeroingClient(String tranId,String regName){
+        String SQL = "exec Update_TRXNO " +tranId +  ", 'COM'";
+        try {
+            //СОЗДАНИЕ СТЕЙТМЕНТА
+            Statement stmt = con.createStatement();
+
+            stmt.executeUpdate(SQL);
+
+            //СООБЩЕНИЕ О ВЫПОЛНЕНИИ
+            aceptImageId.setVisible(true);
+
+            //ЗАКРЫТИЕ СОЕДИНЕНИЙ
+            stmt.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

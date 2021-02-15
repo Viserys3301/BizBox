@@ -162,10 +162,6 @@ public class DeletPaymentController  extends LogsClass {
     @FXML
     private MenuItem selectAdmin;
 
-
-    @FXML
-    private AnchorPane axeptImageId;
-
     @FXML
     private ImageView aceptImageId;
 
@@ -289,38 +285,38 @@ public class DeletPaymentController  extends LogsClass {
 
         //ПОЛЕ ДЛЯ ID
         TranIdArea.setDisable(true);
-
+        DeletePaymentButton.setDisable(true);
         //РЕГИСТРАТОРЫ
 
 
         //ВЫБОР РЕГИСТРАТОРОВ
         selectReg00.setOnAction(event1 -> {
             regName = "Reg00";
-            TranIdArea.setDisable(false);
+            onButton();
         });
         selectReg01.setOnAction(event1 -> {
             regName = "Reg01";
-            TranIdArea.setDisable(false);
+            onButton();
         });
         selectReg02.setOnAction(event1 -> {
             regName = "Reg02";
-            TranIdArea.setDisable(false);
+            onButton();
         });
         selectReg03.setOnAction(event1 -> {
             regName = "Reg03";
-            TranIdArea.setDisable(false);
+            onButton();
         });
         selectReg04.setOnAction(event1 -> {
             regName = "Reg04";
-            TranIdArea.setDisable(false);
+            onButton();
         });
         selectReg05.setOnAction(event1 -> {
             regName = "Reg05";
-            TranIdArea.setDisable(false);
+            onButton();
         });
         selectAdmin.setOnAction(event1 -> {
             regName = "Admin";
-            TranIdArea.setDisable(false);
+            onButton();
         });
 
         //ЗАПУСК УДАЛЕНИЯ
@@ -350,6 +346,11 @@ public class DeletPaymentController  extends LogsClass {
         });
 
 
+    }
+
+    private void onButton(){
+        DeletePaymentButton.setDisable(false);
+        TranIdArea.setDisable(false);
     }
 
     private void deletPayment(String tranID, String RegID) {

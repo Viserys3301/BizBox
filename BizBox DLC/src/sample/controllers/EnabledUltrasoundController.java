@@ -15,6 +15,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class EnabledUltrasoundController {
@@ -36,12 +37,6 @@ public class EnabledUltrasoundController {
         }
     }
 
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private MenuBar MainMenuBar;
@@ -113,9 +108,6 @@ public class EnabledUltrasoundController {
     private MenuItem OptionsMenuAboutId;
 
     @FXML
-    private Label infoLabel;
-
-    @FXML
     private Label InfoQery;
 
     @FXML
@@ -123,6 +115,9 @@ public class EnabledUltrasoundController {
 
     @FXML
     private Button EnabledUltrasoundButton;
+
+    @FXML
+    private ImageView aceptImageId;
 
     @FXML
     void initialize() {
@@ -257,7 +252,7 @@ public class EnabledUltrasoundController {
                 ultrasoundId = executeQuery.getString("PK_psPatledgers");
             }
             String SQL_2 = "UPDATE psExamResultMstr SET isCheckedOut = 0 WHERE PK_psExamResultMstr = " + ultrasoundId;
-            infoLabel.setText("ГОТОВО");
+            aceptImageId.setVisible(true);
         } catch (SQLException e) {
             e.printStackTrace();
         }

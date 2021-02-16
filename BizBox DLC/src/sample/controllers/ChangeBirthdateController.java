@@ -2,7 +2,12 @@ package sample.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,6 +18,29 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class ChangeBirthdateController {
+
+    private String regName;
+
+
+    //ИНФОРМАЦИЯ ПО ДЕЙСТВИЮ
+    private String pay = "'Изменение даты рождения'";
+
+    //СОЕДИНЕНИЕ С БАЗОЙ
+    private String instanceName = "10.0.9.4\\hcdbsrv";
+    private String databaseName = "HCDB";
+    private String userName = "sa";
+    private String pass = "Ba#sE5Ke";
+    private String connectionUrl = "jdbc:sqlserver://%1$s;databaseName=%2$s;user=%3$s;password=%4$s;";
+    private String connectionString = String.format(connectionUrl, instanceName, databaseName, userName, pass);
+    Connection con;
+
+    {
+        try {
+            con = DriverManager.getConnection(connectionString);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     private ResourceBundle resources;
@@ -137,6 +165,12 @@ public class ChangeBirthdateController {
 
     @FXML
     void initialize() {
+        TranIdArea.setDisable(true);
+        DateDayId.setDisable(true);
+        DateMonthId.setDisable(true);
+        DateYerId.setDisable(true);
+        ChangeBirthdateButton.setDisable(true);
+
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////-----ПЕРЕКЛЮЧЕНИЕ ОКОН-----//////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -245,7 +279,94 @@ public class ChangeBirthdateController {
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        selectReg00.setOnAction(event -> {
+            onButton("Reg00");
+        });
+        selectReg01.setOnAction(event -> {
+            onButton("Reg01");
+        });
+        selectReg02.setOnAction(event -> {
+            onButton("Reg02");
+        });
+        selectReg03.setOnAction(event -> {
+            onButton("Reg03");
+        });
+        selectReg04.setOnAction(event -> {
+            onButton("Reg04");
+        });
+        selectReg05.setOnAction(event -> {
+            onButton("Reg05");
+        });
+        selectAdmin.setOnAction(event -> {
+            onButton("Admin");
+        });
+
+
+        ChangeBirthdateButton.setOnAction(event -> {
+            String patId = TranIdArea.getText();
+
+            String newDay = DateDayId.getText();
+            String newMonth = DateMonthId.getText();
+            String newYer = DateYerId.getText();
+
+            String newDate = "'" + newYer + "/" + newMonth + "/" + newDay + "'";
+            changeBirthdate(patId,newDate);
+        });
     }
 
-    
+
+
+    private void changeBirthdate(String patId,String newDate){
+        //ОТКЛЮЧЕНИЕ ТРИГЕРА
+       String SQL_TRIGGER_OFF = "DISABLE TRIGGER ApptTrans_Validator ON apptTrans";
+       //ВКЛЮЧЕНИЕ ТРИГЕРА
+        String SQL_TRIGGER_ON = "ENABLE TRIGGER ApptTrans_Validator ON apptTrans";
+        //ПОИСК ПАЦИЕНТА
+        String SQL = "SELECT PK_apptTrans FROM apptTrans WHERE FK_psDatacenter_Client =" + patId;
+        //ИЗМЕНЕНИЕ ДАТЫ
+        String SQL_2 = "UPDATE apptTrans SET birthDate =" + newDate + " WHERE PK_apptTrans =";
+        String SQL_3 ="UPDATE psPersonaldata SET birthdate = " + newDate + " WHERE PK_psPersonalData=" + patId;
+
+
+
+
+        try {
+            //ЛИСТ СО ВСЕМИ ПЛАТЕЖАМИ
+            ArrayList<String> birthdateList = new ArrayList<>();
+            //СОЗДАНИЕ СТЕЙТМЕНТА
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate(SQL_TRIGGER_OFF);
+
+
+            ResultSet executeQuery = stmt.executeQuery(SQL);
+            //ЗАПИСЬ ID ПЛАТЕЖЕЙ В СПИСОК
+            while (executeQuery.next()) {
+                birthdateList.add(executeQuery.getString("PK_apptTrans"));
+            }
+            //УДАЛЕНИЕ ID ПЛАТЕЖЕЙ ИЗ ТАБЛИЦЫ
+            for (int i = 0; i < birthdateList.size(); i++) {
+                stmt.executeUpdate(SQL_2+birthdateList.get(i));
+            }
+            stmt.executeUpdate(SQL_3);
+            stmt.executeUpdate(SQL_TRIGGER_ON);
+            //СООБЩЕНИЕ О ВЫПОЛНЕНИИ
+            aceptImageId.setVisible(true);
+            //ЗАКРЫТИЕ СОЕДИНЕНИЙ
+            stmt.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void onButton(String regName){
+        this.regName = regName;
+        selectRegistrations.setText(regName);
+        TranIdArea.setDisable(false);
+        DateDayId.setDisable(false);
+        DateMonthId.setDisable(false);
+        DateYerId.setDisable(false);
+        ChangeBirthdateButton.setDisable(false);
+    }
 }

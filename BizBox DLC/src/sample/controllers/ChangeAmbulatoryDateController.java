@@ -339,33 +339,25 @@ public class ChangeAmbulatoryDateController extends LogsClass {
 
         //ВЫБОР РЕГИСТРАТОРОВ
         selectReg00.setOnAction(event1 -> {
-            regName = "Reg00";
-            Onvisible();
+            Onvisible("Reg00");
         });
         selectReg01.setOnAction(event1 -> {
-            regName = "Reg01";
-            Onvisible();
+            Onvisible("Reg01");
         });
         selectReg02.setOnAction(event1 -> {
-            regName = "Reg02";
-            Onvisible();
+            Onvisible("Reg02");
         });
         selectReg03.setOnAction(event1 -> {
-            regName = "Reg03";
-            Onvisible();
+            Onvisible("Reg03");
         });
         selectReg04.setOnAction(event1 -> {
-            regName = "Reg04";
-            Onvisible();
+            Onvisible("Reg04");
         });
         selectReg05.setOnAction(event1 -> {
-            regName = "Reg05";
-            Onvisible();
+            Onvisible("Reg05");
         });
-
         selectAdmin.setOnAction(event1 -> {
-            regName = "Admin";
-            Onvisible();
+            Onvisible("Admin");
         });
 
         ChangeAmbulatoryDateButton.setOnAction(event -> {
@@ -408,7 +400,9 @@ public class ChangeAmbulatoryDateController extends LogsClass {
 
 
     }
-    private void Onvisible(){
+    private void Onvisible(String regName){
+        selectRegistrations.setText(regName);
+        this.regName = regName;
         TranIdArea.setDisable(false);
         ChangeAmbulatoryDateButton.setDisable(false);
         DateDayId.setDisable(false);

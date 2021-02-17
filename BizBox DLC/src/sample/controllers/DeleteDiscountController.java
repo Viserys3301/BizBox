@@ -351,6 +351,7 @@ public class DeleteDiscountController {
 
     }
     private void onButton(String regName){
+        selectRegistrations.setText(regName);
         TranIdArea.setDisable(false);
         DeletDiscountButton.setDisable(false);
         this.regName =regName;

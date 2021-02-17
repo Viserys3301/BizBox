@@ -362,32 +362,25 @@ public class ChangePaymentController {
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         selectReg00.setOnAction(event -> {
-            regName = "Reg00";
-            onButton();
+            onButton("Reg00");
         });
         selectReg01.setOnAction(event -> {
-            regName = "Reg01";
-            onButton();
+            onButton("Reg01");
         });
         selectReg02.setOnAction(event -> {
-            regName = "Reg02";
-            onButton();
+            onButton("Reg02");
         });
         selectReg03.setOnAction(event -> {
-            regName = "Reg03";
-            onButton();
+            onButton("Reg03");
         });
         selectReg04.setOnAction(event -> {
-            regName = "Reg04";
-            onButton();
+            onButton("Reg04");
         });
         selectReg05.setOnAction(event -> {
-            regName = "Reg05";
-            onButton();
+            onButton("Reg05");
         });
         selectAdmin.setOnAction(event -> {
-            regName = "Admin";
-            onButton();
+            onButton("Admin");
         });
 
         findPatientPayment.setOnAction(event -> {
@@ -422,7 +415,9 @@ public class ChangePaymentController {
             changePayment(paymentId,isCard);
         });
     }
-    private void onButton(){
+    private void onButton(String regName){
+        selectRegistrations.setText(regName);
+        this.regName = regName;
         changePaymentButton.setDisable(false);
         findPatientPayment.setDisable(false);
         TranIdArea.setDisable(false);

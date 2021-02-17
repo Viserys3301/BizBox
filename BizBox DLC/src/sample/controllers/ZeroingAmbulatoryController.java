@@ -328,39 +328,31 @@ public class ZeroingAmbulatoryController extends LogsClass   {
 
         //ВЫБОР РЕГИСТРАТОРОВ
         selectReg00.setOnAction(event1 -> {
-            regName = "Reg00";
-            onButton();
+            onButton("Reg00");
 
         });
         selectReg01.setOnAction(event1 -> {
-            regName = "Reg01";
-            onButton();
+            onButton("Reg01");
 
         });
         selectReg02.setOnAction(event1 -> {
-            regName = "Reg02";
-            onButton();
-
+            onButton("Reg02");
         });
         selectReg03.setOnAction(event1 -> {
-            regName = "Reg03";
-            onButton();
+            onButton("Reg03");
 
         });
         selectReg04.setOnAction(event1 -> {
-            regName = "Reg04";
-            onButton();
+            onButton("Reg04");
 
         });
         selectReg05.setOnAction(event1 -> {
-            regName = "Reg05";
-            onButton();
+            onButton("Reg05");
 
         });
 
         selectAdmin.setOnAction(event1 -> {
-            regName = "Admin";
-            onButton();
+            onButton("Admin");
 
         });
 
@@ -370,7 +362,9 @@ public class ZeroingAmbulatoryController extends LogsClass   {
         });
     }
 
-    private void onButton(){
+    private void onButton(String regname){
+        this.regName = regname;
+        selectRegistrations.setText(regname);
         TranIdArea.setDisable(false);
         ZeroingClientButton.setDisable(false);
     }

@@ -422,6 +422,7 @@ public class ChangeBirthdateController {
     }
 
     private void onButton(String regName){
+        selectRegistrations.setText(regName);
         this.regName = regName;
         selectRegistrations.setText(regName);
         TranIdArea.setDisable(false);

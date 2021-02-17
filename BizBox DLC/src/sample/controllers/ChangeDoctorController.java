@@ -377,39 +377,26 @@ public class ChangeDoctorController extends LogsClass {
 
         //ВЫБОР РЕГИСТРАТОРОВ
         selectReg00.setOnAction(event1 -> {
-            regName = "Reg00";
-            onButton();
+            onButton("Reg00");
         });
         selectReg01.setOnAction(event1 -> {
-            regName = "Reg01";
-            onButton();
+            onButton("Reg01");
         });
         selectReg02.setOnAction(event1 -> {
-            regName = "Reg02";
-            onButton();
+            onButton("Reg02");
         });
         selectReg03.setOnAction(event1 -> {
-            regName = "Reg03";
-            onButton();
+            onButton("Reg03");
         });
         selectReg04.setOnAction(event1 -> {
-            regName = "Reg04";
-            onButton();
+            onButton("Reg04");
         });
         selectReg05.setOnAction(event1 -> {
-            regName = "Reg05";
-            onButton();
+            onButton("Reg05");
         });
         selectAdmin.setOnAction(event1 -> {
-            regName = "Admin";
-
+            onButton("Admin");
         });
-
-
-
-
-
-
 
         FindDocButton.setOnAction(event -> {
 
@@ -431,15 +418,14 @@ public class ChangeDoctorController extends LogsClass {
             String doctorID= DocTables.getSelectionModel().getSelectedItem().getID();
             changeDoctroe(tranID,doctorID,regName);
         });
-
-
-
-
     }
-    private void onButton(){
+    private void onButton(String regName){
+        selectRegistrations.setText(regName);
+        this.regName = regName;
         TranIdArea.setDisable(false);
         FindDocTextFild.setDisable(false);
         changeDoctorButton.setDisable(false);
+
     }
 
     private void initData(Doctors doctors) {

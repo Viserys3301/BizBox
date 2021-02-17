@@ -325,7 +325,7 @@ public class DeletPaymentController  extends LogsClass {
         DeleteMenuDeletPaymentId.setOnAction(event -> {
             DeletePaymentButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangePayment.fxml"));
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeletPayment.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {
@@ -378,27 +378,6 @@ public class DeletPaymentController  extends LogsClass {
             String tranID = TranIdArea.getText();
             deletPayment(tranID, regName);
         });
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        //НОВЫЙ ФРЕЙМ ОБНУЛЕНИЕ АМБУЛАТОРИИ
-        QeryMenuZeroingAmbulatoryId.setOnAction(event -> {
-            MainMenuBar.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingAmbulatory.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-        });
-
 
     }
 

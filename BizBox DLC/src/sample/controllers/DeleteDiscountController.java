@@ -153,7 +153,7 @@ public class DeleteDiscountController {
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        DeletDiscountButton.setOnAction(event -> {
+        QeryMenuZeroingAmbulatoryId.setOnAction(event -> {
             DeletDiscountButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingAmbulatory.fxml"));
@@ -168,7 +168,7 @@ public class DeleteDiscountController {
             stage.show();
         });
 
-        DeletDiscountButton.setOnAction(event -> {
+        QeryMenuChangePaymentId.setOnAction(event -> {
             DeletDiscountButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangePayment.fxml"));
@@ -183,7 +183,7 @@ public class DeleteDiscountController {
             stage.show();
         });
 
-        DeletDiscountButton.setOnAction(event -> {
+        QeryMenuChangeDoctorId.setOnAction(event -> {
             DeletDiscountButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeDoctor.fxml"));
@@ -197,7 +197,7 @@ public class DeleteDiscountController {
             stage.setScene(new Scene(root));
             stage.show();
         });
-        DeletDiscountButton.setOnAction(event -> {
+        QeryMenuChangeAmbulatoryDateId.setOnAction(event -> {
             DeletDiscountButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeAmbulatoryDate.fxml"));
@@ -211,7 +211,7 @@ public class DeleteDiscountController {
             stage.setScene(new Scene(root));
             stage.show();
         });
-        DeletDiscountButton.setOnAction(event -> {
+        QeryMenuChangeBirthdateId.setOnAction(event -> {
             DeletDiscountButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeBirthdate.fxml"));
@@ -225,7 +225,7 @@ public class DeleteDiscountController {
             stage.setScene(new Scene(root));
             stage.show();
         });
-        DeletDiscountButton.setOnAction(event -> {
+        QeryMenuEnabledUltrasoundId.setOnAction(event -> {
             DeletDiscountButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/EnabledUltrasound.fxml"));
@@ -239,7 +239,7 @@ public class DeleteDiscountController {
             stage.setScene(new Scene(root));
             stage.show();
         });
-        DeletDiscountButton.setOnAction(event -> {
+        QeryMenuRecoveryUltrasoundId.setOnAction(event -> {
             DeletDiscountButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/RecoveryUltrasound.fxml"));
@@ -254,7 +254,7 @@ public class DeleteDiscountController {
             stage.show();
         });
 
-        DeletDiscountButton.setOnAction(event -> {
+        CorpMenuAddCorpId.setOnAction(event -> {
             DeletDiscountButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/AddCorpClient.fxml"));
@@ -269,7 +269,7 @@ public class DeleteDiscountController {
             stage.show();
         });
 
-        DeletDiscountButton.setOnAction(event -> {
+        CorpMenuZeroingCorpId.setOnAction(event -> {
             DeletDiscountButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingCorpClient.fxml"));
@@ -299,10 +299,10 @@ public class DeleteDiscountController {
             stage.show();
         });
 
-        DeletDiscountButton.setOnAction(event -> {
+        DeleteMenuDeletPaymentId.setOnAction(event -> {
             DeletDiscountButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangePayment.fxml"));
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeletPayment.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {

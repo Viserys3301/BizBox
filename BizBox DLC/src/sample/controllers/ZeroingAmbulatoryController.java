@@ -307,7 +307,7 @@ public class ZeroingAmbulatoryController extends LogsClass   {
         DeleteMenuDeletPaymentId.setOnAction(event -> {
             ZeroingClientButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangePayment.fxml"));
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeletPayment.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {

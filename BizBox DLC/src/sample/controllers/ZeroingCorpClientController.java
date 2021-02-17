@@ -298,7 +298,7 @@ public class ZeroingCorpClientController {
         DeleteMenuDeletPaymentId.setOnAction(event -> {
             ZeroingClientButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangePayment.fxml"));
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeletPayment.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {
@@ -318,31 +318,25 @@ public class ZeroingCorpClientController {
         //ВЫБОР РЕГИСТРАТОРОВ
         selectReg00.setOnAction(event1 -> {
             onButton("Reg00");
-
         });
         selectReg01.setOnAction(event1 -> {
             onButton("Reg01");
-
         });
         selectReg02.setOnAction(event1 -> {
             onButton("Reg02");
         });
         selectReg03.setOnAction(event1 -> {
             onButton("Reg03");
-
         });
         selectReg04.setOnAction(event1 -> {
             onButton("Reg04");
-
         });
         selectReg05.setOnAction(event1 -> {
             onButton("Reg05");
-
         });
 
         selectAdmin.setOnAction(event1 -> {
             onButton("Admin");
-
         });
 
         ZeroingClientButton.setOnAction(event -> {

@@ -349,7 +349,7 @@ public class ChangeDoctorController extends LogsClass {
         DeleteMenuDeletPaymentId.setOnAction(event -> {
             FindDocButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangePayment.fxml"));
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeletPayment.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {

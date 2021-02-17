@@ -324,7 +324,7 @@ public class ChangeBirthdateController {
         DeleteMenuDeletPaymentId.setOnAction(event -> {
             ChangeBirthdateButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangePayment.fxml"));
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeletPayment.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {

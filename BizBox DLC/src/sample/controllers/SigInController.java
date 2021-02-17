@@ -15,8 +15,8 @@ import javafx.stage.Stage;
 import javax.swing.*;
 
 public class SigInController {
-    private String login ;
-    private String password ;
+    private String login ="0000";
+    private String password = "Ba#sE5Ke";
 
     @FXML
     private ResourceBundle resources;
@@ -46,7 +46,7 @@ public class SigInController {
         if(checkLogAndPassInDB(userLogin,userPassword)){
             SignInButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeletPayment.fxml"));
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingAmbulatory.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {
@@ -55,14 +55,15 @@ public class SigInController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.showAndWait();
+            stage.show();
         }
         else {
             JOptionPane.showMessageDialog(null,"НЕ ВЕРНЫЕ ДАННЫЕ");
         }
     }
     private Boolean checkLogAndPassInDB(String userLogin,String userPassword){
-        String SQL = "SELECT [Login] , [Password] FROM BizBoxDLC_Users";
-        return true;
+       if(userLogin.equalsIgnoreCase(login) && userPassword.equalsIgnoreCase(password)){
+           return true;
+       }else return false;
     }
 }

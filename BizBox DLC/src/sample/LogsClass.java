@@ -33,16 +33,16 @@ public class LogsClass {
         stmt.executeUpdate("INSERT INTO RegistryLogs (RegID,[Data],[Date],TranID_FK_TRXNO,Payment) VALUES (" + "'" + regName + "'" + " ," + data + "," + "'" + dateTime + "'" + "," + tranID + "," + SumPay + ")");
     }
 
-    protected void zeroingCorpClientsLogs(String tranID,String regName,String data){
+    protected void zeroingCorpClientsLogs(String tranID,String regName,String data)throws SQLException{
 
     }
-    protected void changeBirthDateLogs(String tranID,String regName,String data){
-
+    protected void changeBirthDateLogs(String tranID,String regName,String data,Statement stmt)  throws SQLException{
+        stmt.executeUpdate("INSERT INTO RegistryLogs (RegID,[Data],[Date],TranID_PK_psPatledgers,NewDate) VALUES (" );
     }
     protected void changeAmbulatoryDateLogs(String tranID,String regName,String data,String newDate,Statement stmt)  throws SQLException{
         stmt.executeUpdate("INSERT INTO RegistryLogs (RegID,[Data],[Date],TranID_PK_psPatledgers,NewDate) VALUES (" + "'" + regName + "'" + " ," + data + "," + "'" + dateTime + "'" + "," + tranID + "," + newDate  + ")");
     }
-    protected void addCorpClientsLogs(String tranID,String regName,String data){
+    protected void addCorpClientsLogs(String tranID,String regName,String data)throws SQLException{
 
     }
 }

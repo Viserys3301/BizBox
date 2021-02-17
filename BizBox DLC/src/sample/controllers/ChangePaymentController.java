@@ -197,7 +197,7 @@ public class ChangePaymentController {
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         QeryMenuZeroingAmbulatoryId.setOnAction(event -> {
-            changePaymentButton.getScene().getWindow().hide();
+            findPatientPayment.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingAmbulatory.fxml"));
             try {
@@ -212,7 +212,7 @@ public class ChangePaymentController {
         });
 
         QeryMenuChangePaymentId.setOnAction(event -> {
-            changePaymentButton.getScene().getWindow().hide();
+            findPatientPayment.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangePayment.fxml"));
             try {
@@ -227,7 +227,7 @@ public class ChangePaymentController {
         });
 
         QeryMenuChangeDoctorId.setOnAction(event -> {
-            changePaymentButton.getScene().getWindow().hide();
+            findPatientPayment.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeDoctor.fxml"));
             try {
@@ -241,7 +241,7 @@ public class ChangePaymentController {
             stage.show();
         });
         QeryMenuChangeAmbulatoryDateId.setOnAction(event -> {
-            changePaymentButton.getScene().getWindow().hide();
+            findPatientPayment.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeAmbulatoryDate.fxml"));
             try {
@@ -255,7 +255,7 @@ public class ChangePaymentController {
             stage.show();
         });
         QeryMenuChangeBirthdateId.setOnAction(event -> {
-            changePaymentButton.getScene().getWindow().hide();
+            findPatientPayment.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeBirthdate.fxml"));
             try {
@@ -269,7 +269,7 @@ public class ChangePaymentController {
             stage.show();
         });
         QeryMenuEnabledUltrasoundId.setOnAction(event -> {
-            changePaymentButton.getScene().getWindow().hide();
+            findPatientPayment.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/EnabledUltrasound.fxml"));
             try {
@@ -283,9 +283,69 @@ public class ChangePaymentController {
             stage.show();
         });
         QeryMenuRecoveryUltrasoundId.setOnAction(event -> {
-            changePaymentButton.getScene().getWindow().hide();
+            findPatientPayment.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/RecoveryUltrasound.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+        CorpMenuAddCorpId.setOnAction(event -> {
+            findPatientPayment.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/AddCorpClient.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+        CorpMenuZeroingCorpId.setOnAction(event -> {
+            findPatientPayment.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingCorpClient.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+        DeleteMenuDeletDiscountId.setOnAction(event -> {
+            findPatientPayment.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeleteDiscount.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+        DeleteMenuDeletPaymentId.setOnAction(event -> {
+            findPatientPayment.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangePayment.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {

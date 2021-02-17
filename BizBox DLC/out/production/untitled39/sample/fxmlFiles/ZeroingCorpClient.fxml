@@ -12,34 +12,51 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.ZeroingCorpClientController">
+<?import javafx.scene.control.SeparatorMenuItem?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.ZeroingCorpClientController">
    <children>
-      <MenuBar fx:id="mainMenuBar" layoutX="-9.0" layoutY="2.0" prefHeight="25.0" prefWidth="609.0">
-        <menus>
-          <Menu fx:id="ChangeMenuButton" mnemonicParsing="false" text="Изменение">
-            <items>
-              <MenuItem fx:id="ChangeBithDateButton" mnemonicParsing="false" text="Дата рождения" />
-                  <MenuItem mnemonicParsing="false" text="Дата амбулатории" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Удаление">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Удаление платежа" />
-            </items>
-          </Menu>
-            <Menu fx:id="AddMenuButton" mnemonicParsing="false" text="Добавление">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Close" />
-               </items>
-            </Menu>
-          <Menu fx:id="OptionsMenuButton" mnemonicParsing="false" text="Настройки">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Аккаунт" />
-                  <MenuItem mnemonicParsing="false" text="Логи" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
+       <MenuBar fx:id="MainMenuBar" layoutX="-9.0" layoutY="2.0" prefHeight="25.0" prefWidth="609.0">
+           <menus>
+               <Menu fx:id="QeryMenuID" mnemonicParsing="false" text="Запросы">
+                   <items>
+                       <MenuItem fx:id="QeryMenuZeroingAmbulatoryId" mnemonicParsing="false" text="Обнуление амбулатории" />
+                       <MenuItem fx:id="QeryMenuChangePaymentId" mnemonicParsing="false" text="Приём платежей Нал/Безнал" />
+                       <MenuItem fx:id="QeryMenuChangeDoctorId" mnemonicParsing="false" text="Изменение врача" />
+                       <SeparatorMenuItem mnemonicParsing="false" />
+                       <MenuItem fx:id="QeryMenuChangeAmbulatoryDateId" mnemonicParsing="false" text="Изменение даты амбулатории" />
+                       <MenuItem fx:id="QeryMenuChangeBirthdateId" mnemonicParsing="false" text="Изменение даты рождения" />
+                       <SeparatorMenuItem mnemonicParsing="false" />
+                       <MenuItem fx:id="QeryMenuEnabledUltrasoundId" mnemonicParsing="false" text="Разблокировка УЗИ" />
+                       <MenuItem fx:id="QeryMenuRecoveryUltrasoundId" mnemonicParsing="false" text="Возврат УЗИ" />
+                   </items>
+               </Menu>
+               <Menu fx:id="CorpMenuId" mnemonicParsing="false" text="Корп">
+                   <items>
+                       <MenuItem fx:id="CorpMenuAddCorpId" mnemonicParsing="false" text="Добавление" />
+                       <MenuItem fx:id="CorpMenuZeroingCorpId" mnemonicParsing="false" text="Обнуление" />
+                   </items>
+               </Menu>
+               <Menu fx:id="DeleteMenuId" mnemonicParsing="false" text="Удаление">
+                   <items>
+                       <MenuItem fx:id="DeleteMenuDeletPaymentId" mnemonicParsing="false" text="Удаление приёма платежей" />
+                       <MenuItem fx:id="DeleteMenuDeletDiscountId" mnemonicParsing="false" text="Удаление скидки" />
+                       <MenuItem fx:id="DeleteMenuDeletAmbulatoryId" mnemonicParsing="false" text="Удаление амбулатории" />
+                       <SeparatorMenuItem mnemonicParsing="false" />
+                       <MenuItem fx:id="DeleteMenuRecordReturnId" mnemonicParsing="false" text="Зафиксировать возврат" />
+                   </items>
+               </Menu>
+               <Menu fx:id="OptionsMenuId" mnemonicParsing="false" text="Настройки">
+                   <items>
+                       <MenuItem fx:id="OptionsMenuAccountId" mnemonicParsing="false" text="Аккаунт" />
+                       <MenuItem fx:id="OptionsMenuLogsId" mnemonicParsing="false" text="Логи" />
+                       <MenuItem fx:id="OptionsMenuUsersId" mnemonicParsing="false" text="Пользователи" />
+                       <MenuItem fx:id="OptionsMenuRebookId" mnemonicParsing="false" text="Перебронь" />
+                       <SeparatorMenuItem mnemonicParsing="false" />
+                       <MenuItem fx:id="OptionsMenuAboutId" mnemonicParsing="false" text="О программе" />
+                   </items>
+               </Menu>
+           </menus>
+       </MenuBar>
       <TextField fx:id="TranIdArea" alignment="CENTER" layoutX="188.0" layoutY="132.0" prefHeight="25.0" prefWidth="225.0" promptText="Введите ID транзакции" />
       <Button fx:id="ZeroingClientButton" layoutX="328.0" layoutY="163.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Обнулить" />
       <Label fx:id="InfoQery" layoutX="203.0" layoutY="103.0" text="ОБНУЛЕНИЕ КОРП.КЛИЕНТА" textFill="#0099ff">

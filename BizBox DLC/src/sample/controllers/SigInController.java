@@ -62,10 +62,8 @@ public class SigInController {
         }
     }
     private Boolean checkLogAndPassInDB(String userLogin,String userPassword){
-//       if(userLogin.equalsIgnoreCase(login) && userPassword.equalsIgnoreCase(password)){
-//           return true;
-//       }else return false;
-
-       return true;
+       if(userLogin.equalsIgnoreCase(login) && userPassword.equalsIgnoreCase(password)){
+           return true;
+       }else return false;
     }
 }

@@ -26,7 +26,7 @@ import javax.swing.*;
 import javax.xml.soap.Text;
 
 
-public class ChangeDoctorController extends LogsClass {
+public class ChangeDoctorController extends LogsClass   {
 
 
 
@@ -46,7 +46,6 @@ public class ChangeDoctorController extends LogsClass {
     private String connectionUrl = "jdbc:sqlserver://%1$s;databaseName=%2$s;user=%3$s;password=%4$s;";
     private String connectionString = String.format(connectionUrl, instanceName, databaseName, userName, pass);
     Connection con;
-
     {
         try {
             con = DriverManager.getConnection(connectionString);
@@ -54,12 +53,6 @@ public class ChangeDoctorController extends LogsClass {
             e.printStackTrace();
         }
     }
-
-
-
-
-
-
     private ObservableList<Doctors> usersData = FXCollections.observableArrayList();
 
     @FXML
@@ -441,14 +434,12 @@ public class ChangeDoctorController extends LogsClass {
             String dateTime = formatForDateNow.format(date);
             //Логи
             changeDoctorLogs(regName,DockChangeVar,tranID,doctorID,stmt);
-
             aceptImageId.setVisible(true);
             stmt.close();
             con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
 
@@ -457,17 +448,11 @@ public class ChangeDoctorController extends LogsClass {
             Statement stmt = con.createStatement();
             String SQL = "select dbo.udf_GetFullName(PK_appsysUsers) as DoctorName,PK_appsysUsers,usercode,lockAIS from appsysusers where dbo.udf_GetFullName(PK_appsysUsers) Like '%" + DoctorName + "%'";
             ResultSet executeQuery = stmt.executeQuery(SQL);
-
-
             while (executeQuery.next()) {
                 initData(new Doctors(executeQuery.getString("PK_appsysUsers"),executeQuery.getString("DoctorName")));
             }
-
-
-
-
             stmt.close();
-          //  con.close();
+          //con.close();
         } catch (SQLException ex) {
             Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
         }

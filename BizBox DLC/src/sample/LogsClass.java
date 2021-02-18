@@ -12,19 +12,21 @@ public class LogsClass {
     private SimpleDateFormat formatForDateNow = new SimpleDateFormat(" yyyy.MM.dd ' ' hh:mm:ss a zzz");
     private String dateTime = formatForDateNow.format(date);
 
+    protected void changePaymentLogs(Statement stmt)  throws SQLException{
+ //       stmt.executeUpdate();
+    }
 
+    protected void deletDiscountLogs(Statement stmt)  throws SQLException{
+ //       stmt.executeUpdate();
+    }
 
     protected void changeDoctorLogs(String regName,String data,String tranID, String doctorID, Statement stmt) throws SQLException {
         stmt.executeUpdate("INSERT INTO RegistryLogs (RegID,[Data],[Date],TranID_FK_TRXNO,newDocID) VALUES (" + "'" + regName + "'" + " ," + data + "," + "'" + dateTime + "'" + "," + tranID + "," + doctorID + ")");
     }
 
-
-
     protected void deletPaymentLogs(String tranID, String regName, String data, Statement stmt, ArrayList<String> SumPay)  throws SQLException{
         stmt.executeUpdate("INSERT INTO RegistryLogs (RegID,[Data],[Date],TranID_PK_psPatledgers,Payment) VALUES (" + "'" + regName + "'" + " ," + data + "," + "'" + dateTime + "'" + "," + tranID + "," + SumPay.get(0) + ")");
     }
-
-
 
     protected void zeroingClientsLogs(String tranID, String regName, String data, Statement stmt) throws SQLException {
         String SumPay ="";
@@ -33,16 +35,15 @@ public class LogsClass {
         stmt.executeUpdate("INSERT INTO RegistryLogs (RegID,[Data],[Date],TranID_FK_TRXNO,Payment) VALUES (" + "'" + regName + "'" + " ," + data + "," + "'" + dateTime + "'" + "," + tranID + "," + SumPay + ")");
     }
 
-    protected void zeroingCorpClientsLogs(String tranID,String regName,String data)throws SQLException{
+    protected void zeroingCorpClientsLogs(String tranID,String regName,String data,Statement stmt)throws SQLException{
+   //     stmt.executeUpdate();
+    }
 
+    protected void changeBirthDateLogs(String patId,String regName,String data,Statement stmt,String newDate)  throws SQLException{
+        stmt.executeUpdate("INSERT INTO RegistryLogs (RegID,[Data],[Date],TranID_PK_psPatledgers,NewDate) VALUES ("+ "'" + regName + "'" +"," + data + "," + "'" + dateTime + "'"  + "," + patId + "," + newDate + ")" );
     }
-    protected void changeBirthDateLogs(String tranID,String regName,String data,Statement stmt)  throws SQLException{
-        stmt.executeUpdate("INSERT INTO RegistryLogs (RegID,[Data],[Date],TranID_PK_psPatledgers,NewDate) VALUES (" );
-    }
+
     protected void changeAmbulatoryDateLogs(String tranID,String regName,String data,String newDate,Statement stmt)  throws SQLException{
         stmt.executeUpdate("INSERT INTO RegistryLogs (RegID,[Data],[Date],TranID_PK_psPatledgers,NewDate) VALUES (" + "'" + regName + "'" + " ," + data + "," + "'" + dateTime + "'" + "," + tranID + "," + newDate  + ")");
-    }
-    protected void addCorpClientsLogs(String tranID,String regName,String data)throws SQLException{
-
     }
 }

@@ -46,4 +46,7 @@ public class LogsClass {
     protected void changeAmbulatoryDateLogs(String tranID,String regName,String data,String newDate,Statement stmt)  throws SQLException{
         stmt.executeUpdate("INSERT INTO RegistryLogs (RegID,[Data],[Date],TranID_PK_psPatledgers,NewDate) VALUES (" + "'" + regName + "'" + " ," + data + "," + "'" + dateTime + "'" + "," + tranID + "," + newDate  + ")");
     }
+    protected void recordReturn(String regName,String data,String tranID,Statement stmt) throws SQLException{
+        stmt.executeUpdate("INSERT INTO RegistryLogs (RegID,[Data],[Date],TranID_PK_psPatledgers) VALUES (" + "'" + regName + "'" + " ," + data + "," + "'" + dateTime + "'" + "," + tranID + ")");
+    }
 }

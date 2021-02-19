@@ -21,8 +21,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import sample.LogsClass;
 
-public class DeletAmbulatoryController {
+public class DeletAmbulatoryController extends LogsClass {
 
 
 
@@ -527,6 +528,8 @@ public class DeletAmbulatoryController {
             stmt.executeUpdate(SQL_19);
             stmt.executeUpdate(SQL_20);
             stmt.executeUpdate(SQL_21);
+            //Логи
+            deletAmbulatoryLogs(regName,tranId,data,stmt);
 
             aceptImageId.setVisible(true);
             stmt.close();

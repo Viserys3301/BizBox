@@ -17,15 +17,16 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import sample.LogsClass;
 
 import javax.xml.soap.Text;
 
-public class ChangePaymentController {
+public class ChangePaymentController extends LogsClass {
     private String regName = "";
     private boolean isCard;
     //ID РЕГИСТРАТОРА
 
-    private String DockChangeVar="'Изменение платежа'";
+    private String data="'Изменение платежа'";
 
     //СОЕДИНЕНИЕ С БАЗОЙ
     private String instanceName = "10.0.9.4\\hcdbsrv";
@@ -556,7 +557,6 @@ public class ChangePaymentController {
             }
 
             stmt.close();
-            //  con.close();
         } catch (SQLException ex) {
             Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -580,7 +580,7 @@ public class ChangePaymentController {
 
 
             //Логи
-           // changeDoctorLogs(regName,DockChangeVar,tranID,doctorID,stmt);
+            changePaymentLogs(regName,data,tranId,stmt);
 
             aceptImageId.setVisible(true);
             stmt.close();

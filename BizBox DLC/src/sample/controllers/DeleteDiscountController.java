@@ -21,11 +21,12 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import sample.LogsClass;
 
-public class DeleteDiscountController {
+public class DeleteDiscountController extends LogsClass {
 
     private String regName;
-
+    private String data = "'Удаление скидки'";
     //СОЕДИНЕНИЕ С БАЗОЙ
     private String instanceName = "10.0.9.4\\hcdbsrv";
     private String databaseName = "HCDB";
@@ -493,7 +494,8 @@ public class DeleteDiscountController {
             for (int i = 0; i < DiscountId.size(); i++) {
                 stmt.executeUpdate("DELETE psPatLedgers WHERE PK_psPatledgers =" + DiscountId.get(i));
             }
-            //СООБЩЕНИЕ О ВЫПОЛНЕНИИ
+            //СООБЩЕНИЕ О ВЫПОЛНЕНИИ (String regName,String tranID,String data,Statement stmt)
+            deletDiscountLogs(regName,tranId,data,stmt);
             aceptImageId.setVisible(true);
 
             //ЗАКРЫТИЕ СОЕДИНЕНИЙ

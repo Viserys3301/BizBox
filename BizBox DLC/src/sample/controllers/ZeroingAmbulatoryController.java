@@ -22,6 +22,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import sample.LogsClass;
 
+import javax.swing.*;
 import javax.xml.soap.Text;
 
 public class ZeroingAmbulatoryController extends LogsClass   {
@@ -481,6 +482,9 @@ public class ZeroingAmbulatoryController extends LogsClass   {
     }
 
     private void zeroingClient(String tranID){
+        if(tranID.length()<7){
+            JOptionPane.showMessageDialog(null,"ВВЕДЕНЫ НЕ КОРЕКТНЫЕ ДАННЫЕ");
+        }else {
         String SQL = "UPDATE psPatitem SET prevprice = renprice,renprice = 0 WHERE FK_TRXNO =" + tranID;
         String SQL_2 = "UPDATE psPatinv SET renamount = 0,amount = 0,discount = 0,netamount = 0 WHERE PK_TRXNO =" + tranID;
         String SQL_3 = "UPDATE psPatLedgers SET debit = 0,discount = 0 WHERE FK_TRXNO =" + tranID;
@@ -497,7 +501,7 @@ public class ZeroingAmbulatoryController extends LogsClass   {
         } catch (SQLException ex) {
             Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        }
 
     }
 

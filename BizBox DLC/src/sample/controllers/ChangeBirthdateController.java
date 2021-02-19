@@ -16,14 +16,15 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import sample.LogsClass;
 
-public class ChangeBirthdateController {
+public class ChangeBirthdateController extends LogsClass {
 
     private String regName;
 
 
     //ИНФОРМАЦИЯ ПО ДЕЙСТВИЮ
-    private String pay = "'Изменение даты рождения'";
+    private String data = "'Изменение даты рождения'";
 
     //СОЕДИНЕНИЕ С БАЗОЙ
     private String instanceName = "10.0.9.4\\hcdbsrv";
@@ -522,7 +523,8 @@ public class ChangeBirthdateController {
             }
             stmt.executeUpdate(SQL_3);
             stmt.executeUpdate(SQL_TRIGGER_ON);
-            //СООБЩЕНИЕ О ВЫПОЛНЕНИИ
+            //СООБЩЕНИЕ О ВЫПОЛНЕНИИ (String patId,String regName,String data,Statement stmt,String newDate)
+            changeBirthDateLogs(patId,regName,data,stmt,newDate);
             aceptImageId.setVisible(true);
             //ЗАКРЫТИЕ СОЕДИНЕНИЙ
             stmt.close();

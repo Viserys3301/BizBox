@@ -15,13 +15,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import sample.LogsClass;
 
 import javax.swing.*;
 
 
-public class ZeroingCorpClientController {
+public class ZeroingCorpClientController extends LogsClass {
     //ИНФОРМАЦИЯ ПО ДЕЙСТВИЮ
-    private String pay = "'Удаление платежа'";
+    private String data = "'Обнуление корп'";
 
     //СОЕДИНЕНИЕ С БАЗОЙ
     private String instanceName = "10.0.9.4\\hcdbsrv";
@@ -472,7 +473,8 @@ public class ZeroingCorpClientController {
             Statement stmt = con.createStatement();
             stmt.executeUpdate(SQL);
 
-            //СООБЩЕНИЕ О ВЫПОЛНЕНИИ
+            //СООБЩЕНИЕ О ВЫПОЛНЕНИИ (String tranID,String regName,String data,Statement stmt)t
+            zeroingCorpClientsLogs(tranId,regName,data,stmt);
             aceptImageId.setVisible(true);
 
             //ЗАКРЫТИЕ СОЕДИНЕНИЙ

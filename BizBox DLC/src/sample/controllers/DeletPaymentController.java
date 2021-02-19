@@ -18,6 +18,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import sample.LogsClass;
 
@@ -51,6 +53,12 @@ public class DeletPaymentController  extends LogsClass {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private ResourceBundle resources;
+
+    @FXML
+    private URL location;
 
     @FXML
     private MenuBar MainMenuBar;
@@ -125,38 +133,37 @@ public class DeletPaymentController  extends LogsClass {
     private TextField TranIdArea;
 
     @FXML
-    private Text titleArea;
-
-    @FXML
     private Button DeletePaymentButton;
-
-    @FXML
-    private RadioButton RadioReg00;
-
-    @FXML
-    private RadioButton RadioReg01;
-
-    @FXML
-    private RadioButton RadioReg02;
-
-    @FXML
-    private RadioButton RadioReg03;
-
-    @FXML
-    private RadioButton RadioReg04;
-
-    @FXML
-    private RadioButton RadioReg05;
-
-    @FXML
-    private Label infoLabel;
 
     @FXML
     private Label InfoQery;
 
     @FXML
-    private Button clearButton;
+    private MenuButton selectRegistrations;
 
+    @FXML
+    private MenuItem selectReg00;
+
+    @FXML
+    private MenuItem selectReg01;
+
+    @FXML
+    private MenuItem selectReg02;
+
+    @FXML
+    private MenuItem selectReg03;
+
+    @FXML
+    private MenuItem selectReg04;
+
+    @FXML
+    private MenuItem selectReg05;
+
+    @FXML
+    private MenuItem selectAdmin;
+
+    @FXML
+    private ImageView aceptImageId;
 
 
 
@@ -164,42 +171,317 @@ public class DeletPaymentController  extends LogsClass {
 
     @FXML
     void initialize() {
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////-----ПЕРЕКЛЮЧЕНИЕ ОКОН-----//////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        QeryMenuZeroingAmbulatoryId.setOnAction(event -> {
+            DeletePaymentButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingAmbulatory.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+        QeryMenuChangePaymentId.setOnAction(event -> {
+            DeletePaymentButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangePayment.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+        QeryMenuChangeDoctorId.setOnAction(event -> {
+            DeletePaymentButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeDoctor.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+        QeryMenuChangeAmbulatoryDateId.setOnAction(event -> {
+            DeletePaymentButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeAmbulatoryDate.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+        QeryMenuChangeBirthdateId.setOnAction(event -> {
+            DeletePaymentButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeBirthdate.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+        QeryMenuEnabledUltrasoundId.setOnAction(event -> {
+            DeletePaymentButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/EnabledUltrasound.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+        QeryMenuRecoveryUltrasoundId.setOnAction(event -> {
+            DeletePaymentButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/RecoveryUltrasound.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        CorpMenuAddCorpId.setOnAction(event -> {
+            DeletePaymentButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/AddCorpClient.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+        CorpMenuZeroingCorpId.setOnAction(event -> {
+            DeletePaymentButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingCorpClient.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        DeleteMenuDeletAmbulatoryId.setOnAction(event -> {
+            DeletePaymentButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeletAmbulatory.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+
+        DeleteMenuDeletDiscountId.setOnAction(event -> {
+            DeletePaymentButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeleteDiscount.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+        DeleteMenuDeletPaymentId.setOnAction(event -> {
+            DeletePaymentButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeletPayment.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+        DeleteMenuRecordReturnId.setOnAction(event -> {
+            DeletePaymentButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/RecordReturn.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        OptionsMenuAccountId.setOnAction(event -> {
+            DeletePaymentButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/Account.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+        OptionsMenuLogsId.setOnAction(event -> {
+            DeletePaymentButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/CheckLogs.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+        OptionsMenuUsersId.setOnAction(event -> {
+            DeletePaymentButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/Users.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+        OptionsMenuRebookId.setOnAction(event -> {
+            DeletePaymentButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/Rebook.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+        OptionsMenuAboutId.setOnAction(event -> {
+            DeletePaymentButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/About.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
         //ПОЛЕ ДЛЯ ID
         TranIdArea.setDisable(true);
-
+        DeletePaymentButton.setDisable(true);
         //РЕГИСТРАТОРЫ
-        ToggleGroup group = new ToggleGroup();
-        RadioReg00.setToggleGroup(group);
-        RadioReg01.setToggleGroup(group);
-        RadioReg02.setToggleGroup(group);
-        RadioReg03.setToggleGroup(group);
-        RadioReg04.setToggleGroup(group);
-        RadioReg05.setToggleGroup(group);
+
 
         //ВЫБОР РЕГИСТРАТОРОВ
-        RadioReg00.setOnAction(event1 -> {
-            regName = "Reg00";
-            TranIdArea.setDisable(false);
+        selectReg00.setOnAction(event1 -> {
+            onButton("Reg00");
         });
-        RadioReg01.setOnAction(event1 -> {
-            regName = "Reg01";
-            TranIdArea.setDisable(false);
+        selectReg01.setOnAction(event1 -> {
+            onButton("Reg01");
         });
-        RadioReg02.setOnAction(event1 -> {
-            regName = "Reg02";
-            TranIdArea.setDisable(false);
+        selectReg02.setOnAction(event1 -> {
+            onButton("Reg02");
         });
-        RadioReg03.setOnAction(event1 -> {
-            regName = "Reg03";
-            TranIdArea.setDisable(false);
+        selectReg03.setOnAction(event1 -> {
+            onButton("Reg03");
         });
-        RadioReg04.setOnAction(event1 -> {
-            regName = "Reg04";
-            TranIdArea.setDisable(false);
+        selectReg04.setOnAction(event1 -> {
+            onButton("Reg04");
         });
-        RadioReg05.setOnAction(event1 -> {
-            regName = "Reg05";
-            TranIdArea.setDisable(false);
+        selectReg05.setOnAction(event1 -> {
+            onButton("Reg05");
+        });
+        selectAdmin.setOnAction(event1 -> {
+            onButton("Admin");
         });
 
         //ЗАПУСК УДАЛЕНИЯ
@@ -208,38 +490,13 @@ public class DeletPaymentController  extends LogsClass {
             deletPayment(tranID, regName);
         });
 
-        //ОТЧИЩЕНИЕ ПОЛЕЙ
-        clearButton.setOnAction(event -> {
-            TranIdArea.setText("");
-            infoLabel.setText("");
-            RadioReg00.setSelected(false);
-            RadioReg01.setSelected(false);
-            RadioReg02.setSelected(false);
-            RadioReg03.setSelected(false);
-            RadioReg04.setSelected(false);
-            RadioReg05.setSelected(false);
-        });
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    }
 
-        //НОВЫЙ ФРЕЙМ ОБНУЛЕНИЕ АМБУЛАТОРИИ
-        QeryMenuZeroingAmbulatoryId.setOnAction(event -> {
-            MainMenuBar.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingAmbulatory.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-        });
-
-
+    private void onButton(String regName){
+        this.regName = regName;
+        selectRegistrations.setText(regName);
+        DeletePaymentButton.setDisable(false);
+        TranIdArea.setDisable(false);
     }
 
     private void deletPayment(String tranID, String RegID) {
@@ -278,7 +535,7 @@ public class DeletPaymentController  extends LogsClass {
             deletPaymentLogs(tranID,regName,pay,stmt,SumPay);
 
             //СООБЩЕНИЕ О ВЫПОЛНЕНИИ
-            infoLabel.setText("ПЛАТЁЖ УДАЛЁН " + SumPay.get(0));
+            aceptImageId.setVisible(true);
 
             //ЗАКРЫТИЕ СОЕДИНЕНИЙ
             stmt.close();

@@ -17,6 +17,7 @@ import javax.swing.*;
 public class SigInController {
     private String login ="0000";
     private String password = "Ba#sE5Ke";
+    private boolean licence = true;
 
     @FXML
     private ResourceBundle resources;
@@ -36,9 +37,15 @@ public class SigInController {
     @FXML
     void initialize() {
         SignInButton.setOnAction(event -> {
-            String userLogin = LoginArea.getText();
-            String userPassword = PasswordArea.getText();
-            checkLogAndPass(userLogin,userPassword);
+            if(licence){
+                String userLogin = LoginArea.getText();
+                String userPassword = PasswordArea.getText();
+                checkLogAndPass(userLogin,userPassword);
+            }else {
+                JOptionPane.showMessageDialog(null,"ПАШЁЛ НАХУЙ");
+                System.exit(1);
+            }
+
         });
     }
 
@@ -62,9 +69,8 @@ public class SigInController {
         }
     }
     private Boolean checkLogAndPassInDB(String userLogin,String userPassword){
-//       if(userLogin.equalsIgnoreCase(login) && userPassword.equalsIgnoreCase(password)){
-//           return true;
-//       }else return false;
-        return true;
+       if(userLogin.equalsIgnoreCase(login) && userPassword.equalsIgnoreCase(password)){
+           return true;
+       }else return false;
     }
 }

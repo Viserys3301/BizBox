@@ -25,7 +25,7 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 
-public class RebookController {
+public class RebookController   {
 
 
     //СОЕДИНЕНИЕ С БАЗОЙ
@@ -36,13 +36,8 @@ public class RebookController {
     private String connectionUrl = "jdbc:sqlserver://%1$s;databaseName=%2$s;user=%3$s;password=%4$s;";
     private String connectionString = String.format(connectionUrl, instanceName, databaseName, userName, pass);
     Connection con;
-    {
-        try {
-            con = DriverManager.getConnection(connectionString);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+
+
 
     @FXML
     private ResourceBundle resources;
@@ -144,6 +139,8 @@ public class RebookController {
     private TableColumn<Rebooks, String> NewDatePatientColumnId;
 
     private ObservableList<Rebooks> rebookData = FXCollections.observableArrayList();
+
+
 
 
     @FXML
@@ -470,7 +467,7 @@ public class RebookController {
                         executeQuery.getString("workstation")));
             }
             stmt.close();
-            //con.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -13,11 +13,11 @@ public class LogsClass {
     private String dateTime = formatForDateNow.format(date);
 
     protected void changePaymentLogs(Statement stmt)  throws SQLException{
- //       stmt.executeUpdate();
+
     }
 
     protected void deletDiscountLogs(Statement stmt)  throws SQLException{
- //       stmt.executeUpdate();
+
     }
 
     protected void changeDoctorLogs(String regName,String data,String tranID, String doctorID, Statement stmt) throws SQLException {
@@ -36,7 +36,7 @@ public class LogsClass {
     }
 
     protected void zeroingCorpClientsLogs(String tranID,String regName,String data,Statement stmt)throws SQLException{
-   //     stmt.executeUpdate();
+
     }
 
     protected void changeBirthDateLogs(String patId,String regName,String data,Statement stmt,String newDate)  throws SQLException{

@@ -194,7 +194,7 @@ public class ChangeDoctorController extends LogsClass   {
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         QeryMenuZeroingAmbulatoryId.setOnAction(event -> {
-            FindDocButton.getScene().getWindow().hide();
+            changeDoctorButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingAmbulatory.fxml"));
             try {
@@ -209,7 +209,7 @@ public class ChangeDoctorController extends LogsClass   {
         });
 
         QeryMenuChangePaymentId.setOnAction(event -> {
-            FindDocButton.getScene().getWindow().hide();
+            changeDoctorButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangePayment.fxml"));
             try {
@@ -224,7 +224,7 @@ public class ChangeDoctorController extends LogsClass   {
         });
 
         QeryMenuChangeDoctorId.setOnAction(event -> {
-            FindDocButton.getScene().getWindow().hide();
+            changeDoctorButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeDoctor.fxml"));
             try {
@@ -238,7 +238,7 @@ public class ChangeDoctorController extends LogsClass   {
             stage.show();
         });
         QeryMenuChangeAmbulatoryDateId.setOnAction(event -> {
-            FindDocButton.getScene().getWindow().hide();
+            changeDoctorButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeAmbulatoryDate.fxml"));
             try {
@@ -252,7 +252,7 @@ public class ChangeDoctorController extends LogsClass   {
             stage.show();
         });
         QeryMenuChangeBirthdateId.setOnAction(event -> {
-            FindDocButton.getScene().getWindow().hide();
+            changeDoctorButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeBirthdate.fxml"));
             try {
@@ -266,7 +266,7 @@ public class ChangeDoctorController extends LogsClass   {
             stage.show();
         });
         QeryMenuEnabledUltrasoundId.setOnAction(event -> {
-            FindDocButton.getScene().getWindow().hide();
+            changeDoctorButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/EnabledUltrasound.fxml"));
             try {
@@ -280,7 +280,7 @@ public class ChangeDoctorController extends LogsClass   {
             stage.show();
         });
         QeryMenuRecoveryUltrasoundId.setOnAction(event -> {
-            FindDocButton.getScene().getWindow().hide();
+            changeDoctorButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/RecoveryUltrasound.fxml"));
             try {
@@ -293,9 +293,10 @@ public class ChangeDoctorController extends LogsClass   {
             stage.setScene(new Scene(root));
             stage.show();
         });
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         CorpMenuAddCorpId.setOnAction(event -> {
-            FindDocButton.getScene().getWindow().hide();
+            changeDoctorButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/AddCorpClient.fxml"));
             try {
@@ -310,7 +311,7 @@ public class ChangeDoctorController extends LogsClass   {
         });
 
         CorpMenuZeroingCorpId.setOnAction(event -> {
-            FindDocButton.getScene().getWindow().hide();
+            changeDoctorButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingCorpClient.fxml"));
             try {
@@ -323,9 +324,26 @@ public class ChangeDoctorController extends LogsClass   {
             stage.setScene(new Scene(root));
             stage.show();
         });
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        DeleteMenuDeletAmbulatoryId.setOnAction(event -> {
+            changeDoctorButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeletAmbulatory.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
 
         DeleteMenuDeletDiscountId.setOnAction(event -> {
-            FindDocButton.getScene().getWindow().hide();
+            changeDoctorButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeleteDiscount.fxml"));
             try {
@@ -340,7 +358,7 @@ public class ChangeDoctorController extends LogsClass   {
         });
 
         DeleteMenuDeletPaymentId.setOnAction(event -> {
-            FindDocButton.getScene().getWindow().hide();
+            changeDoctorButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeletPayment.fxml"));
             try {
@@ -354,6 +372,100 @@ public class ChangeDoctorController extends LogsClass   {
             stage.show();
         });
 
+        DeleteMenuRecordReturnId.setOnAction(event -> {
+            changeDoctorButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/RecordReturn.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        OptionsMenuAccountId.setOnAction(event -> {
+            changeDoctorButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/Account.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+        OptionsMenuLogsId.setOnAction(event -> {
+            changeDoctorButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/CheckLogs.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+        OptionsMenuUsersId.setOnAction(event -> {
+            changeDoctorButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/Users.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+        OptionsMenuRebookId.setOnAction(event -> {
+            changeDoctorButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/Rebook.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+        OptionsMenuAboutId.setOnAction(event -> {
+            changeDoctorButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/About.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -452,7 +564,6 @@ public class ChangeDoctorController extends LogsClass   {
                 initData(new Doctors(executeQuery.getString("PK_appsysUsers"),executeQuery.getString("DoctorName")));
             }
             stmt.close();
-          //con.close();
         } catch (SQLException ex) {
             Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
         }

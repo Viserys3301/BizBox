@@ -59,16 +59,39 @@
       <Button fx:id="findUserButton" layoutX="483.0" layoutY="35.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" text="Поиск" />
       <TableView fx:id="userTable" layoutX="14.0" layoutY="70.0" prefHeight="321.0" prefWidth="572.0">
         <columns>
-          <TableColumn fx:id="userNameColumnId" prefWidth="339.0" text="Ф.И.О.">
+          <TableColumn fx:id="userNameColumnId" prefWidth="260.0" text="Ф.И.О." />
+          <TableColumn fx:id="lockAIS" prefWidth="74.0" text="AIS">
                <contextMenu>
                   <ContextMenu>
                     <items>
-                      <MenuItem fx:id="changeUserData" mnemonicParsing="false" text="Изменить" />
+                      <MenuItem fx:id="unLockAISbutton" mnemonicParsing="false" text="Разблокировать" />
                     </items>
                   </ContextMenu>
-               </contextMenu>
-            </TableColumn>
-          <TableColumn fx:id="userDepartmentColumnId" prefWidth="232.0" text="Отдел" />
+               </contextMenu></TableColumn>
+            <TableColumn fx:id="lockClinic" prefWidth="77.0" text="EMR">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem fx:id="unLockEMR" mnemonicParsing="false" text="Разблокировать" />
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
+            <TableColumn fx:id="lockHIS" prefWidth="86.0" text="HIS">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem fx:id="unLockHIS" mnemonicParsing="false" text="Разблокировать" />
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
+            <TableColumn fx:id="lockaccount" prefWidth="74.0" text="Lock">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem fx:id="unLockAccount" mnemonicParsing="false" text="Разблокировать" />
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
         </columns>
       </TableView>
    </children>

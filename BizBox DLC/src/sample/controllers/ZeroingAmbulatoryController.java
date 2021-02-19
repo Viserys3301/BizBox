@@ -157,7 +157,6 @@ public class ZeroingAmbulatoryController extends LogsClass   {
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////-----ПЕРЕКЛЮЧЕНИЕ ОКОН-----//////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
         QeryMenuZeroingAmbulatoryId.setOnAction(event -> {
             ZeroingClientButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
@@ -173,20 +172,20 @@ public class ZeroingAmbulatoryController extends LogsClass   {
             stage.show();
         });
 
-                QeryMenuChangePaymentId.setOnAction(event -> {
-                    ZeroingClientButton.getScene().getWindow().hide();
-                    FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangePayment.fxml"));
-                    try {
-                        loader.load();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    Parent root = loader.getRoot();
-                    Stage stage = new Stage();
-                    stage.setScene(new Scene(root));
-                    stage.show();
-                });
+        QeryMenuChangePaymentId.setOnAction(event -> {
+            ZeroingClientButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangePayment.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
 
         QeryMenuChangeDoctorId.setOnAction(event -> {
             ZeroingClientButton.getScene().getWindow().hide();
@@ -202,20 +201,20 @@ public class ZeroingAmbulatoryController extends LogsClass   {
             stage.setScene(new Scene(root));
             stage.show();
         });
-                QeryMenuChangeAmbulatoryDateId.setOnAction(event -> {
-                    ZeroingClientButton.getScene().getWindow().hide();
-                    FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeAmbulatoryDate.fxml"));
-                    try {
-                        loader.load();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    Parent root = loader.getRoot();
-                    Stage stage = new Stage();
-                    stage.setScene(new Scene(root));
-                    stage.show();
-                });
+        QeryMenuChangeAmbulatoryDateId.setOnAction(event -> {
+            ZeroingClientButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeAmbulatoryDate.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
         QeryMenuChangeBirthdateId.setOnAction(event -> {
             ZeroingClientButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
@@ -230,20 +229,20 @@ public class ZeroingAmbulatoryController extends LogsClass   {
             stage.setScene(new Scene(root));
             stage.show();
         });
-                QeryMenuEnabledUltrasoundId.setOnAction(event -> {
-                    ZeroingClientButton.getScene().getWindow().hide();
-                    FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource("/sample/fxmlFiles/EnabledUltrasound.fxml"));
-                    try {
-                        loader.load();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    Parent root = loader.getRoot();
-                    Stage stage = new Stage();
-                    stage.setScene(new Scene(root));
-                    stage.show();
-                });
+        QeryMenuEnabledUltrasoundId.setOnAction(event -> {
+            ZeroingClientButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/EnabledUltrasound.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
         QeryMenuRecoveryUltrasoundId.setOnAction(event -> {
             ZeroingClientButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
@@ -258,7 +257,8 @@ public class ZeroingAmbulatoryController extends LogsClass   {
             stage.setScene(new Scene(root));
             stage.show();
         });
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         CorpMenuAddCorpId.setOnAction(event -> {
             ZeroingClientButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
@@ -288,6 +288,23 @@ public class ZeroingAmbulatoryController extends LogsClass   {
             stage.setScene(new Scene(root));
             stage.show();
         });
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        DeleteMenuDeletAmbulatoryId.setOnAction(event -> {
+            ZeroingClientButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeletAmbulatory.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
 
         DeleteMenuDeletDiscountId.setOnAction(event -> {
             ZeroingClientButton.getScene().getWindow().hide();
@@ -319,36 +336,6 @@ public class ZeroingAmbulatoryController extends LogsClass   {
             stage.show();
         });
 
-        OptionsMenuLogsId.setOnAction(event -> {
-            ZeroingClientButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/CheckLogs.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-        });
-
-        OptionsMenuRebookId.setOnAction(event -> {
-            ZeroingClientButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/Rebook.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-        });
-
         DeleteMenuRecordReturnId.setOnAction(event -> {
             ZeroingClientButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
@@ -363,11 +350,27 @@ public class ZeroingAmbulatoryController extends LogsClass   {
             stage.setScene(new Scene(root));
             stage.show();
         });
-
-        DeleteMenuDeletAmbulatoryId.setOnAction(event -> {
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        OptionsMenuAccountId.setOnAction(event -> {
             ZeroingClientButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeletAmbulatory.fxml"));
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/Account.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+        OptionsMenuLogsId.setOnAction(event -> {
+            ZeroingClientButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/CheckLogs.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {
@@ -394,6 +397,21 @@ public class ZeroingAmbulatoryController extends LogsClass   {
             stage.show();
         });
 
+        OptionsMenuRebookId.setOnAction(event -> {
+            ZeroingClientButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/Rebook.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
         OptionsMenuAboutId.setOnAction(event -> {
             ZeroingClientButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
@@ -408,6 +426,10 @@ public class ZeroingAmbulatoryController extends LogsClass   {
             stage.setScene(new Scene(root));
             stage.show();
         });
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////

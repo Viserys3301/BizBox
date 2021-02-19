@@ -203,7 +203,7 @@ public class AddCorpClientController {
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         QeryMenuZeroingAmbulatoryId.setOnAction(event -> {
-            addCorpButtonId.getScene().getWindow().hide();
+            addNewPatId.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingAmbulatory.fxml"));
             try {
@@ -218,7 +218,7 @@ public class AddCorpClientController {
         });
 
         QeryMenuChangePaymentId.setOnAction(event -> {
-            addCorpButtonId.getScene().getWindow().hide();
+            addNewPatId.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangePayment.fxml"));
             try {
@@ -233,7 +233,7 @@ public class AddCorpClientController {
         });
 
         QeryMenuChangeDoctorId.setOnAction(event -> {
-            addCorpButtonId.getScene().getWindow().hide();
+            addNewPatId.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeDoctor.fxml"));
             try {
@@ -247,7 +247,7 @@ public class AddCorpClientController {
             stage.show();
         });
         QeryMenuChangeAmbulatoryDateId.setOnAction(event -> {
-            addCorpButtonId.getScene().getWindow().hide();
+            addNewPatId.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeAmbulatoryDate.fxml"));
             try {
@@ -261,7 +261,7 @@ public class AddCorpClientController {
             stage.show();
         });
         QeryMenuChangeBirthdateId.setOnAction(event -> {
-            addCorpButtonId.getScene().getWindow().hide();
+            addNewPatId.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeBirthdate.fxml"));
             try {
@@ -275,7 +275,7 @@ public class AddCorpClientController {
             stage.show();
         });
         QeryMenuEnabledUltrasoundId.setOnAction(event -> {
-            addCorpButtonId.getScene().getWindow().hide();
+            addNewPatId.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/EnabledUltrasound.fxml"));
             try {
@@ -289,7 +289,7 @@ public class AddCorpClientController {
             stage.show();
         });
         QeryMenuRecoveryUltrasoundId.setOnAction(event -> {
-            addCorpButtonId.getScene().getWindow().hide();
+            addNewPatId.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/RecoveryUltrasound.fxml"));
             try {
@@ -302,9 +302,10 @@ public class AddCorpClientController {
             stage.setScene(new Scene(root));
             stage.show();
         });
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         CorpMenuAddCorpId.setOnAction(event -> {
-            addCorpButtonId.getScene().getWindow().hide();
+            addNewPatId.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/AddCorpClient.fxml"));
             try {
@@ -319,7 +320,7 @@ public class AddCorpClientController {
         });
 
         CorpMenuZeroingCorpId.setOnAction(event -> {
-            addCorpButtonId.getScene().getWindow().hide();
+            addNewPatId.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingCorpClient.fxml"));
             try {
@@ -332,9 +333,26 @@ public class AddCorpClientController {
             stage.setScene(new Scene(root));
             stage.show();
         });
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        DeleteMenuDeletAmbulatoryId.setOnAction(event -> {
+            addNewPatId.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeletAmbulatory.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
 
         DeleteMenuDeletDiscountId.setOnAction(event -> {
-            addCorpButtonId.getScene().getWindow().hide();
+            addNewPatId.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeleteDiscount.fxml"));
             try {
@@ -349,7 +367,7 @@ public class AddCorpClientController {
         });
 
         DeleteMenuDeletPaymentId.setOnAction(event -> {
-            addCorpButtonId.getScene().getWindow().hide();
+            addNewPatId.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeletPayment.fxml"));
             try {
@@ -363,6 +381,100 @@ public class AddCorpClientController {
             stage.show();
         });
 
+        DeleteMenuRecordReturnId.setOnAction(event -> {
+            addNewPatId.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/RecordReturn.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        OptionsMenuAccountId.setOnAction(event -> {
+            addNewPatId.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/Account.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+        OptionsMenuLogsId.setOnAction(event -> {
+            addNewPatId.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/CheckLogs.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+        OptionsMenuUsersId.setOnAction(event -> {
+            addNewPatId.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/Users.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+        OptionsMenuRebookId.setOnAction(event -> {
+            addNewPatId.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/Rebook.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+        OptionsMenuAboutId.setOnAction(event -> {
+            addNewPatId.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/About.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

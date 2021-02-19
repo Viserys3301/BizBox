@@ -16,6 +16,8 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import javax.swing.*;
+
 
 public class ZeroingCorpClientController {
     //ИНФОРМАЦИЯ ПО ДЕЙСТВИЮ
@@ -467,9 +469,7 @@ public class ZeroingCorpClientController {
     private void zeroingClient(String tranId,String regName){
         String SQL = "exec Update_TRXNO " +tranId +  ", 'COM'";
         try {
-            //СОЗДАНИЕ СТЕЙТМЕНТА
             Statement stmt = con.createStatement();
-
             stmt.executeUpdate(SQL);
 
             //СООБЩЕНИЕ О ВЫПОЛНЕНИИ

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.CheckLogsController">
+   <children>
+      <MenuBar fx:id="MainMenuBar" layoutX="-9.0" layoutY="2.0" prefHeight="25.0" prefWidth="609.0">
+        <menus>
+          <Menu fx:id="QeryMenuID" mnemonicParsing="false" text="Запросы">
+            <items>
+              <MenuItem fx:id="QeryMenuZeroingAmbulatoryId" mnemonicParsing="false" text="Обнуление амбулатории" />
+                  <MenuItem fx:id="QeryMenuChangePaymentId" mnemonicParsing="false" text="Приём платежей Нал/Безнал" />
+                  <MenuItem fx:id="QeryMenuChangeDoctorId" mnemonicParsing="false" text="Изменение врача" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="QeryMenuChangeAmbulatoryDateId" mnemonicParsing="false" text="Изменение даты амбулатории" />
+                  <MenuItem fx:id="QeryMenuChangeBirthdateId" mnemonicParsing="false" text="Изменение даты рождения" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="QeryMenuEnabledUltrasoundId" mnemonicParsing="false" text="Разблокировка УЗИ" />
+                  <MenuItem fx:id="QeryMenuRecoveryUltrasoundId" mnemonicParsing="false" text="Возврат УЗИ" />
+            </items>
+          </Menu>
+          <Menu fx:id="CorpMenuId" mnemonicParsing="false" text="Корп">
+            <items>
+              <MenuItem fx:id="CorpMenuAddCorpId" mnemonicParsing="false" text="Добавление" />
+                  <MenuItem fx:id="CorpMenuZeroingCorpId" mnemonicParsing="false" text="Обнуление" />
+            </items>
+          </Menu>
+            <Menu fx:id="DeleteMenuId" mnemonicParsing="false" text="Удаление">
+               <items>
+                  <MenuItem fx:id="DeleteMenuDeletPaymentId" mnemonicParsing="false" text="Удаление приёма платежей" />
+                  <MenuItem fx:id="DeleteMenuDeletDiscountId" mnemonicParsing="false" text="Удаление скидки" />
+                  <MenuItem fx:id="DeleteMenuDeletAmbulatoryId" mnemonicParsing="false" text="Удаление амбулатории" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="DeleteMenuRecordReturnId" mnemonicParsing="false" text="Зафиксировать возврат" />
+               </items>
+            </Menu>
+          <Menu fx:id="OptionsMenuId" mnemonicParsing="false" text="Настройки">
+            <items>
+              <MenuItem fx:id="OptionsMenuAccountId" mnemonicParsing="false" text="Аккаунт" />
+                  <MenuItem fx:id="OptionsMenuLogsId" mnemonicParsing="false" text="Логи" />
+                  <MenuItem fx:id="OptionsMenuUsersId" mnemonicParsing="false" text="Пользователи" />
+                  <MenuItem fx:id="OptionsMenuRebookId" mnemonicParsing="false" text="Перебронь" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="OptionsMenuAboutId" mnemonicParsing="false" text="О программе" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <MenuButton fx:id="selectRegistrations" layoutX="14.0" layoutY="38.0" mnemonicParsing="false" text="Регистраторы">
+        <items>
+          <MenuItem fx:id="selectReg00" mnemonicParsing="false" text="Reg00" />
+            <MenuItem fx:id="selectReg01" mnemonicParsing="false" text="Reg01" />
+            <MenuItem fx:id="selectReg02" mnemonicParsing="false" text="Reg02" />
+            <MenuItem fx:id="selectReg03" mnemonicParsing="false" text="Reg03" />
+            <MenuItem fx:id="selectReg04" mnemonicParsing="false" text="Reg04" />
+            <MenuItem fx:id="selectReg05" mnemonicParsing="false" text="Reg05" />
+            <MenuItem fx:id="selectAdmin" mnemonicParsing="false" text="Admin" />
+        </items>
+      </MenuButton>
+      <MenuButton fx:id="selectActions" layoutX="138.0" layoutY="38.0" mnemonicParsing="false" text="Действия">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Изменение врача" />
+            <MenuItem mnemonicParsing="false" text="Обнуление услуги" />
+            <MenuItem fx:id="selectDeletPayment" mnemonicParsing="false" text="Удаление платежа" />
+            <MenuItem mnemonicParsing="false" text="Изменение платежа" />
+            <MenuItem mnemonicParsing="false" text="Возврат" />
+        </items>
+      </MenuButton>
+      <TextField fx:id="FK_TRXNO_Id" layoutX="258.0" layoutY="38.0" prefHeight="25.0" prefWidth="323.0" />
+      <TextField fx:id="PK_psPAtreg_Id" layoutX="258.0" layoutY="72.0" prefHeight="25.0" prefWidth="323.0" />
+      <Button fx:id="upLoadLogsButton" layoutX="14.0" layoutY="72.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" text="Выгрузить" />
+      <Button fx:id="FindLogsButton" layoutX="138.0" layoutY="72.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="84.0" text="Поиск" />
+      <TableView fx:id="LogsTable" layoutX="7.0" layoutY="100.0" prefHeight="296.0" prefWidth="584.0">
+        <columns>
+          <TableColumn fx:id="RegColumnsId" prefWidth="95.0" text="Регистратор" />
+          <TableColumn fx:id="DateLogsColumnId" prefWidth="131.0" text="Дествие" />
+            <TableColumn fx:id="FK_TRXNO_ColumnId" prefWidth="101.0" text="FK" />
+            <TableColumn fx:id="PK_pspatColumnId" prefWidth="132.0" text="PK" />
+            <TableColumn fx:id="dateLogsColumnId" prefWidth="160.0" text="Дата" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

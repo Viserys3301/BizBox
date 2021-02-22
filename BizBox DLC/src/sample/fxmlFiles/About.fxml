@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.AboutController">
+   <children>
+      <MenuBar fx:id="MainMenuBar" layoutX="-9.0" layoutY="2.0" prefHeight="25.0" prefWidth="609.0">
+        <menus>
+          <Menu fx:id="QeryMenuID" mnemonicParsing="false" text="Запросы">
+            <items>
+              <MenuItem fx:id="QeryMenuZeroingAmbulatoryId" mnemonicParsing="false" text="Обнуление амбулатории" />
+                  <MenuItem fx:id="QeryMenuChangePaymentId" mnemonicParsing="false" text="Приём платежей Нал/Безнал" />
+                  <MenuItem fx:id="QeryMenuChangeDoctorId" mnemonicParsing="false" text="Изменение врача" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="QeryMenuChangeAmbulatoryDateId" mnemonicParsing="false" text="Изменение даты амбулатории" />
+                  <MenuItem fx:id="QeryMenuChangeBirthdateId" mnemonicParsing="false" text="Изменение даты рождения" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="QeryMenuEnabledUltrasoundId" mnemonicParsing="false" text="Разблокировка УЗИ" />
+                  <MenuItem fx:id="QeryMenuRecoveryUltrasoundId" mnemonicParsing="false" text="Возврат УЗИ" />
+            </items>
+          </Menu>
+          <Menu fx:id="CorpMenuId" mnemonicParsing="false" text="Корп">
+            <items>
+              <MenuItem fx:id="CorpMenuAddCorpId" mnemonicParsing="false" text="Добавление" />
+                  <MenuItem fx:id="CorpMenuZeroingCorpId" mnemonicParsing="false" text="Обнуление" />
+            </items>
+          </Menu>
+            <Menu fx:id="DeleteMenuId" mnemonicParsing="false" text="Удаление">
+               <items>
+                  <MenuItem fx:id="DeleteMenuDeletPaymentId" mnemonicParsing="false" text="Удаление приёма платежей" />
+                  <MenuItem fx:id="DeleteMenuDeletDiscountId" mnemonicParsing="false" text="Удаление скидки" />
+                  <MenuItem fx:id="DeleteMenuDeletAmbulatoryId" mnemonicParsing="false" text="Удаление амбулатории" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="DeleteMenuRecordReturnId" mnemonicParsing="false" text="Зафиксировать возврат" />
+               </items>
+            </Menu>
+          <Menu fx:id="OptionsMenuId" mnemonicParsing="false" text="Настройки">
+            <items>
+              <MenuItem fx:id="OptionsMenuAccountId" mnemonicParsing="false" text="Аккаунт" />
+                  <MenuItem fx:id="OptionsMenuLogsId" mnemonicParsing="false" text="Логи" />
+                  <MenuItem fx:id="OptionsMenuUsersId" mnemonicParsing="false" text="Пользователи" />
+                  <MenuItem fx:id="OptionsMenuRebookId" mnemonicParsing="false" text="Перебронь" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="OptionsMenuAboutId" mnemonicParsing="false" text="О программе" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Label fx:id="InfoQery" alignment="CENTER" contentDisplay="CENTER" layoutX="28.0" layoutY="118.0" prefHeight="39.0" prefWidth="550.0" text="Программа была созданна по личной инициативе  " textFill="#0099ff">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label fx:id="InfoQery1" alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="157.0" prefHeight="39.0" prefWidth="550.0" text="так как я заебался делать всё в ручную" textFill="#0099ff">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

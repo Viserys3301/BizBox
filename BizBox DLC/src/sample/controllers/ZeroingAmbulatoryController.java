@@ -1,57 +1,26 @@
 package sample.controllers;
 
-import java.awt.event.ActionEvent;
+
 import java.io.IOException;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
+
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
+
 import javafx.stage.Stage;
 import sample.LogsClass;
 
-import javax.swing.*;
-import javax.xml.soap.Text;
 
 public class ZeroingAmbulatoryController extends LogsClass   {
 
-    //СОЕДИНЕНИЕ С БАЗОЙ
-    private String instanceName = "10.0.9.4\\hcdbsrv";
-    private String databaseName = "HCDB";
-    private String userName = "sa";
-    private String pass = "Ba#sE5Ke";
-    private String connectionUrl = "jdbc:sqlserver://%1$s;databaseName=%2$s;user=%3$s;password=%4$s;";
-    private String connectionString = String.format(connectionUrl, instanceName, databaseName, userName, pass);
-    Connection con;
-
-    {
-        try {
-            con = DriverManager.getConnection(connectionString);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
     String regName;
     String data = "'Обнуление платежа'";
-
-    @FXML
-    private MenuBar MainMenuBar;
-
-    @FXML
-    private Menu QeryMenuID;
 
     @FXML
     private MenuItem QeryMenuZeroingAmbulatoryId;
@@ -75,16 +44,10 @@ public class ZeroingAmbulatoryController extends LogsClass   {
     private MenuItem QeryMenuRecoveryUltrasoundId;
 
     @FXML
-    private Menu CorpMenuId;
-
-    @FXML
     private MenuItem CorpMenuAddCorpId;
 
     @FXML
     private MenuItem CorpMenuZeroingCorpId;
-
-    @FXML
-    private Menu DeleteMenuId;
 
     @FXML
     private MenuItem DeleteMenuDeletPaymentId;
@@ -97,9 +60,6 @@ public class ZeroingAmbulatoryController extends LogsClass   {
 
     @FXML
     private MenuItem DeleteMenuRecordReturnId;
-
-    @FXML
-    private Menu OptionsMenuId;
 
     @FXML
     private MenuItem OptionsMenuAccountId;
@@ -121,9 +81,6 @@ public class ZeroingAmbulatoryController extends LogsClass   {
 
     @FXML
     private Button ZeroingClientButton;
-
-    @FXML
-    private Label InfoQery;
 
     @FXML
     private MenuButton selectRegistrations;
@@ -441,36 +398,31 @@ public class ZeroingAmbulatoryController extends LogsClass   {
         //ВЫБОР РЕГИСТРАТОРОВ
         selectReg00.setOnAction(event1 -> {
             onButton("Reg00");
-
         });
         selectReg01.setOnAction(event1 -> {
             onButton("Reg01");
-
         });
         selectReg02.setOnAction(event1 -> {
             onButton("Reg02");
         });
         selectReg03.setOnAction(event1 -> {
             onButton("Reg03");
-
         });
         selectReg04.setOnAction(event1 -> {
             onButton("Reg04");
-
         });
         selectReg05.setOnAction(event1 -> {
             onButton("Reg05");
-
         });
-
         selectAdmin.setOnAction(event1 -> {
             onButton("Admin");
-
         });
 
         ZeroingClientButton.setOnAction(event -> {
             String tranID = TranIdArea.getText();
-            zeroingClient(tranID);
+            SqlExecutor sqlExecutor = new SqlExecutor();
+            sqlExecutor.zeroingClient(tranID,regName,data);
+            aceptImageId.setVisible(true);
         });
     }
 
@@ -480,29 +432,4 @@ public class ZeroingAmbulatoryController extends LogsClass   {
         TranIdArea.setDisable(false);
         ZeroingClientButton.setDisable(false);
     }
-
-    private void zeroingClient(String tranID){
-        if(tranID.length()<7){
-            JOptionPane.showMessageDialog(null,"ВВЕДЕНЫ НЕ КОРЕКТНЫЕ ДАННЫЕ");
-        }else {
-        String SQL = "UPDATE psPatitem SET prevprice = renprice,renprice = 0 WHERE FK_TRXNO =" + tranID;
-        String SQL_2 = "UPDATE psPatinv SET renamount = 0,amount = 0,discount = 0,netamount = 0 WHERE PK_TRXNO =" + tranID;
-        String SQL_3 = "UPDATE psPatLedgers SET debit = 0,discount = 0 WHERE FK_TRXNO =" + tranID;
-
-        try {
-            Statement stmt = con.createStatement();
-            zeroingClientsLogs(tranID,regName,data,stmt);
-            stmt.executeUpdate(SQL);
-            stmt.executeUpdate(SQL_2);
-            stmt.executeUpdate(SQL_3);
-            aceptImageId.setVisible(true);
-            stmt.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        }
-
-    }
-
 }

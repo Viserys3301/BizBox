@@ -1,66 +1,24 @@
 package sample.controllers;
 
 import java.io.IOException;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import sample.LogsClass;
 
 public class DeletAmbulatoryController extends LogsClass {
 
-
-
     private String data="'Удаление амбулатории'";
 
-    //СОЕДИНЕНИЕ С БАЗОЙ
-    private String instanceName = "10.0.9.4\\hcdbsrv";
-    private String databaseName = "HCDB";
-    private String userName = "sa";
-    private String pass = "Ba#sE5Ke";
-    private String connectionUrl = "jdbc:sqlserver://%1$s;databaseName=%2$s;user=%3$s;password=%4$s;";
-    private String connectionString = String.format(connectionUrl, instanceName, databaseName, userName, pass);
-    Connection con;
-    {
-        try {
-            con = DriverManager.getConnection(connectionString);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     private String regName;
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private AnchorPane axeptImageId;
-
-    @FXML
-    private MenuBar MainMenuBar;
-
-    @FXML
-    private Menu QeryMenuID;
 
     @FXML
     private MenuItem QeryMenuZeroingAmbulatoryId;
@@ -84,16 +42,10 @@ public class DeletAmbulatoryController extends LogsClass {
     private MenuItem QeryMenuRecoveryUltrasoundId;
 
     @FXML
-    private Menu CorpMenuId;
-
-    @FXML
     private MenuItem CorpMenuAddCorpId;
 
     @FXML
     private MenuItem CorpMenuZeroingCorpId;
-
-    @FXML
-    private Menu DeleteMenuId;
 
     @FXML
     private MenuItem DeleteMenuDeletPaymentId;
@@ -106,9 +58,6 @@ public class DeletAmbulatoryController extends LogsClass {
 
     @FXML
     private MenuItem DeleteMenuRecordReturnId;
-
-    @FXML
-    private Menu OptionsMenuId;
 
     @FXML
     private MenuItem OptionsMenuAccountId;
@@ -130,9 +79,6 @@ public class DeletAmbulatoryController extends LogsClass {
 
     @FXML
     private Button DeleteAmbulatoryButton;
-
-    @FXML
-    private Label InfoQery;
 
     @FXML
     private MenuButton selectRegistrations;
@@ -468,7 +414,9 @@ public class DeletAmbulatoryController extends LogsClass {
 
         DeleteAmbulatoryButton.setOnAction(event -> {
             String tranId = TranIdArea.getText();
-            deletAmbulatoryController(regName,tranId);
+            SqlExecutor sqlExecutor = new SqlExecutor();
+            sqlExecutor.deletAmbulatory(regName,tranId,data);
+            aceptImageId.setVisible(true);
         });
 
     }
@@ -477,65 +425,5 @@ public class DeletAmbulatoryController extends LogsClass {
         this.regName = regName;
         TranIdArea.setDisable(false);
         DeleteAmbulatoryButton.setDisable(false);
-    }
-    private void deletAmbulatoryController(String regName,String tranId){
-        String SQL_0 = "DELETE psPatDXMedPackages WHERE FK_psPatRegisters =" + tranId;
-        String SQL_1 = "DELETE psPatitem WHERE FK_psPatRegisters = " + tranId;
-        String SQL_2 = "DELETE psPatLedgers WHERE FK_psPatRegisters = " + tranId;
-        String SQL_3 = "DELETE FROM psDctrLedgers WHERE FK_psPatRegisters = " + tranId;
-        String SQL_4 = "DELETE FROM psPatFinalDXDtls WHERE FK_psPatRegisters = " + tranId;
-        String SQL_5 = "DELETE FROM psGntrLedgers WHERE FK_psPatRegisters = " + tranId;
-        String SQL_6 = "DELETE FROM psGntrLedgerItems WHERE FK_psPatRegisters = " + tranId;
-        String SQL_7 = "DELETE FROM emdSOAPTranMstr WHERE FK_psPatRegisters = " + tranId;
-        String SQL_8 = "DELETE psPatDiscounts WHERE FK_psPatRegisters = " + tranId;
-        String SQL_9 = "DELETE psPatRegDiscounts WHERE FK_psPatRegisters = " + tranId;
-        String SQL_10 = "DELETE psExamResultMstr WHERE FK_psPatRegisters = " + tranId;
-        String SQL_11 = "DELETE LIS_request_patinv WHERE bb_pspatinv in (SELECT pk_trxno FROM psPatinv WHERE FK_psPatRegisters = " + tranId + ")";
-        String SQL_12 = "DELETE emdSOAPTranMstr WHERE FK_psPatRegisters = " + tranId;
-        String SQL_13 = "DELETE emdSOAPSubjCheckList WHERE FK_emdSOAPTranMstr = (SELECT PK_emdSOAPTranMstr FROM emdSOAPTranMstr WHERE FK_psPatRegisters = "+ tranId +") ";
-        String SQL_14 = "DELETE emdSOAPObjCheckList WHERE FK_emdSOAPTranMstr = (SELECT PK_emdSOAPTranMstr FROM emdSOAPTranMstr WHERE FK_psPatRegisters ="+tranId + ")";
-        String SQL_15 = "DELETE emdSOAPPlans WHERE FK_emdSOAPTranMstr = (SELECT PK_emdSOAPTranMstr FROM emdSOAPTranMstr WHERE FK_psPatRegisters =" + tranId + ")" ;
-        String SQL_16 = "DELETE faCRMstrItems WHERE FK_psPatRegisters = " + tranId;
-        String SQL_17 = "DELETE faCRMstr WHERE FK_psPatRegisters =" + tranId;
-        String SQL_18 = "DELETE psPatinv_helper WHERE FK_psPatregisters =" + tranId;
-        String SQL_19 = "DELETE psPatinv WHERE FK_psPatRegisters =" + tranId;
-        String SQL_20 = "DELETE psOutpatients WHERE FK_psPatregisters =" + tranId;
-        String SQL_21 = "DELETE psPatRegisters WHERE PK_psPatRegisters =" + tranId;
-
-        Statement stmt = null;
-        try {
-            stmt = con.createStatement();
-
-            stmt.executeUpdate(SQL_0);
-            stmt.executeUpdate(SQL_1);
-            stmt.executeUpdate(SQL_2);
-            stmt.executeUpdate(SQL_3);
-            stmt.executeUpdate(SQL_4);
-            stmt.executeUpdate(SQL_5);
-            stmt.executeUpdate(SQL_6);
-            stmt.executeUpdate(SQL_7);
-            stmt.executeUpdate(SQL_8);
-            stmt.executeUpdate(SQL_9);
-            stmt.executeUpdate(SQL_10);
-            stmt.executeUpdate(SQL_11);
-            stmt.executeUpdate(SQL_12);
-            stmt.executeUpdate(SQL_13);
-            stmt.executeUpdate(SQL_14);
-            stmt.executeUpdate(SQL_15);
-            stmt.executeUpdate(SQL_16);
-            stmt.executeUpdate(SQL_17);
-            stmt.executeUpdate(SQL_18);
-            stmt.executeUpdate(SQL_19);
-            stmt.executeUpdate(SQL_20);
-            stmt.executeUpdate(SQL_21);
-            //Логи
-            deletAmbulatoryLogs(regName,tranId,data,stmt);
-
-            aceptImageId.setVisible(true);
-            stmt.close();
-            con.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 }

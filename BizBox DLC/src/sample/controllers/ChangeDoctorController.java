@@ -30,9 +30,7 @@ public class ChangeDoctorController extends LogsClass   {
 
 
 
-    //ДАТА И ВРЕМЯ
-    private java.util.Date date = new Date();
-    private SimpleDateFormat formatForDateNow = new SimpleDateFormat(" yyyy.MM.dd ' ' hh:mm:ss a zzz");
+
 
     //ID РЕГИСТРАТОРА
     private String regName;
@@ -504,15 +502,12 @@ public class ChangeDoctorController extends LogsClass   {
         });
 
         FindDocButton.setOnAction(event -> {
-
             for (int i = 0; i <DocTables.getItems().size() ; i++) {
                 usersData.clear();
             }
             //СТРОКА ПОИСКА
             String DoctorName = FindDocTextFild.getText();
-
             findDoctor(DoctorName);
-
             DocTablesCollumID.setCellValueFactory(new PropertyValueFactory<Doctors, String>("Name"));
             DocTablesCollumName.setCellValueFactory(new PropertyValueFactory<Doctors, String>("ID"));
             DocTables.setItems(usersData);
@@ -533,7 +528,7 @@ public class ChangeDoctorController extends LogsClass   {
 
     }
 
-    private void initData(Doctors doctors) {
+    public void initData(Doctors doctors) {
         usersData.add(doctors);
     }
 
@@ -543,7 +538,6 @@ public class ChangeDoctorController extends LogsClass   {
             stmt = con.createStatement();
             String SQL = "UPDATE psPatitem SET FK_emdDoctorsREQ = " +  doctorID + " where FK_TRXNO =" + tranID;
             stmt.executeUpdate(SQL);
-            String dateTime = formatForDateNow.format(date);
             //Логи
             changeDoctorLogs(regName,DockChangeVar,tranID,doctorID,stmt);
             aceptImageId.setVisible(true);

@@ -20,30 +20,6 @@ import javafx.stage.Stage;
 
 public class EnabledUltrasoundController {
 
-    //СОЕДИНЕНИЕ С БАЗОЙ
-    private String instanceName = "10.0.9.4\\hcdbsrv";
-    private String databaseName = "HCDB";
-    private String userName = "sa";
-    private String pass = "Ba#sE5Ke";
-    private String connectionUrl = "jdbc:sqlserver://%1$s;databaseName=%2$s;user=%3$s;password=%4$s;";
-    private String connectionString = String.format(connectionUrl, instanceName, databaseName, userName, pass);
-    Connection con;
-
-    {
-        try {
-            con = DriverManager.getConnection(connectionString);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    @FXML
-    private MenuBar MainMenuBar;
-
-    @FXML
-    private Menu QeryMenuID;
-
     @FXML
     private MenuItem QeryMenuZeroingAmbulatoryId;
 
@@ -66,16 +42,10 @@ public class EnabledUltrasoundController {
     private MenuItem QeryMenuRecoveryUltrasoundId;
 
     @FXML
-    private Menu CorpMenuId;
-
-    @FXML
     private MenuItem CorpMenuAddCorpId;
 
     @FXML
     private MenuItem CorpMenuZeroingCorpId;
-
-    @FXML
-    private Menu DeleteMenuId;
 
     @FXML
     private MenuItem DeleteMenuDeletPaymentId;
@@ -88,9 +58,6 @@ public class EnabledUltrasoundController {
 
     @FXML
     private MenuItem DeleteMenuRecordReturnId;
-
-    @FXML
-    private Menu OptionsMenuId;
 
     @FXML
     private MenuItem OptionsMenuAccountId;
@@ -106,9 +73,6 @@ public class EnabledUltrasoundController {
 
     @FXML
     private MenuItem OptionsMenuAboutId;
-
-    @FXML
-    private Label InfoQery;
 
     @FXML
     private TextField TranIdArea;
@@ -399,35 +363,11 @@ public class EnabledUltrasoundController {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
         EnabledUltrasoundButton.setOnAction(event -> {
             String tranId = TranIdArea.getText();
-            enabledUltrasound(tranId);
-        });
-    }
-
-    private void enabledUltrasound(String tranId){
-        Statement stmt = null;
-        try {
-            String SQL = "SELECT PK_psExamResultMstr FROM psExamResultMstr WHERE FK_TRXNO =" + tranId;
-
-            String ultrasoundId = "";
-
-            stmt = con.createStatement();
-
-            ResultSet executeQuery = stmt.executeQuery(SQL);
-
-            while (executeQuery.next()) {
-                ultrasoundId = executeQuery.getString("PK_psPatledgers");
-            }
-            String SQL_2 = "UPDATE psExamResultMstr SET isCheckedOut = 0 WHERE PK_psExamResultMstr = " + ultrasoundId;
+            SqlExecutor sqlExecutor = new SqlExecutor();
+           sqlExecutor.enabledUltrasound(tranId);
             aceptImageId.setVisible(true);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        });
     }
 }

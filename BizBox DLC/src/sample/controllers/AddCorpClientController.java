@@ -612,6 +612,7 @@ public class AddCorpClientController {
             stmt.executeUpdate(SQL);
             showPackage = false;
             stmt.close();
+            con.close();
             System.out.println("DONE");
         } catch (SQLException e) {
             e.printStackTrace();

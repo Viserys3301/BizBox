@@ -27,29 +27,6 @@ public class DeleteDiscountController extends LogsClass {
 
     private String regName;
     private String data = "'Удаление скидки'";
-    //СОЕДИНЕНИЕ С БАЗОЙ
-    private String instanceName = "10.0.9.4\\hcdbsrv";
-    private String databaseName = "HCDB";
-    private String userName = "sa";
-    private String pass = "Ba#sE5Ke";
-    private String connectionUrl = "jdbc:sqlserver://%1$s;databaseName=%2$s;user=%3$s;password=%4$s;";
-    private String connectionString = String.format(connectionUrl, instanceName, databaseName, userName, pass);
-    Connection con;
-
-    {
-        try {
-            con = DriverManager.getConnection(connectionString);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    @FXML
-    private MenuBar MainMenuBar;
-
-    @FXML
-    private Menu QeryMenuID;
 
     @FXML
     private MenuItem QeryMenuZeroingAmbulatoryId;
@@ -73,16 +50,10 @@ public class DeleteDiscountController extends LogsClass {
     private MenuItem QeryMenuRecoveryUltrasoundId;
 
     @FXML
-    private Menu CorpMenuId;
-
-    @FXML
     private MenuItem CorpMenuAddCorpId;
 
     @FXML
     private MenuItem CorpMenuZeroingCorpId;
-
-    @FXML
-    private Menu DeleteMenuId;
 
     @FXML
     private MenuItem DeleteMenuDeletPaymentId;
@@ -95,9 +66,6 @@ public class DeleteDiscountController extends LogsClass {
 
     @FXML
     private MenuItem DeleteMenuRecordReturnId;
-
-    @FXML
-    private Menu OptionsMenuId;
 
     @FXML
     private MenuItem OptionsMenuAccountId;
@@ -119,9 +87,6 @@ public class DeleteDiscountController extends LogsClass {
 
     @FXML
     private Button DeletDiscountButton;
-
-    @FXML
-    private Label InfoQery;
 
     @FXML
     private MenuButton selectRegistrations;
@@ -458,7 +423,9 @@ public class DeleteDiscountController extends LogsClass {
 
         DeletDiscountButton.setOnAction(event -> {
             String tranId = TranIdArea.getText();
-            daletDiscount(tranId);
+            SqlExecutor sqlExecutor =new SqlExecutor();
+            sqlExecutor.deletDiscount(tranId,regName,data);
+            aceptImageId.setVisible(true);
         });
 
     }
@@ -467,42 +434,5 @@ public class DeleteDiscountController extends LogsClass {
         TranIdArea.setDisable(false);
         DeletDiscountButton.setDisable(false);
         this.regName =regName;
-    }
-
-    private void daletDiscount(String tranId){
-        String SQL = "SELECT PK_psPatledgers,billtrancode FROM psPatLedgers WHERE FK_psPatRegisters = " + tranId + " and billtrancode ='DC0004'";
-
-        String SQL_2 = "DELETE psPatLedgers WHERE PK_psPatledgers = ";
-
-
-        try {
-            ArrayList<String> DiscountId = new ArrayList<>();
-
-
-            //СОЗДАНИЕ СТЕЙТМЕНТА
-            Statement stmt = con.createStatement();
-
-
-            ResultSet executeQuery = stmt.executeQuery(SQL);
-
-
-            while (executeQuery.next()) {
-                DiscountId.add(executeQuery.getString("PK_psPatledgers"));
-            }
-
-            //УДАЛЕНИЕ
-            for (int i = 0; i < DiscountId.size(); i++) {
-                stmt.executeUpdate("DELETE psPatLedgers WHERE PK_psPatledgers =" + DiscountId.get(i));
-            }
-            //СООБЩЕНИЕ О ВЫПОЛНЕНИИ (String regName,String tranID,String data,Statement stmt)
-            deletDiscountLogs(regName,tranId,data,stmt);
-            aceptImageId.setVisible(true);
-
-            //ЗАКРЫТИЕ СОЕДИНЕНИЙ
-            stmt.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 }

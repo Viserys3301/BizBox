@@ -11,6 +11,7 @@ public class LogsClass {
     private java.util.Date date = new Date();
     private SimpleDateFormat formatForDateNow = new SimpleDateFormat(" yyyy.MM.dd ' ' hh:mm:ss a zzz");
     private String dateTime = formatForDateNow.format(date);
+    
     //СМЕНА ПЛАТЕЖА НАЛ БЕЗНАЛ
     protected void changePaymentLogs(String regName, String data,String tranID,Statement stmt)  throws SQLException{
         stmt.executeUpdate("INSERT INTO RegistryLogs (RegID,[Data],[Date],TranID_FK_TRXNO) VALUES (" + "'" + regName + "'" + " ," + data + "," + "'" + dateTime + "'" + "," + tranID + ")");
@@ -60,7 +61,7 @@ public class LogsClass {
                 "'" + regName + "'" + " ," + data + "," + "'" + dateTime + "'" + "," + tranID + "," + newDate  + ")");
     }
     //ВОЗВРАТ
-    protected void recordReturn(String regName,String data,String tranID,Statement stmt) throws SQLException{
+    public void recordReturn(String regName, String data, String tranID, Statement stmt) throws SQLException{
         stmt.executeUpdate("INSERT INTO RegistryLogs (RegID,[Data],[Date],TranID_PK_psPatledgers) VALUES (" +
                 "'" + regName + "'" + " ," + data + "," + "'" + dateTime + "'" + "," + tranID + ")");
     }

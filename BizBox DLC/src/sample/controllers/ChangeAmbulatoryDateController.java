@@ -479,40 +479,12 @@ public class ChangeAmbulatoryDateController extends LogsClass {
             String newMonth = DateMonthId.getText();
             String newYer = DateYerId.getText();
             String newDate = "'" + newYer + "/" + newMonth + "/" + newDay + "'";
-            changeAmbulatoryDate(tranId,newDate);
-        });
-
-
-    }
-
-    private void changeAmbulatoryDate(String tranId,String newDate)   {
-
-        //СОЗДАНИЕ СТЕЙТМЕНТА
-        Statement stmt = null;
-        try {
-            stmt = con.createStatement();
-
-            String SQL = "UPDATE psPatitem SET rendate =" + newDate + " WHERE FK_psPatRegisters = " + tranId;
-            String SQL_2 = "UPDATE psPatLedgers SET docdate =" + newDate + " WHERE FK_psPatRegisters = " + tranId;
-            String SQL_3 = "UPDATE psPatinv SET rendate =" + newDate + " WHERE FK_psPatRegisters = " + tranId;
-            String SQL_4 = "UPDATE faCRMstr SET ordate =" + newDate + ", postdate =" + newDate + " WHERE FK_psPatRegisters = " + tranId;
-            String SQL_5 = "UPDATE psPatRegisters SET registrydate =" + newDate + " WHERE PK_psPatRegisters = " + tranId;
-
-            stmt.executeUpdate(SQL);
-            stmt.executeUpdate(SQL_2);
-            stmt.executeUpdate(SQL_3);
-            stmt.executeUpdate(SQL_4);
-            stmt.executeUpdate(SQL_5);
-            changeAmbulatoryDateLogs(tranId,regName,data,newDate,stmt);
-
+            SqlExecutor sqlExecutor = new SqlExecutor();
+            sqlExecutor.changeAmbulatoryDate(tranId,newDate,regName,data);
             aceptImageId.setVisible(true);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-
-
+        });
     }
+
     private void Onvisible(String regName){
         selectRegistrations.setText(regName);
         this.regName = regName;

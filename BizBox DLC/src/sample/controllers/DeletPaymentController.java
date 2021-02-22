@@ -27,44 +27,11 @@ import javax.xml.soap.Text;
 
 
 public class DeletPaymentController  extends LogsClass {
-    //ДАТА И ВРЕМЯ
-    private java.util.Date date = new Date();
-    private SimpleDateFormat formatForDateNow = new SimpleDateFormat(" yyyy.MM.dd ' ' hh:mm:ss a zzz");
-
     //ID РЕГИСТРАТОРА
     private String regName;
 
     //ИНФОРМАЦИЯ ПО ДЕЙСТВИЮ
-    private String pay = "'Удаление платежа'";
-
-    //СОЕДИНЕНИЕ С БАЗОЙ
-    private String instanceName = "10.0.9.4\\hcdbsrv";
-    private String databaseName = "HCDB";
-    private String userName = "sa";
-    private String pass = "Ba#sE5Ke";
-    private String connectionUrl = "jdbc:sqlserver://%1$s;databaseName=%2$s;user=%3$s;password=%4$s;";
-    private String connectionString = String.format(connectionUrl, instanceName, databaseName, userName, pass);
-    Connection con;
-
-    {
-        try {
-            con = DriverManager.getConnection(connectionString);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private MenuBar MainMenuBar;
-
-    @FXML
-    private Menu QeryMenuID;
+    private String data = "'Удаление платежа'";
 
     @FXML
     private MenuItem QeryMenuZeroingAmbulatoryId;
@@ -97,9 +64,6 @@ public class DeletPaymentController  extends LogsClass {
     private MenuItem CorpMenuZeroingCorpId;
 
     @FXML
-    private Menu DeleteMenuId;
-
-    @FXML
     private MenuItem DeleteMenuDeletPaymentId;
 
     @FXML
@@ -110,9 +74,6 @@ public class DeletPaymentController  extends LogsClass {
 
     @FXML
     private MenuItem DeleteMenuRecordReturnId;
-
-    @FXML
-    private Menu OptionsMenuId;
 
     @FXML
     private MenuItem OptionsMenuAccountId;
@@ -134,9 +95,6 @@ public class DeletPaymentController  extends LogsClass {
 
     @FXML
     private Button DeletePaymentButton;
-
-    @FXML
-    private Label InfoQery;
 
     @FXML
     private MenuButton selectRegistrations;
@@ -487,7 +445,9 @@ public class DeletPaymentController  extends LogsClass {
         //ЗАПУСК УДАЛЕНИЯ
         DeletePaymentButton.setOnAction(event1 -> {
             String tranID = TranIdArea.getText();
-            deletPayment(tranID, regName);
+            SqlExecutor sqlExecutor = new SqlExecutor();
+            sqlExecutor.deletPayment(tranID,regName,data);
+            aceptImageId.setVisible(true);
         });
 
     }
@@ -497,51 +457,5 @@ public class DeletPaymentController  extends LogsClass {
         selectRegistrations.setText(regName);
         DeletePaymentButton.setDisable(false);
         TranIdArea.setDisable(false);
-    }
-
-    private void deletPayment(String tranID, String RegID) {
-        try {
-            //ЛИСТ СО ВСЕМИ ПЛАТЕЖАМИ
-            ArrayList<String> idPay = new ArrayList<>();
-            ArrayList<String> SumPay = new ArrayList<>();
-
-            //СОЗДАНИЕ СТЕЙТМЕНТА
-            Statement stmt = con.createStatement();
-
-            //УДАЛЕНИЕ ДОЧЕРНИХ ПЛАТЕЖЕЙ
-            stmt.executeUpdate("DELETE faCRMstrItems WHERE FK_psPatRegisters =" + tranID);
-            stmt.executeUpdate("DELETE faCRMstr WHERE FK_psPatRegisters =" + tranID);
-
-            //ПОИСК ГЛАВНОГО ПЛАТЕЖА
-            ResultSet executeQuery = stmt.executeQuery("SELECT * FROM psPatLedgers WHERE FK_psPatRegisters=" + tranID + "and billtrancode = 'PAYMENT'");
-
-            //ЗАПИСЬ ID ПЛАТЕЖЕЙ В СПИСОК
-            while (executeQuery.next()) {
-                idPay.add(executeQuery.getString("PK_psPatledgers"));
-                SumPay.add(executeQuery.getString("oramount"));
-            }
-
-            //УДАЛЕНИЕ ID ПЛАТЕЖЕЙ ИЗ ТАБЛИЦЫ
-            for (int i = 0; i < idPay.size(); i++) {
-                stmt.executeUpdate("DELETE psPatLedgers WHERE PK_psPatledgers =" + idPay.get(i));
-            }
-            //ОБНОВЛЕНИЕ ДЛЯ ПОВТОРНОГО ПРИЁМА
-            stmt.executeUpdate("UPDATE psPatitem SET oramount = 0 WHERE FK_psPatRegisters = " + tranID);
-
-            //ЗАПИСЬ ДАТЫ
-            String dateTime = formatForDateNow.format(date);
-
-            //ЛОГИРОВАНИЕ ДЕЙСТВИЙ
-            deletPaymentLogs(tranID,regName,pay,stmt,SumPay);
-
-            //СООБЩЕНИЕ О ВЫПОЛНЕНИИ
-            aceptImageId.setVisible(true);
-
-            //ЗАКРЫТИЕ СОЕДИНЕНИЙ
-            stmt.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 }

@@ -26,35 +26,6 @@ public class ChangeBirthdateController extends LogsClass {
     //ИНФОРМАЦИЯ ПО ДЕЙСТВИЮ
     private String data = "'Изменение даты рождения'";
 
-    //СОЕДИНЕНИЕ С БАЗОЙ
-    private String instanceName = "10.0.9.4\\hcdbsrv";
-    private String databaseName = "HCDB";
-    private String userName = "sa";
-    private String pass = "Ba#sE5Ke";
-    private String connectionUrl = "jdbc:sqlserver://%1$s;databaseName=%2$s;user=%3$s;password=%4$s;";
-    private String connectionString = String.format(connectionUrl, instanceName, databaseName, userName, pass);
-    Connection con;
-
-    {
-        try {
-            con = DriverManager.getConnection(connectionString);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private MenuBar MainMenuBar;
-
-    @FXML
-    private Menu QeryMenuID;
-
     @FXML
     private MenuItem QeryMenuZeroingAmbulatoryId;
 
@@ -77,16 +48,10 @@ public class ChangeBirthdateController extends LogsClass {
     private MenuItem QeryMenuRecoveryUltrasoundId;
 
     @FXML
-    private Menu CorpMenuId;
-
-    @FXML
     private MenuItem CorpMenuAddCorpId;
 
     @FXML
     private MenuItem CorpMenuZeroingCorpId;
-
-    @FXML
-    private Menu DeleteMenuId;
 
     @FXML
     private MenuItem DeleteMenuDeletPaymentId;
@@ -99,9 +64,6 @@ public class ChangeBirthdateController extends LogsClass {
 
     @FXML
     private MenuItem DeleteMenuRecordReturnId;
-
-    @FXML
-    private Menu OptionsMenuId;
 
     @FXML
     private MenuItem OptionsMenuAccountId;
@@ -123,9 +85,6 @@ public class ChangeBirthdateController extends LogsClass {
 
     @FXML
     private Button ChangeBirthdateButton;
-
-    @FXML
-    private Label InfoQery;
 
     @FXML
     private TextField DateDayId;
@@ -484,54 +443,10 @@ public class ChangeBirthdateController extends LogsClass {
             String newYer = DateYerId.getText();
 
             String newDate = "'" + newYer + "/" + newMonth + "/" + newDay + "'";
-            changeBirthdate(patId,newDate);
-        });
-    }
-
-
-
-    private void changeBirthdate(String patId,String newDate){
-        //ОТКЛЮЧЕНИЕ ТРИГЕРА
-       String SQL_TRIGGER_OFF = "DISABLE TRIGGER ApptTrans_Validator ON apptTrans";
-       //ВКЛЮЧЕНИЕ ТРИГЕРА
-        String SQL_TRIGGER_ON = "ENABLE TRIGGER ApptTrans_Validator ON apptTrans";
-        //ПОИСК ПАЦИЕНТА
-        String SQL = "SELECT PK_apptTrans FROM apptTrans WHERE FK_psDatacenter_Client =" + patId;
-        //ИЗМЕНЕНИЕ ДАТЫ
-        String SQL_2 = "UPDATE apptTrans SET birthDate =" + newDate + " WHERE PK_apptTrans =";
-        String SQL_3 ="UPDATE psPersonaldata SET birthdate = " + newDate + " WHERE PK_psPersonalData=" + patId;
-
-
-
-
-        try {
-            //ЛИСТ СО ВСЕМИ ПЛАТЕЖАМИ
-            ArrayList<String> birthdateList = new ArrayList<>();
-            //СОЗДАНИЕ СТЕЙТМЕНТА
-            Statement stmt = con.createStatement();
-            stmt.executeUpdate(SQL_TRIGGER_OFF);
-
-
-            ResultSet executeQuery = stmt.executeQuery(SQL);
-            //ЗАПИСЬ ID ПЛАТЕЖЕЙ В СПИСОК
-            while (executeQuery.next()) {
-                birthdateList.add(executeQuery.getString("PK_apptTrans"));
-            }
-            //УДАЛЕНИЕ ID ПЛАТЕЖЕЙ ИЗ ТАБЛИЦЫ
-            for (int i = 0; i < birthdateList.size(); i++) {
-                stmt.executeUpdate(SQL_2+birthdateList.get(i));
-            }
-            stmt.executeUpdate(SQL_3);
-            stmt.executeUpdate(SQL_TRIGGER_ON);
-            //СООБЩЕНИЕ О ВЫПОЛНЕНИИ (String patId,String regName,String data,Statement stmt,String newDate)
-            changeBirthDateLogs(patId,regName,data,stmt,newDate);
+            SqlExecutor sqlExecutor = new SqlExecutor();
+            sqlExecutor.changeBirthdate(patId,newDate,regName,data);
             aceptImageId.setVisible(true);
-            //ЗАКРЫТИЕ СОЕДИНЕНИЙ
-            stmt.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        });
     }
 
     private void onButton(String regName){

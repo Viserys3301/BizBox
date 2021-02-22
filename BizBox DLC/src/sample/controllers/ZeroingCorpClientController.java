@@ -24,31 +24,8 @@ public class ZeroingCorpClientController extends LogsClass {
     //ИНФОРМАЦИЯ ПО ДЕЙСТВИЮ
     private String data = "'Обнуление корп'";
 
-    //СОЕДИНЕНИЕ С БАЗОЙ
-    private String instanceName = "10.0.9.4\\hcdbsrv";
-    private String databaseName = "HCDB";
-    private String userName = "sa";
-    private String pass = "Ba#sE5Ke";
-    private String connectionUrl = "jdbc:sqlserver://%1$s;databaseName=%2$s;user=%3$s;password=%4$s;";
-    private String connectionString = String.format(connectionUrl, instanceName, databaseName, userName, pass);
-    Connection con;
-
-    {
-        try {
-            con = DriverManager.getConnection(connectionString);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-
     private String regName;
 
-    @FXML
-    private MenuBar MainMenuBar;
-
-    @FXML
-    private Menu QeryMenuID;
 
     @FXML
     private MenuItem QeryMenuZeroingAmbulatoryId;
@@ -72,16 +49,10 @@ public class ZeroingCorpClientController extends LogsClass {
     private MenuItem QeryMenuRecoveryUltrasoundId;
 
     @FXML
-    private Menu CorpMenuId;
-
-    @FXML
     private MenuItem CorpMenuAddCorpId;
 
     @FXML
     private MenuItem CorpMenuZeroingCorpId;
-
-    @FXML
-    private Menu DeleteMenuId;
 
     @FXML
     private MenuItem DeleteMenuDeletPaymentId;
@@ -94,9 +65,6 @@ public class ZeroingCorpClientController extends LogsClass {
 
     @FXML
     private MenuItem DeleteMenuRecordReturnId;
-
-    @FXML
-    private Menu OptionsMenuId;
 
     @FXML
     private MenuItem OptionsMenuAccountId;
@@ -118,9 +86,6 @@ public class ZeroingCorpClientController extends LogsClass {
 
     @FXML
     private Button ZeroingClientButton;
-
-    @FXML
-    private Label InfoQery;
 
     @FXML
     private MenuButton selectRegistrations;
@@ -455,7 +420,9 @@ public class ZeroingCorpClientController extends LogsClass {
 
         ZeroingClientButton.setOnAction(event -> {
             String tranId = TranIdArea.getText();
-            zeroingClient(tranId,regName);
+            SqlExecutor sqlExecutor = new SqlExecutor();
+            sqlExecutor.zeroingCorpClient(tranId,regName,data);
+            aceptImageId.setVisible(true);
         });
 
     }
@@ -465,23 +432,5 @@ public class ZeroingCorpClientController extends LogsClass {
         selectRegistrations.setText(regName);
         TranIdArea.setDisable(false);
         ZeroingClientButton.setDisable(false);
-    }
-
-    private void zeroingClient(String tranId,String regName){
-        String SQL = "exec Update_TRXNO " +tranId +  ", 'COM'";
-        try {
-            Statement stmt = con.createStatement();
-            stmt.executeUpdate(SQL);
-
-            //СООБЩЕНИЕ О ВЫПОЛНЕНИИ (String tranID,String regName,String data,Statement stmt)t
-            zeroingCorpClientsLogs(tranId,regName,data,stmt);
-            aceptImageId.setVisible(true);
-
-            //ЗАКРЫТИЕ СОЕДИНЕНИЙ
-            stmt.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 }

@@ -446,6 +446,7 @@ public class ChangeBirthdateController extends LogsClass {
             SqlExecutor sqlExecutor = new SqlExecutor();
             sqlExecutor.changeBirthdate(patId,newDate,regName,data);
             aceptImageId.setVisible(true);
+            sqlExecutor.getAnimation(aceptImageId);
         });
     }
 

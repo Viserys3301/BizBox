@@ -448,6 +448,7 @@ public class DeletPaymentController  extends LogsClass {
             SqlExecutor sqlExecutor = new SqlExecutor();
             sqlExecutor.deletPayment(tranID,regName,data);
             aceptImageId.setVisible(true);
+            sqlExecutor.getAnimation(aceptImageId);
         });
 
     }

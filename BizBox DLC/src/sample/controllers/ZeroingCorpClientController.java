@@ -413,7 +413,6 @@ public class ZeroingCorpClientController extends LogsClass {
         selectReg05.setOnAction(event1 -> {
             onButton("Reg05");
         });
-
         selectAdmin.setOnAction(event1 -> {
             onButton("Admin");
         });
@@ -423,6 +422,7 @@ public class ZeroingCorpClientController extends LogsClass {
             SqlExecutor sqlExecutor = new SqlExecutor();
             sqlExecutor.zeroingCorpClient(tranId,regName,data);
             aceptImageId.setVisible(true);
+            sqlExecutor.getAnimation(aceptImageId);
         });
 
     }

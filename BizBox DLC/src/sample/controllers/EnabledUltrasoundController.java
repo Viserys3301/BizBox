@@ -368,6 +368,7 @@ public class EnabledUltrasoundController {
             SqlExecutor sqlExecutor = new SqlExecutor();
            sqlExecutor.enabledUltrasound(tranId);
             aceptImageId.setVisible(true);
+            sqlExecutor.getAnimation(aceptImageId);
         });
     }
 }

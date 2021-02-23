@@ -417,6 +417,7 @@ public class DeletAmbulatoryController extends LogsClass {
             SqlExecutor sqlExecutor = new SqlExecutor();
             sqlExecutor.deletAmbulatory(regName,tranId,data);
             aceptImageId.setVisible(true);
+            sqlExecutor.getAnimation(aceptImageId);
         });
 
     }

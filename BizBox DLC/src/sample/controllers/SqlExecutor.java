@@ -1,5 +1,8 @@
 package sample.controllers;
 
+import javafx.animation.RotateTransition;
+import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 import sample.LogsClass;
 
 import javax.swing.*;
@@ -496,5 +499,13 @@ public class SqlExecutor extends LogsClass {
         } catch (SQLException ex) {
             Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public  void getAnimation(ImageView aceptImageId){
+        RotateTransition rt = new RotateTransition(Duration.seconds(1),aceptImageId);
+        rt.setByAngle(360);
+        rt.setCycleCount(1);
+        rt.setAutoReverse(false);
+        rt.play();
     }
 }

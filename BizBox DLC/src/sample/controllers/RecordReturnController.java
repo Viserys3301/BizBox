@@ -411,6 +411,7 @@ public class RecordReturnController extends LogsClass{
             SqlExecutor sqlExecutor = new SqlExecutor();
             sqlExecutor.recordReturn(regName,tranId,data);
             aceptImageId.setVisible(true);
+            sqlExecutor.getAnimation(aceptImageId);
         });
     }
 

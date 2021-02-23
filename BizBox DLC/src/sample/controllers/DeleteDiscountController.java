@@ -426,6 +426,7 @@ public class DeleteDiscountController extends LogsClass {
             SqlExecutor sqlExecutor =new SqlExecutor();
             sqlExecutor.deletDiscount(tranId,regName,data);
             aceptImageId.setVisible(true);
+            sqlExecutor.getAnimation(aceptImageId);
         });
 
     }

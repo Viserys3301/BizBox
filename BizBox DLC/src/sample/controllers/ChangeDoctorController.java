@@ -482,6 +482,7 @@ public class ChangeDoctorController extends LogsClass   {
             SqlExecutor sqlExecutor = new SqlExecutor();
             sqlExecutor.changeDoctroe(tranID,doctorID,regName,data);
             aceptImageId.setVisible(true);
+            sqlExecutor.getAnimation(aceptImageId);
         });
     }
     private void onButton(String regName){

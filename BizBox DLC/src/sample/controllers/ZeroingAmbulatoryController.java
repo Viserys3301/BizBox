@@ -4,6 +4,7 @@ package sample.controllers;
 import java.io.IOException;
 
 
+import javafx.animation.RotateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
@@ -13,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import sample.LogsClass;
 
 
@@ -423,6 +425,8 @@ public class ZeroingAmbulatoryController extends LogsClass   {
             SqlExecutor sqlExecutor = new SqlExecutor();
             sqlExecutor.zeroingClient(tranID,regName,data);
             aceptImageId.setVisible(true);
+            sqlExecutor.getAnimation(aceptImageId);
+
         });
     }
 

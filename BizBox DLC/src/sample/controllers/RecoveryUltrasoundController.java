@@ -396,6 +396,7 @@ public class RecoveryUltrasoundController {
             SqlExecutor sqlExecutor = new SqlExecutor();
             sqlExecutor.recoveryUltrasound(servicesId);
             aceptImageId.setVisible(true);
+            sqlExecutor.getAnimation(aceptImageId);
         });
 
         FindServicesButton.setOnAction(event -> {

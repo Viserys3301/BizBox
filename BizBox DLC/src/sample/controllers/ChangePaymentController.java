@@ -483,6 +483,7 @@ public class ChangePaymentController extends LogsClass {
             SqlExecutor sqlExecutor = new SqlExecutor();
             sqlExecutor.changePayment(paymentId,isCard,regName,data);
             aceptImageId.setVisible(true);
+            sqlExecutor.getAnimation(aceptImageId);
         });
     }
     private void onButton(String regName){

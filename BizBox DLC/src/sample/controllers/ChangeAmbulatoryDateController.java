@@ -482,6 +482,7 @@ public class ChangeAmbulatoryDateController extends LogsClass {
             SqlExecutor sqlExecutor = new SqlExecutor();
             sqlExecutor.changeAmbulatoryDate(tranId,newDate,regName,data);
             aceptImageId.setVisible(true);
+            sqlExecutor.getAnimation(aceptImageId);
         });
     }
 

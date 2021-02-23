@@ -497,4 +497,20 @@ public class CheckLogsController {
     public static void initData(Logs logs) {
         logsData.add(logs);
     }
+    private void changeFrames(int x){
+        ChangeFrame CF = new ChangeFrame();
+        ZeroingClientButton.getScene().getWindow().hide();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(CF.changeFrame(x)));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.getIcons().add(imageIcon);
+        stage.show();
+    }
 }

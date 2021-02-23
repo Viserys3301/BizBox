@@ -10,6 +10,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -87,7 +88,10 @@
       <RadioButton fx:id="PatGenderMaleId" layoutX="171.0" layoutY="351.0" mnemonicParsing="false" text="Муж" />
       <RadioButton fx:id="PatGenderFemaleId" layoutX="23.0" layoutY="351.0" mnemonicParsing="false" text="Жен" />
       <RadioButton fx:id="addNewPatId" layoutX="17.0" layoutY="131.0" mnemonicParsing="false" text="Расширить" />
-      <ImageView fx:id="acepImageId" fitHeight="104.0" fitWidth="139.0" layoutX="231.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="acepImageId" fitHeight="104.0" fitWidth="139.0" layoutX="259.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../res/3.jpg" />
+         </image></ImageView>
       <Button fx:id="findPackageId" layoutX="224.0" layoutY="236.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="153.0" text="Поиск" />
    </children>
 </AnchorPane>

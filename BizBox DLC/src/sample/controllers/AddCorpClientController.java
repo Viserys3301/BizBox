@@ -32,46 +32,9 @@ import javafx.stage.Stage;
 public class AddCorpClientController {
     String companyId;
     String packageId;
-    boolean showPackage = false;
-    //СОЕДИНЕНИЕ С БАЗОЙ
-    private String instanceName = "10.0.9.4\\hcdbsrv";
-    private String databaseName = "HCDB";
-    private String userName = "sa";
-    private String pass = "Ba#sE5Ke";
-    private String connectionUrl = "jdbc:sqlserver://%1$s;databaseName=%2$s;user=%3$s;password=%4$s;";
-    private String connectionString = String.format(connectionUrl, instanceName, databaseName, userName, pass);
-    Connection con;
 
-    {
-        try {
-            con = DriverManager.getConnection(connectionString);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-
-
-
-    private ObservableList<Company> companyList = FXCollections.observableArrayList();
-    private ObservableList<Packages> packagesList = FXCollections.observableArrayList();
-
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private AnchorPane axeptImageId;
-
-    @FXML
-    private MenuBar MainMenuBar;
-
-    @FXML
-    private Menu QeryMenuID;
+    private static ObservableList<Company> companyList = FXCollections.observableArrayList();
+    private static ObservableList<Packages> packagesList = FXCollections.observableArrayList();
 
     @FXML
     private MenuItem QeryMenuZeroingAmbulatoryId;
@@ -95,16 +58,10 @@ public class AddCorpClientController {
     private MenuItem QeryMenuRecoveryUltrasoundId;
 
     @FXML
-    private Menu CorpMenuId;
-
-    @FXML
     private MenuItem CorpMenuAddCorpId;
 
     @FXML
     private MenuItem CorpMenuZeroingCorpId;
-
-    @FXML
-    private Menu DeleteMenuId;
 
     @FXML
     private MenuItem DeleteMenuDeletPaymentId;
@@ -117,9 +74,6 @@ public class AddCorpClientController {
 
     @FXML
     private MenuItem DeleteMenuRecordReturnId;
-
-    @FXML
-    private Menu OptionsMenuId;
 
     @FXML
     private MenuItem OptionsMenuAccountId;
@@ -135,9 +89,6 @@ public class AddCorpClientController {
 
     @FXML
     private MenuItem OptionsMenuAboutId;
-
-    @FXML
-    private Label InfoQery;
 
     @FXML
     private TextField patiendId;
@@ -530,7 +481,10 @@ public class AddCorpClientController {
             String patId = patiendId.getText();
             String refPaid = refPatiendId.getText();
             packageId = PackageTable.getSelectionModel().getSelectedItem().getId();
-            addCorpClient(patId,refPaid,companyId,packageId);
+            SqlExecutor sqlExecutor = new SqlExecutor();
+            sqlExecutor.addCorpClient(patId,refPaid,companyId,packageId);
+            acepImageId.setVisible(true);
+            sqlExecutor.getAnimation(acepImageId);
         });
 
         findCorpId.setOnAction(event -> {
@@ -541,7 +495,8 @@ public class AddCorpClientController {
             }
             //СТРОКА ПОИСКА
             String companyName = findCorpArea.getText();
-            findCompany(companyName);
+            SqlExecutor sqlExecutor = new SqlExecutor();
+            sqlExecutor.findCompany(companyName);
             CompanyNameId.setCellValueFactory(new PropertyValueFactory<Company, String>("Name"));
             CorpTable.setItems(companyList);
         });
@@ -551,75 +506,23 @@ public class AddCorpClientController {
                 packagesList.clear();
             }
             companyId= CorpTable.getSelectionModel().getSelectedItem().getId();
-
-            findPackages(companyId);
+            SqlExecutor sqlExecutor = new SqlExecutor();
+            sqlExecutor.findPackages(companyId);
             PackageNameId.setCellValueFactory(new PropertyValueFactory<Packages, String>("Name"));
             PackageTable.setItems(packagesList);
         });
 
     }
 
-
-    private void findCompany(String companyName){
-        try {
-            Statement stmt = con.createStatement();
-            String SQL = "SELECT ID,Name FROM Assistance_clients WHERE Name Like '%" + companyName + "%'";
-            ResultSet executeQuery = stmt.executeQuery(SQL);
-
-
-            while (executeQuery.next()) {
-                initData(new Company(executeQuery.getString("ID"),executeQuery.getString("Name")));
-            }
-            stmt.close();
-            //  con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(AddCorpClientController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void findPackages(String companyId){
-        try {
-            Statement stmt = con.createStatement();
-            String SQL = "SELECT ap.ID, ac.Name, ap.Assistance_clients_ID, ap.Name as packageName FROM Assistance_packages ap join Assistance_clients ac on ac.ID = ap.Assistance_clients_ID WHERE ap.Assistance_clients_ID =" + companyId;
-            ResultSet executeQuery = stmt.executeQuery(SQL);
-
-
-            while (executeQuery.next()) {
-                initData2(new Packages(executeQuery.getString("ID"),executeQuery.getString("packageName")));
-            }
-            stmt.close();
-            //  con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(AddCorpClientController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-
-
-    private void initData(Company company) {
+    public static void initData(Company company) {
         companyList.add(company);
     }
 
-    private void initData2(Packages packages) {
+    public static void initData2(Packages packages) {
         packagesList.add(packages);
     }
 
 
-    private void addCorpClient(String patId,String refPaid,String companyId,String packageId){
-
-        try {
-            String SQL = "INSERT INTO Assistance_list (psDatacenter_ID, psDatacenter_REF, Assistance_clients_ID,Assistance_packages_ID, isDiscontinued) VALUES(" + patId + "," + refPaid + "," + companyId + "," + packageId +  "," + "0" +")";
-            Statement stmt = con.createStatement();
-            stmt.executeUpdate(SQL);
-            showPackage = false;
-            stmt.close();
-            con.close();
-            System.out.println("DONE");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-    }
     private void addNewCorpClient(){
 
     }

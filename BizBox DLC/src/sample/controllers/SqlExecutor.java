@@ -501,6 +501,55 @@ public class SqlExecutor extends LogsClass {
         }
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////----{ДОБАВЛЕНИЕ КОРП}----//////////////////////////////////////////////
+    public void findCompany(String companyName){
+        try {
+            Statement stmt = con.createStatement();
+            String SQL = "SELECT ID,Name FROM Assistance_clients WHERE Name Like '%" + companyName + "%'";
+            ResultSet executeQuery = stmt.executeQuery(SQL);
+
+
+            while (executeQuery.next()) {
+                AddCorpClientController.initData(new Company(executeQuery.getString("ID"),executeQuery.getString("Name")));
+            }
+            stmt.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(AddCorpClientController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void findPackages(String companyId){
+        try {
+            Statement stmt = con.createStatement();
+            String SQL = "SELECT ap.ID, ac.Name, ap.Assistance_clients_ID, ap.Name as packageName FROM Assistance_packages ap join Assistance_clients ac on ac.ID = ap.Assistance_clients_ID WHERE ap.Assistance_clients_ID =" + companyId;
+            ResultSet executeQuery = stmt.executeQuery(SQL);
+
+
+            while (executeQuery.next()) {
+                AddCorpClientController.initData2(new Packages(executeQuery.getString("ID"),executeQuery.getString("packageName")));
+            }
+            stmt.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(AddCorpClientController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void addCorpClient(String patId,String refPaid,String companyId,String packageId){
+        try {
+            String SQL = "INSERT INTO Assistance_list (psDatacenter_ID, psDatacenter_REF, Assistance_clients_ID,Assistance_packages_ID, isDiscontinued) VALUES(" + patId + "," + refPaid + "," + companyId + "," + packageId +  "," + "0" +")";
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate(SQL);
+            stmt.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////----{АНИМАЦИЯ}----//////////////////////////////////////////////
+
     public  void getAnimation(ImageView aceptImageId){
         RotateTransition rt = new RotateTransition(Duration.seconds(1),aceptImageId);
         rt.setByAngle(360);
@@ -508,4 +557,5 @@ public class SqlExecutor extends LogsClass {
         rt.setAutoReverse(false);
         rt.play();
     }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
 }

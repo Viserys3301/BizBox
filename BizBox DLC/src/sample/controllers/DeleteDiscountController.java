@@ -19,6 +19,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import sample.LogsClass;
@@ -116,9 +117,11 @@ public class DeleteDiscountController extends LogsClass {
     private ImageView aceptImageId;
     @FXML
     void initialize() {
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        Image imageIcon = new Image("sample/res/fav.png");
+        
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         QeryMenuZeroingAmbulatoryId.setOnAction(event -> {
             DeletDiscountButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
@@ -131,6 +134,7 @@ public class DeleteDiscountController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -146,6 +150,7 @@ public class DeleteDiscountController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -161,6 +166,7 @@ public class DeleteDiscountController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
         QeryMenuChangeAmbulatoryDateId.setOnAction(event -> {
@@ -175,6 +181,7 @@ public class DeleteDiscountController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
         QeryMenuChangeBirthdateId.setOnAction(event -> {
@@ -189,6 +196,7 @@ public class DeleteDiscountController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
         QeryMenuEnabledUltrasoundId.setOnAction(event -> {
@@ -203,6 +211,7 @@ public class DeleteDiscountController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
         QeryMenuRecoveryUltrasoundId.setOnAction(event -> {
@@ -217,6 +226,7 @@ public class DeleteDiscountController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -233,6 +243,7 @@ public class DeleteDiscountController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -248,6 +259,7 @@ public class DeleteDiscountController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -264,6 +276,7 @@ public class DeleteDiscountController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -280,6 +293,7 @@ public class DeleteDiscountController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -295,6 +309,7 @@ public class DeleteDiscountController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -310,6 +325,7 @@ public class DeleteDiscountController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -326,6 +342,7 @@ public class DeleteDiscountController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -341,6 +358,7 @@ public class DeleteDiscountController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -356,6 +374,7 @@ public class DeleteDiscountController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -371,6 +390,7 @@ public class DeleteDiscountController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -386,6 +406,7 @@ public class DeleteDiscountController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

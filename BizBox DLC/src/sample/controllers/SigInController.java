@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import javax.swing.*;
@@ -36,6 +37,8 @@ public class SigInController {
 
     @FXML
     void initialize() {
+
+
         SignInButton.setOnAction(event -> {
             if(licence){
                 String userLogin = LoginArea.getText();
@@ -62,6 +65,8 @@ public class SigInController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            Image imageIcon = new Image("sample/res/fav.png");
+            stage.getIcons().add(imageIcon);
             stage.show();
         }
         else {
@@ -69,9 +74,8 @@ public class SigInController {
         }
     }
     private Boolean checkLogAndPassInDB(String userLogin,String userPassword){
-//       if(userLogin.equalsIgnoreCase(login) && userPassword.equalsIgnoreCase(password)){
-//           return true;
-//       }else return false;
-        return true;
+       if(userLogin.equalsIgnoreCase(login) && userPassword.equalsIgnoreCase(password)){
+           return true;
+       }else return false;
     }
 }

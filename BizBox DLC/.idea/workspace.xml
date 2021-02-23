@@ -7,23 +7,65 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/untitled39.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled39/sample/controllers/SqlExecutor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled39/sample/controllers/SqlExecutor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled39/sample/controllers/ZeroingAmbulatoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled39/sample/controllers/ZeroingAmbulatoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled39/untitled39.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled39/untitled39.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled39/untitled39.jnlp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled39/untitled39.jnlp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled39/Info/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled39/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled39/META-INF/untitled39.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled39/sample/controllers/ChangeAmbulatoryDateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled39/sample/controllers/ChangeAmbulatoryDateController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled39/sample/controllers/ChangeBirthdateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled39/sample/controllers/ChangeBirthdateController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled39/sample/controllers/ChangeDoctorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled39/sample/controllers/ChangeDoctorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled39/sample/controllers/ChangePaymentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled39/sample/controllers/ChangePaymentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled39/sample/controllers/DeletAmbulatoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled39/sample/controllers/DeletAmbulatoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled39/sample/controllers/DeletPaymentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled39/sample/controllers/DeletPaymentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled39/sample/controllers/DeleteDiscountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled39/sample/controllers/DeleteDiscountController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled39/sample/controllers/EnabledUltrasoundController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled39/sample/controllers/EnabledUltrasoundController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled39/sample/controllers/RecordReturnController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled39/sample/controllers/RecordReturnController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled39/sample/controllers/RecoveryUltrasoundController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled39/sample/controllers/RecoveryUltrasoundController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled39/sample/controllers/ZeroingCorpClientController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled39/sample/controllers/ZeroingCorpClientController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled39/sample/fxmlFiles/About.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled39/sample/fxmlFiles/About.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled39/sample/fxmlFiles/Account.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled39/sample/fxmlFiles/Account.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled39/sample/fxmlFiles/ChangeUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled39/sample/fxmlFiles/ChangeUser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled39/sample/fxmlFiles/CheckLogs.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled39/sample/fxmlFiles/CheckLogs.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled39/sample/fxmlFiles/DeletAmbulatory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled39/sample/fxmlFiles/DeletAmbulatory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled39/sample/fxmlFiles/Rebook.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled39/sample/fxmlFiles/Rebook.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled39/sample/fxmlFiles/RecordReturn.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled39/sample/fxmlFiles/RecordReturn.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled39/sample/fxmlFiles/Users.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled39/sample/fxmlFiles/Users.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Info/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controllers/AboutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/AboutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controllers/AccountContoller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/AccountContoller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controllers/AddCorpClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/AddCorpClientController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/controllers/ChangeAmbulatoryDateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/ChangeAmbulatoryDateController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/controllers/ChangeBirthdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/ChangeBirthdateController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/controllers/ChangeDoctorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/ChangeDoctorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/controllers/ChangePaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/ChangePaymentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controllers/CheckLogsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/CheckLogsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/controllers/DeletAmbulatoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/DeletAmbulatoryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/controllers/DeletPaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/DeletPaymentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/controllers/DeleteDiscountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/DeleteDiscountController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/controllers/EnabledUltrasoundController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/EnabledUltrasoundController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controllers/RebookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/RebookController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/controllers/RecordReturnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/RecordReturnController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/controllers/RecoveryUltrasoundController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/RecoveryUltrasoundController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/controllers/SqlExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/SqlExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controllers/SigInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/SigInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controllers/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/UsersController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/controllers/ZeroingAmbulatoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/ZeroingAmbulatoryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/controllers/ZeroingCorpClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/ZeroingCorpClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/fxmlFiles/About.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/fxmlFiles/About.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/fxmlFiles/Account.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/fxmlFiles/Account.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/fxmlFiles/ChangeUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/fxmlFiles/ChangeUser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/fxmlFiles/CheckLogs.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/fxmlFiles/CheckLogs.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/fxmlFiles/DeletAmbulatory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/fxmlFiles/DeletAmbulatory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/fxmlFiles/Rebook.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/fxmlFiles/Rebook.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/fxmlFiles/RecordReturn.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/fxmlFiles/RecordReturn.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/fxmlFiles/StartFrame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/fxmlFiles/StartFrame.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/fxmlFiles/Users.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/fxmlFiles/Users.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,11 +155,12 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Info" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="last_opened_file_path" value="E:/Faseit" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="project.structure.side.proportion" value="0.20574713" />
     <property name="recentsLimit" value="5" />
+    <property name="settings.editor.selected.configurable" value="project.propDebugger" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -151,9 +194,10 @@
       <Port>5050</Port>
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="sample.Main" />
       <module name="untitled39" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="sample.controllers.*" />
@@ -226,14 +270,18 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="414" y="194" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1614066364180">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="414" y="194" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1614066364180" />
     <state x="765" y="223" key="#com.intellij.ide.util.MemberChooser" timestamp="1613732973169">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="765" y="223" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1613732973169" />
-    <state x="2495" y="268" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1613555223771">
-      <screen x="1920" y="0" width="1600" height="900" />
+    <state x="690" y="322" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1614067150879">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="690" y="322" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1613554407159" />
+    <state x="690" y="322" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1614067150879" />
     <state x="2495" y="268" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1613555223771" />
     <state x="690" y="286" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1612770441900">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -243,33 +291,33 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="690" y="286" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1612782055435" />
-    <state x="740" y="280" key="FileChooserDialogImpl" timestamp="1613623358807">
+    <state x="740" y="280" key="FileChooserDialogImpl" timestamp="1614067489985">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="740" y="280" key="FileChooserDialogImpl/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1613623358807" />
+    <state x="740" y="280" key="FileChooserDialogImpl/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1614067489985" />
     <state x="782" y="438" key="Github.CreateGistDialog" timestamp="1612772687395">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="782" y="438" key="Github.CreateGistDialog/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1612772687395" />
-    <state width="1876" height="274" key="GridCell.Tab.0.bottom" timestamp="1614061456281">
+    <state width="1876" height="470" key="GridCell.Tab.0.bottom" timestamp="1614074588612">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1876" height="274" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1614061456281" />
+    <state width="1876" height="470" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1614074588612" />
     <state width="1556" height="465" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1613559571626" />
-    <state width="1876" height="274" key="GridCell.Tab.0.center" timestamp="1614061456280">
+    <state width="1876" height="470" key="GridCell.Tab.0.center" timestamp="1614074588612">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1876" height="274" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1614061456280" />
+    <state width="1876" height="470" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1614074588612" />
     <state width="1556" height="465" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1613559571626" />
-    <state width="1876" height="274" key="GridCell.Tab.0.left" timestamp="1614061456280">
+    <state width="1876" height="470" key="GridCell.Tab.0.left" timestamp="1614074588612">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1876" height="274" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1614061456280" />
+    <state width="1876" height="470" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1614074588612" />
     <state width="1556" height="465" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1613559571626" />
-    <state width="1876" height="274" key="GridCell.Tab.0.right" timestamp="1614061456280">
+    <state width="1876" height="470" key="GridCell.Tab.0.right" timestamp="1614074588612">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1876" height="274" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1614061456280" />
+    <state width="1876" height="470" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1614074588612" />
     <state width="1556" height="465" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1613559571626" />
     <state width="1876" height="358" key="GridCell.Tab.1.bottom" timestamp="1613990606606">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -291,19 +339,19 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="789" y="250" key="RollbackChangesDialog/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1613628548131" />
-    <state x="440" y="113" key="SettingsEditor" timestamp="1613625031605">
+    <state x="440" y="113" key="SettingsEditor" timestamp="1614067635130">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="440" y="113" key="SettingsEditor/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1613625031605" />
+    <state x="440" y="113" key="SettingsEditor/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1614067635130" />
     <state x="2287" y="47" key="SettingsEditor/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1613555953580" />
-    <state x="764" y="407" key="classpath-attribute-editor" timestamp="1613554434756">
+    <state x="764" y="407" key="classpath-attribute-editor" timestamp="1614063271433">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="764" y="407" key="classpath-attribute-editor/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1613554434756" />
-    <state x="655" y="362" key="com.intellij.ide.util.TipDialog" timestamp="1614049722298">
+    <state x="764" y="407" key="classpath-attribute-editor/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1614063271433" />
+    <state x="655" y="362" key="com.intellij.ide.util.TipDialog" timestamp="1614068462331">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="655" y="362" key="com.intellij.ide.util.TipDialog/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1614049722298" />
+    <state x="655" y="362" key="com.intellij.ide.util.TipDialog/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1614068462331" />
     <state x="2466" y="302" key="com.intellij.ide.util.TipDialog/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1613558004315" />
     <state x="342" y="241" key="new project wizard" timestamp="1613119352147">
       <screen x="0" y="0" width="1920" height="1080" />

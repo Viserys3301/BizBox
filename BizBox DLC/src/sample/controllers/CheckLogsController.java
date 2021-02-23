@@ -20,6 +20,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import javax.swing.*;
@@ -141,13 +142,15 @@ public class CheckLogsController {
 
     @FXML
     void initialize() {
+        Image imageIcon = new Image("sample/res/fav.png");
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         QeryMenuZeroingAmbulatoryId.setOnAction(event -> {
-            upLoadLogsButton.getScene().getWindow().hide();
+            FindLogsButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingAmbulatory.fxml"));
             try {
@@ -158,11 +161,12 @@ public class CheckLogsController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
         QeryMenuChangePaymentId.setOnAction(event -> {
-            upLoadLogsButton.getScene().getWindow().hide();
+            FindLogsButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangePayment.fxml"));
             try {
@@ -173,11 +177,12 @@ public class CheckLogsController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
         QeryMenuChangeDoctorId.setOnAction(event -> {
-            upLoadLogsButton.getScene().getWindow().hide();
+            FindLogsButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeDoctor.fxml"));
             try {
@@ -188,10 +193,11 @@ public class CheckLogsController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
         QeryMenuChangeAmbulatoryDateId.setOnAction(event -> {
-            upLoadLogsButton.getScene().getWindow().hide();
+            FindLogsButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeAmbulatoryDate.fxml"));
             try {
@@ -202,10 +208,11 @@ public class CheckLogsController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
         QeryMenuChangeBirthdateId.setOnAction(event -> {
-            upLoadLogsButton.getScene().getWindow().hide();
+            FindLogsButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeBirthdate.fxml"));
             try {
@@ -216,10 +223,11 @@ public class CheckLogsController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
         QeryMenuEnabledUltrasoundId.setOnAction(event -> {
-            upLoadLogsButton.getScene().getWindow().hide();
+            FindLogsButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/EnabledUltrasound.fxml"));
             try {
@@ -230,10 +238,11 @@ public class CheckLogsController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
         QeryMenuRecoveryUltrasoundId.setOnAction(event -> {
-            upLoadLogsButton.getScene().getWindow().hide();
+            FindLogsButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/RecoveryUltrasound.fxml"));
             try {
@@ -244,12 +253,13 @@ public class CheckLogsController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         CorpMenuAddCorpId.setOnAction(event -> {
-            upLoadLogsButton.getScene().getWindow().hide();
+            FindLogsButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/AddCorpClient.fxml"));
             try {
@@ -260,11 +270,12 @@ public class CheckLogsController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
         CorpMenuZeroingCorpId.setOnAction(event -> {
-            upLoadLogsButton.getScene().getWindow().hide();
+            FindLogsButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingCorpClient.fxml"));
             try {
@@ -275,12 +286,13 @@ public class CheckLogsController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         DeleteMenuDeletAmbulatoryId.setOnAction(event -> {
-            upLoadLogsButton.getScene().getWindow().hide();
+            FindLogsButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeletAmbulatory.fxml"));
             try {
@@ -291,12 +303,13 @@ public class CheckLogsController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
 
         DeleteMenuDeletDiscountId.setOnAction(event -> {
-            upLoadLogsButton.getScene().getWindow().hide();
+            FindLogsButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeleteDiscount.fxml"));
             try {
@@ -307,11 +320,12 @@ public class CheckLogsController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
         DeleteMenuDeletPaymentId.setOnAction(event -> {
-            upLoadLogsButton.getScene().getWindow().hide();
+            FindLogsButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeletPayment.fxml"));
             try {
@@ -322,11 +336,12 @@ public class CheckLogsController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
         DeleteMenuRecordReturnId.setOnAction(event -> {
-            upLoadLogsButton.getScene().getWindow().hide();
+            FindLogsButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/RecordReturn.fxml"));
             try {
@@ -337,12 +352,13 @@ public class CheckLogsController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         OptionsMenuAccountId.setOnAction(event -> {
-            upLoadLogsButton.getScene().getWindow().hide();
+            FindLogsButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/Account.fxml"));
             try {
@@ -353,11 +369,12 @@ public class CheckLogsController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
         OptionsMenuLogsId.setOnAction(event -> {
-            upLoadLogsButton.getScene().getWindow().hide();
+            FindLogsButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/CheckLogs.fxml"));
             try {
@@ -368,11 +385,12 @@ public class CheckLogsController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
         OptionsMenuUsersId.setOnAction(event -> {
-            upLoadLogsButton.getScene().getWindow().hide();
+            FindLogsButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/Users.fxml"));
             try {
@@ -383,11 +401,12 @@ public class CheckLogsController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
         OptionsMenuRebookId.setOnAction(event -> {
-            upLoadLogsButton.getScene().getWindow().hide();
+            FindLogsButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/Rebook.fxml"));
             try {
@@ -398,11 +417,12 @@ public class CheckLogsController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
         OptionsMenuAboutId.setOnAction(event -> {
-            upLoadLogsButton.getScene().getWindow().hide();
+            FindLogsButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/fxmlFiles/About.fxml"));
             try {
@@ -413,6 +433,7 @@ public class CheckLogsController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

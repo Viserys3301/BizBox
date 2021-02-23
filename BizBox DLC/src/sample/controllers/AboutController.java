@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class AboutController {
@@ -98,6 +99,7 @@ public class AboutController {
 
     @FXML
     void initialize() {
+        Image imageIcon = new Image("sample/res/fav.png");
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -114,6 +116,7 @@ public class AboutController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -129,6 +132,7 @@ public class AboutController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -144,6 +148,7 @@ public class AboutController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
         QeryMenuChangeAmbulatoryDateId.setOnAction(event -> {
@@ -158,6 +163,7 @@ public class AboutController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
         QeryMenuChangeBirthdateId.setOnAction(event -> {
@@ -172,6 +178,7 @@ public class AboutController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
         QeryMenuEnabledUltrasoundId.setOnAction(event -> {
@@ -186,6 +193,7 @@ public class AboutController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
         QeryMenuRecoveryUltrasoundId.setOnAction(event -> {
@@ -200,6 +208,7 @@ public class AboutController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -216,6 +225,7 @@ public class AboutController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -231,6 +241,7 @@ public class AboutController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -247,6 +258,7 @@ public class AboutController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -263,6 +275,7 @@ public class AboutController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -278,6 +291,7 @@ public class AboutController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -293,6 +307,7 @@ public class AboutController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -309,6 +324,7 @@ public class AboutController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -324,6 +340,7 @@ public class AboutController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -339,6 +356,7 @@ public class AboutController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -354,6 +372,7 @@ public class AboutController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -369,6 +388,7 @@ public class AboutController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

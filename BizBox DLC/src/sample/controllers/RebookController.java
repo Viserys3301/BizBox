@@ -16,6 +16,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import javax.swing.*;
@@ -107,6 +108,8 @@ public class RebookController   {
 
     @FXML
     void initialize() {
+
+        Image imageIcon = new Image("sample/res/fav.png");
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -124,6 +127,7 @@ public class RebookController   {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -139,6 +143,7 @@ public class RebookController   {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -154,6 +159,7 @@ public class RebookController   {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
         QeryMenuChangeAmbulatoryDateId.setOnAction(event -> {
@@ -168,6 +174,7 @@ public class RebookController   {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
         QeryMenuChangeBirthdateId.setOnAction(event -> {
@@ -182,6 +189,7 @@ public class RebookController   {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
         QeryMenuEnabledUltrasoundId.setOnAction(event -> {
@@ -196,6 +204,7 @@ public class RebookController   {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
         QeryMenuRecoveryUltrasoundId.setOnAction(event -> {
@@ -210,6 +219,7 @@ public class RebookController   {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -226,6 +236,7 @@ public class RebookController   {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -241,6 +252,7 @@ public class RebookController   {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -257,6 +269,7 @@ public class RebookController   {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -273,6 +286,7 @@ public class RebookController   {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -288,6 +302,7 @@ public class RebookController   {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -303,6 +318,7 @@ public class RebookController   {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -319,6 +335,7 @@ public class RebookController   {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -334,6 +351,7 @@ public class RebookController   {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -349,6 +367,7 @@ public class RebookController   {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -364,6 +383,7 @@ public class RebookController   {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -379,6 +399,7 @@ public class RebookController   {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

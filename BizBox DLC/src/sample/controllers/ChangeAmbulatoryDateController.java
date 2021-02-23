@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -160,7 +161,7 @@ public class ChangeAmbulatoryDateController extends LogsClass {
 
     @FXML
     void initialize() {
-
+        Image imageIcon = new Image("sample/res/fav.png");
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////-----ПЕРЕКЛЮЧЕНИЕ ОКОН-----//////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -177,6 +178,7 @@ public class ChangeAmbulatoryDateController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -192,6 +194,7 @@ public class ChangeAmbulatoryDateController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -207,6 +210,7 @@ public class ChangeAmbulatoryDateController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
         QeryMenuChangeAmbulatoryDateId.setOnAction(event -> {
@@ -221,6 +225,7 @@ public class ChangeAmbulatoryDateController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
         QeryMenuChangeBirthdateId.setOnAction(event -> {
@@ -235,6 +240,7 @@ public class ChangeAmbulatoryDateController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
         QeryMenuEnabledUltrasoundId.setOnAction(event -> {
@@ -249,6 +255,7 @@ public class ChangeAmbulatoryDateController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
         QeryMenuRecoveryUltrasoundId.setOnAction(event -> {
@@ -263,6 +270,7 @@ public class ChangeAmbulatoryDateController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -279,6 +287,7 @@ public class ChangeAmbulatoryDateController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -294,6 +303,7 @@ public class ChangeAmbulatoryDateController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -310,6 +320,7 @@ public class ChangeAmbulatoryDateController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -326,6 +337,7 @@ public class ChangeAmbulatoryDateController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -341,6 +353,7 @@ public class ChangeAmbulatoryDateController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -356,6 +369,7 @@ public class ChangeAmbulatoryDateController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -372,6 +386,7 @@ public class ChangeAmbulatoryDateController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -387,6 +402,7 @@ public class ChangeAmbulatoryDateController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -402,6 +418,7 @@ public class ChangeAmbulatoryDateController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -417,6 +434,7 @@ public class ChangeAmbulatoryDateController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 
@@ -432,6 +450,7 @@ public class ChangeAmbulatoryDateController extends LogsClass {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
             stage.show();
         });
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

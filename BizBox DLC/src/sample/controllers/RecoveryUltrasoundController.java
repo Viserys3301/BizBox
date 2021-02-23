@@ -1,11 +1,7 @@
 package sample.controllers;
 
 import java.io.IOException;
-import java.net.URL;
-import java.sql.*;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,31 +24,10 @@ import javafx.stage.Stage;
 public class RecoveryUltrasoundController {
 
 
-    //СОЕДИНЕНИЕ С БАЗОЙ
-    private String instanceName = "10.0.9.4\\hcdbsrv";
-    private String databaseName = "HCDB";
-    private String userName = "sa";
-    private String pass = "Ba#sE5Ke";
-    private String connectionUrl = "jdbc:sqlserver://%1$s;databaseName=%2$s;user=%3$s;password=%4$s;";
-    private String connectionString = String.format(connectionUrl, instanceName, databaseName, userName, pass);
-    Connection con;
-
-    {
-        try {
-            con = DriverManager.getConnection(connectionString);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
 
-    private ObservableList<Services> servicesData = FXCollections.observableArrayList();
+    private static ObservableList<Services> servicesData = FXCollections.observableArrayList();
 
-    @FXML
-    private MenuBar MainMenuBar;
-
-    @FXML
-    private Menu QeryMenuID;
 
     @FXML
     private MenuItem QeryMenuZeroingAmbulatoryId;
@@ -76,16 +51,10 @@ public class RecoveryUltrasoundController {
     private MenuItem QeryMenuRecoveryUltrasoundId;
 
     @FXML
-    private Menu CorpMenuId;
-
-    @FXML
     private MenuItem CorpMenuAddCorpId;
 
     @FXML
     private MenuItem CorpMenuZeroingCorpId;
-
-    @FXML
-    private Menu DeleteMenuId;
 
     @FXML
     private MenuItem DeleteMenuDeletPaymentId;
@@ -98,9 +67,6 @@ public class RecoveryUltrasoundController {
 
     @FXML
     private MenuItem DeleteMenuRecordReturnId;
-
-    @FXML
-    private Menu OptionsMenuId;
 
     @FXML
     private MenuItem OptionsMenuAccountId;
@@ -116,9 +82,6 @@ public class RecoveryUltrasoundController {
 
     @FXML
     private MenuItem OptionsMenuAboutId;
-
-    @FXML
-    private Label InfoQery;
 
     @FXML
     private TextField TranIdArea;
@@ -430,7 +393,9 @@ public class RecoveryUltrasoundController {
 
         RecoveryUltrasoundButton.setOnAction(event -> {
             String servicesId= UltrasoundTable.getSelectionModel().getSelectedItem().getId();
-            recoveryUltrasound(servicesId);
+            SqlExecutor sqlExecutor = new SqlExecutor();
+            sqlExecutor.recoveryUltrasound(servicesId);
+            aceptImageId.setVisible(true);
         });
 
         FindServicesButton.setOnAction(event -> {
@@ -440,8 +405,8 @@ public class RecoveryUltrasoundController {
             }
             //СТРОКА ПОИСКА
             String servicesName = TranIdArea.getText();
-
-            findServices(servicesName);
+            SqlExecutor sqlExecutor = new SqlExecutor();
+            sqlExecutor.findServices(servicesName);
 
 
             UltrasoundNameId.setCellValueFactory(new PropertyValueFactory<Services, String>("Name"));
@@ -450,43 +415,7 @@ public class RecoveryUltrasoundController {
         });
     }
 
-    private void recoveryUltrasound(String servicesId){
-
-        String SQL  = "UPDATE psExamResultMstr SET withresultflag = 0 WHERE PK_psExamResultMstr ="+servicesId;
-
-
-        Statement stmt = null;
-        try {
-            stmt = con.createStatement();
-            stmt.executeUpdate(SQL);
-            aceptImageId.setVisible(true);
-            stmt.close();
-            con.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-
-
-    }
-    private void findServices(String servicesName){
-        try {
-            Statement stmt = con.createStatement();
-            String SQL  = "SELECT dbo.udf_GetItemDescription(FK_iwItems) as servicesName, PK_psExamResultMstr FROM psExamResultMstr WHERE FK_TRXNO =" + servicesName;
-            ResultSet executeQuery = stmt.executeQuery(SQL);
-
-
-            while (executeQuery.next()) {
-                initData(new Services(executeQuery.getString("servicesName"),executeQuery.getString("PK_psExamResultMstr")));
-            }
-
-            stmt.close();
-            //  con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    private void initData(Services services) {
+    public static void initData(Services services) {
         servicesData.add(services);
     }
 

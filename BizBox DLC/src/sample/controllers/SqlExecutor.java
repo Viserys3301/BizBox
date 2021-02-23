@@ -64,6 +64,8 @@ public class SqlExecutor extends LogsClass {
             Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     ////////////////////////////////////----{УДАЛЕНИЕ СКИДКИ}----//////////////////////////////////////////////
     public void deletDiscount(String tranId,String regName,String data){
         String SQL = "SELECT PK_psPatledgers,billtrancode FROM psPatLedgers WHERE FK_psPatRegisters = " + tranId + " and billtrancode ='DC0004'";
@@ -190,6 +192,8 @@ public class SqlExecutor extends LogsClass {
             stmt.executeUpdate(SQL_4);
             stmt.executeUpdate(SQL_5);
             changeAmbulatoryDateLogs(tranId,regName,data,newDate,stmt);
+            stmt.close();
+            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -260,6 +264,8 @@ public class SqlExecutor extends LogsClass {
             }
             String SQL_2 = "UPDATE psExamResultMstr SET isCheckedOut = 0 WHERE PK_psExamResultMstr = " + ultrasoundId;
             stmt.executeUpdate(SQL_2);
+            stmt.close();
+            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -283,6 +289,118 @@ public class SqlExecutor extends LogsClass {
 
     ////////////////////////////////////----{ИЗМЕНЕНИЕ ВРАЧА}----//////////////////////////////////////////////
     public void findDoctor(String DoctorName) throws SQLException {
-
+        try {
+            Statement stmt = con.createStatement();
+            String SQL = "select dbo.udf_GetFullName(PK_appsysUsers) as DoctorName,PK_appsysUsers,usercode,lockAIS from appsysusers where dbo.udf_GetFullName(PK_appsysUsers) Like '%" + DoctorName + "%'";
+            ResultSet executeQuery = stmt.executeQuery(SQL);
+            while (executeQuery.next()) {
+                ChangeDoctorController.initData(new Doctors(executeQuery.getString("PK_appsysUsers"),executeQuery.getString("DoctorName")));
+            }
+            stmt.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+
+    public void changeDoctroe(String tranID,String doctorID,String regName,String data){
+        Statement stmt = null;
+        try {
+            stmt = con.createStatement();
+            String SQL = "UPDATE psPatitem SET FK_emdDoctorsREQ = " +  doctorID + " where FK_TRXNO =" + tranID;
+            stmt.executeUpdate(SQL);
+            //Логи
+            changeDoctorLogs(regName,data,tranID,doctorID,stmt);
+            stmt.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////----{ИЗМЕНЕНИЕ ПЛАТЕЖА}----//////////////////////////////////////////////
+    public void findPayment(String patName){
+        try {
+            Statement stmt = con.createStatement();
+            String SQL = "SELECT payername, cashamount, cardamount,PK_TRXNO FROM faCRMstr WHERE payername like" + "'" + patName + "%'";
+            ResultSet executeQuery = stmt.executeQuery(SQL);
+
+
+            while (executeQuery.next()) {
+                ChangePaymentController.initData(new Payments(executeQuery.getString("payername"),
+                        executeQuery.getString("cashamount"),
+                        executeQuery.getString("cardamount"),
+                        executeQuery.getString("PK_TRXNO")));
+            }
+
+            stmt.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void changePayment(String tranId,boolean isCard,String regName,String data){
+        Statement stmt = null;
+        try {
+            stmt = con.createStatement();
+            if(isCard){
+                //НАЛ НА БЕЗНАЛ
+                String SQL = "UPDATE faCRMstr SET cardamount = cashamount,cashamount = 0  WHERE PK_TRXNO =" + tranId;
+                stmt.executeUpdate(SQL);
+            }
+            else if(!isCard){
+                //БЕЗНАЛ НА НАЛ
+                String SQL = "UPDATE faCRMstr SET cashamount = cardamount,cardamount = 0  WHERE PK_TRXNO =" + tranId;
+                stmt.executeUpdate(SQL);
+            }
+
+
+            //Логи
+            changePaymentLogs(regName,data,tranId,stmt);
+
+
+            stmt.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////----{ВОЗВРАТ УЗИ}----//////////////////////////////////////////////
+    public void findServices(String servicesName){
+        try {
+            Statement stmt = con.createStatement();
+            String SQL  = "SELECT dbo.udf_GetItemDescription(FK_iwItems) as servicesName, PK_psExamResultMstr FROM psExamResultMstr WHERE FK_TRXNO =" + servicesName;
+            ResultSet executeQuery = stmt.executeQuery(SQL);
+
+
+            while (executeQuery.next()) {
+                RecoveryUltrasoundController.initData(new Services(executeQuery.getString("servicesName"),executeQuery.getString("PK_psExamResultMstr")));
+            }
+
+            stmt.close();
+              con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void recoveryUltrasound(String servicesId){
+        String SQL  = "UPDATE psExamResultMstr SET withresultflag = 0 WHERE PK_psExamResultMstr ="+servicesId;
+        Statement stmt = null;
+        try {
+            stmt = con.createStatement();
+            stmt.executeUpdate(SQL);
+
+            stmt.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////----{ЛОГИ}----//////////////////////////////////////////////
 }

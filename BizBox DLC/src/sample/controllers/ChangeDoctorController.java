@@ -29,44 +29,11 @@ import javax.xml.soap.Text;
 public class ChangeDoctorController extends LogsClass   {
 
 
-
-
-
     //ID РЕГИСТРАТОРА
     private String regName;
-    private String DockChangeVar="'Изменение врача'";
+    private String data="'Изменение врача'";
 
-    //СОЕДИНЕНИЕ С БАЗОЙ
-    private String instanceName = "10.0.9.4\\hcdbsrv";
-    private String databaseName = "HCDB";
-    private String userName = "sa";
-    private String pass = "Ba#sE5Ke";
-    private String connectionUrl = "jdbc:sqlserver://%1$s;databaseName=%2$s;user=%3$s;password=%4$s;";
-    private String connectionString = String.format(connectionUrl, instanceName, databaseName, userName, pass);
-    Connection con;
-    {
-        try {
-            con = DriverManager.getConnection(connectionString);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    private ObservableList<Doctors> usersData = FXCollections.observableArrayList();
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private AnchorPane ChangeDoctorPane;
-
-    @FXML
-    private MenuBar MainMenuBar;
-
-    @FXML
-    private Menu QeryMenuID;
+    private static ObservableList<Doctors> usersData = FXCollections.observableArrayList();
 
     @FXML
     private MenuItem QeryMenuZeroingAmbulatoryId;
@@ -90,9 +57,6 @@ public class ChangeDoctorController extends LogsClass   {
     private MenuItem QeryMenuRecoveryUltrasoundId;
 
     @FXML
-    private Menu CorpMenuId;
-
-    @FXML
     private MenuItem CorpMenuAddCorpId;
 
     @FXML
@@ -114,9 +78,6 @@ public class ChangeDoctorController extends LogsClass   {
     private MenuItem DeleteMenuRecordReturnId;
 
     @FXML
-    private Menu OptionsMenuId;
-
-    @FXML
     private MenuItem OptionsMenuAccountId;
 
     @FXML
@@ -133,9 +94,6 @@ public class ChangeDoctorController extends LogsClass   {
 
     @FXML
     private TextField TranIdArea;
-
-    @FXML
-    private Label InfoQery;
 
     @FXML
     private Button changeDoctorButton;
@@ -507,7 +465,12 @@ public class ChangeDoctorController extends LogsClass   {
             }
             //СТРОКА ПОИСКА
             String DoctorName = FindDocTextFild.getText();
-            findDoctor(DoctorName);
+            SqlExecutor sqlExecutor = new SqlExecutor();
+            try {
+                sqlExecutor.findDoctor(DoctorName);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             DocTablesCollumID.setCellValueFactory(new PropertyValueFactory<Doctors, String>("Name"));
             DocTablesCollumName.setCellValueFactory(new PropertyValueFactory<Doctors, String>("ID"));
             DocTables.setItems(usersData);
@@ -516,7 +479,9 @@ public class ChangeDoctorController extends LogsClass   {
         changeDoctorButton.setOnAction(event -> {
             String tranID = TranIdArea.getText();
             String doctorID= DocTables.getSelectionModel().getSelectedItem().getID();
-            changeDoctroe(tranID,doctorID,regName);
+            SqlExecutor sqlExecutor = new SqlExecutor();
+            sqlExecutor.changeDoctroe(tranID,doctorID,regName,data);
+            aceptImageId.setVisible(true);
         });
     }
     private void onButton(String regName){
@@ -528,38 +493,7 @@ public class ChangeDoctorController extends LogsClass   {
 
     }
 
-    public void initData(Doctors doctors) {
+    public static void initData(Doctors doctors) {
         usersData.add(doctors);
-    }
-
-    private void changeDoctroe(String tranID,String doctorID,String regName)   {
-        Statement stmt = null;
-        try {
-            stmt = con.createStatement();
-            String SQL = "UPDATE psPatitem SET FK_emdDoctorsREQ = " +  doctorID + " where FK_TRXNO =" + tranID;
-            stmt.executeUpdate(SQL);
-            //Логи
-            changeDoctorLogs(regName,DockChangeVar,tranID,doctorID,stmt);
-            aceptImageId.setVisible(true);
-            stmt.close();
-            con.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    private void findDoctor(String DoctorName ) {
-        try {
-            Statement stmt = con.createStatement();
-            String SQL = "select dbo.udf_GetFullName(PK_appsysUsers) as DoctorName,PK_appsysUsers,usercode,lockAIS from appsysusers where dbo.udf_GetFullName(PK_appsysUsers) Like '%" + DoctorName + "%'";
-            ResultSet executeQuery = stmt.executeQuery(SQL);
-            while (executeQuery.next()) {
-                initData(new Doctors(executeQuery.getString("PK_appsysUsers"),executeQuery.getString("DoctorName")));
-            }
-            stmt.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 }

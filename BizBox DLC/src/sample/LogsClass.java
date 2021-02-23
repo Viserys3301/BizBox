@@ -21,7 +21,6 @@ public class LogsClass {
         stmt.executeUpdate("INSERT INTO RegistryLogs (RegID,[Data],[Date],TranID_PK_psPatledgers) VALUES (" +
                 "'" + regName + "'" + " ," + data + "," + "'" + dateTime + "'" + "," + tranID + ")");
     }
-
     //УДАЛЕНИЕ СКИДКИ
     protected void deletDiscountLogs(String regName,String tranID,String data,Statement stmt)  throws SQLException{
         stmt.executeUpdate("INSERT INTO RegistryLogs (RegID,[Data],[Date],TranID_PK_psPatledgers) VALUES (" +

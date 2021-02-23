@@ -2,10 +2,7 @@ package sample.controllers;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.*;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,7 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import sample.LogsClass;
 
-import javax.xml.soap.Text;
+
 
 public class ChangePaymentController extends LogsClass {
     private String regName = "";
@@ -28,38 +25,11 @@ public class ChangePaymentController extends LogsClass {
 
     private String data="'Изменение платежа'";
 
-    //СОЕДИНЕНИЕ С БАЗОЙ
-    private String instanceName = "10.0.9.4\\hcdbsrv";
-    private String databaseName = "HCDB";
-    private String userName = "sa";
-    private String pass = "Ba#sE5Ke";
-    private String connectionUrl = "jdbc:sqlserver://%1$s;databaseName=%2$s;user=%3$s;password=%4$s;";
-    private String connectionString = String.format(connectionUrl, instanceName, databaseName, userName, pass);
-    Connection con;
-
-    {
-        try {
-            con = DriverManager.getConnection(connectionString);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
 
 
-    private ObservableList<Payments> paymentData = FXCollections.observableArrayList();
+    private static ObservableList<Payments> paymentData = FXCollections.observableArrayList();
 
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private MenuBar MainMenuBar;
-
-    @FXML
-    private Menu QeryMenuID;
 
     @FXML
     private MenuItem QeryMenuZeroingAmbulatoryId;
@@ -83,16 +53,10 @@ public class ChangePaymentController extends LogsClass {
     private MenuItem QeryMenuRecoveryUltrasoundId;
 
     @FXML
-    private Menu CorpMenuId;
-
-    @FXML
     private MenuItem CorpMenuAddCorpId;
 
     @FXML
     private MenuItem CorpMenuZeroingCorpId;
-
-    @FXML
-    private Menu DeleteMenuId;
 
     @FXML
     private MenuItem DeleteMenuDeletPaymentId;
@@ -105,9 +69,6 @@ public class ChangePaymentController extends LogsClass {
 
     @FXML
     private MenuItem DeleteMenuRecordReturnId;
-
-    @FXML
-    private Menu OptionsMenuId;
 
     @FXML
     private MenuItem OptionsMenuAccountId;
@@ -129,9 +90,6 @@ public class ChangePaymentController extends LogsClass {
 
     @FXML
     private Button changePaymentButton;
-
-    @FXML
-    private Label InfoQery;
 
     @FXML
     private RadioButton ChangeToCash;
@@ -501,8 +459,8 @@ public class ChangePaymentController extends LogsClass {
             }
             //СТРОКА ПОИСКА
             String patName = TranIdArea.getText();
-
-            findPayment(patName);
+            SqlExecutor sqlExecutor = new SqlExecutor();
+            sqlExecutor.findPayment(patName);
 
             PatPaymentTableName.setCellValueFactory(new PropertyValueFactory<Payments, String>("Name"));
             PatPaymentTableCash.setCellValueFactory(new PropertyValueFactory<Payments, String>("cash"));
@@ -513,18 +471,18 @@ public class ChangePaymentController extends LogsClass {
         });
         ChangeToCash.setOnAction(event -> {
             isCard = false;
-            System.out.println(isCard);
         });
         ChangeToCard.setOnAction(event -> {
             isCard = true;
-            System.out.println(isCard);
         });
 
 
 
         changePaymentButton.setOnAction(event -> {
             String paymentId= PatPaymentTable.getSelectionModel().getSelectedItem().getId();
-            changePayment(paymentId,isCard);
+            SqlExecutor sqlExecutor = new SqlExecutor();
+            sqlExecutor.changePayment(paymentId,isCard,regName,data);
+            aceptImageId.setVisible(true);
         });
     }
     private void onButton(String regName){
@@ -538,55 +496,7 @@ public class ChangePaymentController extends LogsClass {
 
     }
 
-    private void initData(Payments payments) {
+    public static void initData(Payments payments) {
         paymentData.add(payments);
-    }
-
-    private void findPayment(String patName){
-        try {
-            Statement stmt = con.createStatement();
-            String SQL = "SELECT payername, cashamount, cardamount,PK_TRXNO FROM faCRMstr WHERE payername like" + "'" + patName + "%'";
-            ResultSet executeQuery = stmt.executeQuery(SQL);
-
-
-            while (executeQuery.next()) {
-                initData(new Payments(executeQuery.getString("payername"),
-                                      executeQuery.getString("cashamount"),
-                                      executeQuery.getString("cardamount"),
-                                      executeQuery.getString("PK_TRXNO")));
-            }
-
-            stmt.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-
-    private void changePayment(String tranId,boolean isCard){
-        Statement stmt = null;
-        try {
-            stmt = con.createStatement();
-            if(isCard){
-                //НАЛ НА БЕЗНАЛ
-                String SQL = "UPDATE faCRMstr SET cardamount = cashamount,cashamount = 0  WHERE PK_TRXNO =" + tranId;
-                stmt.executeUpdate(SQL);
-            }
-            else if(!isCard){
-                //БЕЗНАЛ НА НАЛ
-                String SQL = "UPDATE faCRMstr SET cashamount = cardamount,cardamount = 0  WHERE PK_TRXNO =" + tranId;
-                stmt.executeUpdate(SQL);
-            }
-
-
-            //Логи
-            changePaymentLogs(regName,data,tranId,stmt);
-
-            aceptImageId.setVisible(true);
-            stmt.close();
-            con.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 }

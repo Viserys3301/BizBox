@@ -200,6 +200,9 @@ public class AddCorpClientController {
     private TableColumn<Packages, String> PackageNameId;
 
     @FXML
+    private Button findPackageId;
+
+    @FXML
     void initialize() {
         Image imageIcon = new Image("sample/res/fav.png");
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -491,18 +494,11 @@ public class AddCorpClientController {
             stage.getIcons().add(imageIcon);
             stage.show();
         });
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        patiendId.setDisable(true);
-        refPatiendId.setDisable(true);
-        addNewPatId.setDisable(true);
-        findCorpId.setDisable(true);
-        findCorpArea.setDisable(true);
         patFirstNameId.setDisable(true);
         patSecondNameId.setDisable(true);
         patMidleNameId.setDisable(true);
@@ -537,10 +533,6 @@ public class AddCorpClientController {
             addCorpClient(patId,refPaid,companyId,packageId);
         });
 
-
-
-
-
         findCorpId.setOnAction(event -> {
             addCorpButtonId.setDisable(false);
 
@@ -552,30 +544,17 @@ public class AddCorpClientController {
             findCompany(companyName);
             CompanyNameId.setCellValueFactory(new PropertyValueFactory<Company, String>("Name"));
             CorpTable.setItems(companyList);
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
+        });
 
+        findPackageId.setOnAction(event -> {
+            for (int i = 0; i <CorpTable.getItems().size() ; i++) {
+                packagesList.clear();
+            }
+            companyId= CorpTable.getSelectionModel().getSelectedItem().getId();
 
-                    showPackage =true;
-                    while (showPackage){
-
-                        try {
-                           Thread.sleep(3000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        for (int i = 0; i <CorpTable.getItems().size() ; i++) {
-                            packagesList.clear();
-                        }
-                            companyId= CorpTable.getSelectionModel().getSelectedItem().getId();
-
-                        findPackages(companyId);
-                        PackageNameId.setCellValueFactory(new PropertyValueFactory<Packages, String>("Name"));
-                        PackageTable.setItems(packagesList);
-                    }
-                }
-            }).start();
+            findPackages(companyId);
+            PackageNameId.setCellValueFactory(new PropertyValueFactory<Packages, String>("Name"));
+            PackageTable.setItems(packagesList);
         });
 
     }

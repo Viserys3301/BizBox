@@ -2,11 +2,8 @@ package sample.controllers;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.*;
-import java.util.ArrayList;
+
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -32,35 +29,6 @@ public class CheckLogsController {
     private String regId ="'%%'" ;
     private String dataId ="'%%'";
 
-    private String instanceName = "10.0.9.4\\hcdbsrv";
-    private String databaseName = "HCDB";
-    private String userName = "sa";
-    private String pass = "Ba#sE5Ke";
-    private String connectionUrl = "jdbc:sqlserver://%1$s;databaseName=%2$s;user=%3$s;password=%4$s;";
-    private String connectionString = String.format(connectionUrl, instanceName, databaseName, userName, pass);
-    Connection con;
-
-    {
-        try {
-            con = DriverManager.getConnection(connectionString);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private MenuBar MainMenuBar;
-
-    @FXML
-    private Menu QeryMenuID;
-
     @FXML
     private MenuItem QeryMenuZeroingAmbulatoryId;
 
@@ -83,16 +51,10 @@ public class CheckLogsController {
     private MenuItem QeryMenuRecoveryUltrasoundId;
 
     @FXML
-    private Menu CorpMenuId;
-
-    @FXML
     private MenuItem CorpMenuAddCorpId;
 
     @FXML
     private MenuItem CorpMenuZeroingCorpId;
-
-    @FXML
-    private Menu DeleteMenuId;
 
     @FXML
     private MenuItem DeleteMenuDeletPaymentId;
@@ -105,9 +67,6 @@ public class CheckLogsController {
 
     @FXML
     private MenuItem DeleteMenuRecordReturnId;
-
-    @FXML
-    private Menu OptionsMenuId;
 
     @FXML
     private MenuItem OptionsMenuAccountId;
@@ -123,9 +82,6 @@ public class CheckLogsController {
 
     @FXML
     private MenuItem OptionsMenuAboutId;
-
-    @FXML
-    private MenuButton selectRegistrations;
 
     @FXML
     private MenuItem selectReg00;
@@ -147,9 +103,6 @@ public class CheckLogsController {
 
     @FXML
     private MenuItem selectAdmin;
-
-    @FXML
-    private MenuButton selectActions;
 
     @FXML
     private TextField FK_TRXNO_Id;
@@ -184,7 +137,7 @@ public class CheckLogsController {
     @FXML
     private MenuItem selectDeletPayment;
 
-    private ObservableList<Logs> logsData = FXCollections.observableArrayList();
+    private static ObservableList<Logs> logsData = FXCollections.observableArrayList();
 
     @FXML
     void initialize() {
@@ -500,7 +453,8 @@ public class CheckLogsController {
             }
             String TranID_FK_TRXNOid = "'%" + FK_TRXNO_Id.getText() + "%'";
             String TranID_PK_psPatledgersId ="'%" +  PK_psPAtreg_Id.getText() + "%'";
-            findLogs(regId,dataId,TranID_FK_TRXNOid,TranID_PK_psPatledgersId);
+            SqlExecutor sqlExecutor = new SqlExecutor();
+            sqlExecutor.findLogs(regId,dataId,TranID_FK_TRXNOid,TranID_PK_psPatledgersId);
 
             RegColumnsId.setCellValueFactory(new PropertyValueFactory<Logs, String>("regIdListId"));
             DateLogsColumnId.setCellValueFactory(new PropertyValueFactory<Logs, String>("DataListId"));
@@ -519,38 +473,7 @@ public class CheckLogsController {
         });
     }
 
-    private void initData(Logs logs) {
+    public static void initData(Logs logs) {
         logsData.add(logs);
-    }
-
-    private void findLogs(String regId,String dataId,String TranID_FK_TRXNOid,String  TranID_PK_psPatledgersId){
-        String SQL = "SELECT RegID,Data,TranID_FK_TRXNO,TranID_PK_psPatledgers,Date FROM RegistryLogs WHERE RegID like " +
-                regId + " OR Data like " + dataId + " OR TranID_FK_TRXNO like " +TranID_FK_TRXNOid +
-                " OR TranID_PK_psPatledgers like " + TranID_PK_psPatledgersId ;
-
-try {
-
-        //СОЗДАНИЕ СТЕЙТМЕНТА
-        Statement stmt = con.createStatement();
-
-        //ПОИСК ГЛАВНОГО ПЛАТЕЖА
-        ResultSet executeQuery = stmt.executeQuery(SQL);
-
-        //ЗАПИСЬ ID ПЛАТЕЖЕЙ В СПИСОК
-        while (executeQuery.next()) {
-            initData(new Logs(executeQuery.getString("RegID"),
-                    executeQuery.getString("Data"),
-                    executeQuery.getString("TranID_FK_TRXNO"),
-                    executeQuery.getString("TranID_PK_psPatledgers"),
-                    executeQuery.getString("Date")));
-        }
-
-        //ЗАКРЫТИЕ СОЕДИНЕНИЙ
-        stmt.close();
-      //  con.close();
-    } catch (
-    SQLException ex) {
-        Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
-    }
     }
 }

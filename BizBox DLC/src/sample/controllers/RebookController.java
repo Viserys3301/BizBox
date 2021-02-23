@@ -1,11 +1,7 @@
 package sample.controllers;
 
 import java.io.IOException;
-import java.net.URL;
-import java.sql.*;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,7 +11,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -26,30 +21,6 @@ import javafx.stage.Stage;
 import javax.swing.*;
 
 public class RebookController   {
-
-
-    //СОЕДИНЕНИЕ С БАЗОЙ
-    private String instanceName = "10.0.9.4\\hcdbsrv";
-    private String databaseName = "HCDB";
-    private String userName = "sa";
-    private String pass = "Ba#sE5Ke";
-    private String connectionUrl = "jdbc:sqlserver://%1$s;databaseName=%2$s;user=%3$s;password=%4$s;";
-    private String connectionString = String.format(connectionUrl, instanceName, databaseName, userName, pass);
-    Connection con;
-
-
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private MenuBar MainMenuBar;
-
-    @FXML
-    private Menu QeryMenuID;
 
     @FXML
     private MenuItem QeryMenuZeroingAmbulatoryId;
@@ -73,16 +44,10 @@ public class RebookController   {
     private MenuItem QeryMenuRecoveryUltrasoundId;
 
     @FXML
-    private Menu CorpMenuId;
-
-    @FXML
     private MenuItem CorpMenuAddCorpId;
 
     @FXML
     private MenuItem CorpMenuZeroingCorpId;
-
-    @FXML
-    private Menu DeleteMenuId;
 
     @FXML
     private MenuItem DeleteMenuDeletPaymentId;
@@ -95,9 +60,6 @@ public class RebookController   {
 
     @FXML
     private MenuItem DeleteMenuRecordReturnId;
-
-    @FXML
-    private Menu OptionsMenuId;
 
     @FXML
     private MenuItem OptionsMenuAccountId;
@@ -138,7 +100,7 @@ public class RebookController   {
     @FXML
     private TableColumn<Rebooks, String> NewDatePatientColumnId;
 
-    private ObservableList<Rebooks> rebookData = FXCollections.observableArrayList();
+    private static ObservableList<Rebooks> rebookData = FXCollections.observableArrayList();
 
 
 
@@ -432,8 +394,8 @@ public class RebookController   {
             }
             //СТРОКА ПОИСКА
             String patientName = patNameId.getText();
-
-            findPatients(patientName);
+            SqlExecutor sqlExecutor = new SqlExecutor();
+            sqlExecutor.findPatients(patientName);
 
             PatNameColumnId.setCellValueFactory(new PropertyValueFactory<Rebooks, String>("PatNameColumnId"));
             DateCreatePatientColumnId.setCellValueFactory(new PropertyValueFactory<Rebooks, String>("DateCreatePatientColumnId"));
@@ -450,26 +412,8 @@ public class RebookController   {
     }
 
 
-    private void initData(Rebooks rebooks) {
+    public static void initData(Rebooks rebooks) {
         rebookData.add(rebooks);
     }
 
-    private void findPatients(String patientName){
-        try {
-            Statement stmt = con.createStatement();
-            String SQL = "SELECT dbo.udf_GetFullName(FK_psDatacenter) as PatNameColumnId ,target_date, source_date, workstation,[date] as changeDate FROM apptTrans_log WHERE dbo.udf_GetFullName(FK_psDatacenter) Like '%" + patientName + "%'";
-            ResultSet executeQuery = stmt.executeQuery(SQL);
-            while (executeQuery.next()) {
-                initData(new Rebooks(executeQuery.getString("PatNameColumnId"),
-                        executeQuery.getString("target_date"),
-                        executeQuery.getString("source_date"),
-                        executeQuery.getString("changeDate"),
-                        executeQuery.getString("workstation")));
-            }
-            stmt.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 }

@@ -403,4 +403,98 @@ public class SqlExecutor extends LogsClass {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////----{ЛОГИ}----//////////////////////////////////////////////
+    public void findLogs(String regId,String dataId,String TranID_FK_TRXNOid,String  TranID_PK_psPatledgersId){
+        String SQL = "SELECT RegID,Data,TranID_FK_TRXNO,TranID_PK_psPatledgers,Date FROM RegistryLogs WHERE RegID like " +
+                regId + " OR Data like " + dataId + " OR TranID_FK_TRXNO like " +TranID_FK_TRXNOid +
+                " OR TranID_PK_psPatledgers like " + TranID_PK_psPatledgersId ;
+
+        try {
+
+            //СОЗДАНИЕ СТЕЙТМЕНТА
+            Statement stmt = con.createStatement();
+
+            //ПОИСК ГЛАВНОГО ПЛАТЕЖА
+            ResultSet executeQuery = stmt.executeQuery(SQL);
+
+            //ЗАПИСЬ ID ПЛАТЕЖЕЙ В СПИСОК
+            while (executeQuery.next()) {
+                CheckLogsController.initData(new Logs(executeQuery.getString("RegID"),
+                        executeQuery.getString("Data"),
+                        executeQuery.getString("TranID_FK_TRXNO"),
+                        executeQuery.getString("TranID_PK_psPatledgers"),
+                        executeQuery.getString("Date")));
+            }
+
+            //ЗАКРЫТИЕ СОЕДИНЕНИЙ
+            stmt.close();
+            con.close();
+        } catch (
+                SQLException ex) {
+            Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////----{ПОЛЬЗОВАТЕЛИ}----//////////////////////////////////////////////
+    public void findUsers(String userName){
+
+        try {
+            Statement stmt = con.createStatement();
+            String SQL ="SELECT PK_appsysUsers,dbo.udf_GetFullName(PK_appsysUsers) as userName,FK_appsysUserGroups,usercode,logdate," +
+                    "systemHIS,systemClinic,systemAIS,lockHIS,lockClinic,lockAIS,lockaccount FROM appsysusers where dbo.udf_GetFullName(PK_appsysUsers) like '%" + userName  + "%'";
+            ResultSet executeQuery = stmt.executeQuery(SQL);
+            while (executeQuery.next()) {
+                UsersController.initData(new Users(executeQuery.getString("PK_appsysUsers"),
+                        executeQuery.getString("userName"),
+                        executeQuery.getString("FK_appsysUserGroups"),
+                        executeQuery.getString("usercode"),
+                        executeQuery.getString("logdate"),
+                        executeQuery.getString("systemHIS"),
+                        executeQuery.getString("systemClinic"),
+                        executeQuery.getString("systemAIS"),
+                        executeQuery.getString("lockHIS"),
+                        executeQuery.getString("lockClinic"),
+                        executeQuery.getString("lockAIS"),
+                        executeQuery.getString("lockaccount")));
+            }
+            stmt.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void unLockAccount(String columnName,String PKey){
+        try {
+            Statement stmt = con.createStatement();
+            String SQL = "UPDATE appsysusers SET " + columnName + " = 0 WHERE PK_appsysUsers =" + PKey;
+            stmt.executeUpdate(SQL);
+            stmt.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////----{ПЕРЕБРОНЬ}----//////////////////////////////////////////////
+
+    public void findPatients(String patientName){
+        try {
+            Statement stmt = con.createStatement();
+            String SQL = "SELECT dbo.udf_GetFullName(FK_psDatacenter) as PatNameColumnId ,target_date, source_date, workstation,[date] as changeDate FROM apptTrans_log WHERE dbo.udf_GetFullName(FK_psDatacenter) Like '%" + patientName + "%'";
+            ResultSet executeQuery = stmt.executeQuery(SQL);
+            while (executeQuery.next()) {
+                RebookController.initData(new Rebooks(executeQuery.getString("PatNameColumnId"),
+                        executeQuery.getString("target_date"),
+                        executeQuery.getString("source_date"),
+                        executeQuery.getString("changeDate"),
+                        executeQuery.getString("workstation")));
+            }
+            stmt.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

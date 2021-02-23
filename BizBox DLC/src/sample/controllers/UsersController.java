@@ -3,10 +3,9 @@ package sample.controllers;
 import java.io.*;
 import java.net.URL;
 import java.sql.*;
-import java.util.List;
+
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,80 +25,7 @@ import javafx.stage.Stage;
 
 public class UsersController {
 
-    //СОЕДИНЕНИЕ С БАЗОЙ
-    private String instanceName = "10.0.9.4\\hcdbsrv";
-    private String databaseName = "HCDB";
-    private String userName = "sa";
-    private String pass = "Ba#sE5Ke";
-    private String connectionUrl = "jdbc:sqlserver://%1$s;databaseName=%2$s;user=%3$s;password=%4$s;";
-    private String connectionString = String.format(connectionUrl, instanceName, databaseName, userName, pass);
-    Connection con;
-    {
-        try {
-            con = DriverManager.getConnection(connectionString);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    private ObservableList<Users> usersData = FXCollections.observableArrayList();
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    @FXML
-    private TextField PK_appsysUsersId;
-
-    @FXML
-    private TextField usercodeId;
-
-    @FXML
-    private TextField userNameId;
-
-    @FXML
-    private TextField FK_appsysUserGroupsId;
-
-    @FXML
-    private TextField logdateId;
-
-    @FXML
-    private TextField EMRid;
-
-    @FXML
-    private TextField AISid;
-
-    @FXML
-    private TextField HISid;
-
-    @FXML
-    private TextField lockaccountId;
-
-    @FXML
-    private Button ChangeEMRButton;
-
-    @FXML
-    private Button ChangeAISButton;
-
-    @FXML
-    private Button ChangeHISButton;
-
-    @FXML
-    private Button ChangeAccButton;
-
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private MenuBar MainMenuBar;
-
-    @FXML
-    private Menu QeryMenuID;
+    private static ObservableList<Users> usersData = FXCollections.observableArrayList();
 
     @FXML
     private MenuItem QeryMenuZeroingAmbulatoryId;
@@ -123,16 +49,10 @@ public class UsersController {
     private MenuItem QeryMenuRecoveryUltrasoundId;
 
     @FXML
-    private Menu CorpMenuId;
-
-    @FXML
     private MenuItem CorpMenuAddCorpId;
 
     @FXML
     private MenuItem CorpMenuZeroingCorpId;
-
-    @FXML
-    private Menu DeleteMenuId;
 
     @FXML
     private MenuItem DeleteMenuDeletPaymentId;
@@ -145,9 +65,6 @@ public class UsersController {
 
     @FXML
     private MenuItem DeleteMenuRecordReturnId;
-
-    @FXML
-    private Menu OptionsMenuId;
 
     @FXML
     private MenuItem OptionsMenuAccountId;
@@ -175,9 +92,6 @@ public class UsersController {
 
     @FXML
     private TableColumn<Users, String> userNameColumnId;
-
-    @FXML
-    private MenuItem changeUserData;
 
     @FXML
     private TableColumn<Users, String> lockAIS;
@@ -485,21 +399,25 @@ public class UsersController {
 
         unLockAISbutton.setOnAction(event -> {
             String userId= userTable.getSelectionModel().getSelectedItem().getPK_appsysUsers();
-            unLockAccount("lockAIS",userId);
+            SqlExecutor sqlExecutor = new SqlExecutor();
+            sqlExecutor.unLockAccount("lockAIS",userId);
         });
 
         unLockEMR.setOnAction(event -> {
             String userId= userTable.getSelectionModel().getSelectedItem().getPK_appsysUsers();
-            unLockAccount("lockClinic",userId);
+            SqlExecutor sqlExecutor = new SqlExecutor();
+            sqlExecutor.unLockAccount("lockClinic",userId);
         });
         unLockAccount.setOnAction(event -> {
             String userId= userTable.getSelectionModel().getSelectedItem().getPK_appsysUsers();
-            unLockAccount("lockaccount",userId);
+            SqlExecutor sqlExecutor = new SqlExecutor();
+            sqlExecutor.unLockAccount("lockaccount",userId);
         });
 
         unLockHIS.setOnAction(event -> {
             String userId= userTable.getSelectionModel().getSelectedItem().getPK_appsysUsers();
-            unLockAccount("lockHIS",userId);
+            SqlExecutor sqlExecutor = new SqlExecutor();
+            sqlExecutor.unLockAccount("lockHIS",userId);
         });
 
 
@@ -510,8 +428,8 @@ public class UsersController {
             }
             //СТРОКА ПОИСКА
             String userName = userIdArea.getText();
-
-            findUsers(userName);
+            SqlExecutor sqlExecutor = new SqlExecutor();
+            sqlExecutor.findUsers(userName);
 
             userNameColumnId.setCellValueFactory(new PropertyValueFactory<Users, String>("userName"));
             lockAIS.setCellValueFactory(new PropertyValueFactory<Users, String>("lockAIS"));
@@ -521,47 +439,8 @@ public class UsersController {
             userTable.setItems(usersData);
         });
     }
-    private void findUsers(String userName){
 
-        try {
-            Statement stmt = con.createStatement();
-            String SQL ="SELECT PK_appsysUsers,dbo.udf_GetFullName(PK_appsysUsers) as userName,FK_appsysUserGroups,usercode,logdate," +
-                    "systemHIS,systemClinic,systemAIS,lockHIS,lockClinic,lockAIS,lockaccount FROM appsysusers where dbo.udf_GetFullName(PK_appsysUsers) like '%" + userName  + "%'";
-            ResultSet executeQuery = stmt.executeQuery(SQL);
-            while (executeQuery.next()) {
-                initData(new Users(executeQuery.getString("PK_appsysUsers"),
-                        executeQuery.getString("userName"),
-                        executeQuery.getString("FK_appsysUserGroups"),
-                        executeQuery.getString("usercode"),
-                        executeQuery.getString("logdate"),
-                        executeQuery.getString("systemHIS"),
-                        executeQuery.getString("systemClinic"),
-                        executeQuery.getString("systemAIS"),
-                        executeQuery.getString("lockHIS"),
-                        executeQuery.getString("lockClinic"),
-                        executeQuery.getString("lockAIS"),
-                        executeQuery.getString("lockaccount")));
-            }
-            stmt.close();
-            //con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    private void unLockAccount(String columnName,String PKey){
-        try {
-            Statement stmt = con.createStatement();
-            String SQL = "UPDATE appsysusers SET " + columnName + " = 0 WHERE PK_appsysUsers =" + PKey;
-            stmt.executeUpdate(SQL);
-            stmt.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-
-    private void initData(Users users) {
+ public static void initData(Users users) {
         usersData.add(users);
     }
 }

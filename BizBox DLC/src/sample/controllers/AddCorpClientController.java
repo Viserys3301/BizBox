@@ -478,9 +478,11 @@ public class AddCorpClientController {
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        packagesList.add(new Packages("0","Пакет"));
-
-
+        patiendId.setDisable(true);
+        refPatiendId.setDisable(true);
+        addNewPatId.setDisable(true);
+        findCorpId.setDisable(true);
+        findCorpArea.setDisable(true);
         patFirstNameId.setDisable(true);
         patSecondNameId.setDisable(true);
         patMidleNameId.setDisable(true);

@@ -4,60 +4,80 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.ZeroingCorpClientController">
+<?import javafx.scene.control.SeparatorMenuItem?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.ZeroingCorpClientController">
    <children>
-      <MenuBar fx:id="mainMenuBar" layoutX="-9.0" layoutY="2.0" prefHeight="25.0" prefWidth="609.0">
-        <menus>
-          <Menu fx:id="ChangeMenuButton" mnemonicParsing="false" text="Изменение">
-            <items>
-              <MenuItem fx:id="ChangeBithDateButton" mnemonicParsing="false" text="Дата рождения" />
-                  <MenuItem mnemonicParsing="false" text="Дата амбулатории" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Удаление">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Удаление платежа" />
-            </items>
-          </Menu>
-            <Menu fx:id="AddMenuButton" mnemonicParsing="false" text="Добавление">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Close" />
-               </items>
-            </Menu>
-          <Menu fx:id="OptionsMenuButton" mnemonicParsing="false" text="Настройки">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Аккаунт" />
-                  <MenuItem mnemonicParsing="false" text="Логи" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <TextField fx:id="TranIdArea" layoutX="316.0" layoutY="61.0" prefHeight="25.0" prefWidth="225.0" />
-      <Text layoutX="105.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите ID транзакции:" wrappingWidth="203.244140625">
+       <MenuBar fx:id="MainMenuBar" layoutX="-9.0" layoutY="2.0" prefHeight="25.0" prefWidth="609.0">
+           <menus>
+               <Menu fx:id="QeryMenuID" mnemonicParsing="false" text="Запросы">
+                   <items>
+                       <MenuItem fx:id="QeryMenuZeroingAmbulatoryId" mnemonicParsing="false" text="Обнуление амбулатории" />
+                       <MenuItem fx:id="QeryMenuChangePaymentId" mnemonicParsing="false" text="Приём платежей Нал/Безнал" />
+                       <MenuItem fx:id="QeryMenuChangeDoctorId" mnemonicParsing="false" text="Изменение врача" />
+                       <SeparatorMenuItem mnemonicParsing="false" />
+                       <MenuItem fx:id="QeryMenuChangeAmbulatoryDateId" mnemonicParsing="false" text="Изменение даты амбулатории" />
+                       <MenuItem fx:id="QeryMenuChangeBirthdateId" mnemonicParsing="false" text="Изменение даты рождения" />
+                       <SeparatorMenuItem mnemonicParsing="false" />
+                       <MenuItem fx:id="QeryMenuEnabledUltrasoundId" mnemonicParsing="false" text="Разблокировка УЗИ" />
+                       <MenuItem fx:id="QeryMenuRecoveryUltrasoundId" mnemonicParsing="false" text="Возврат УЗИ" />
+                   </items>
+               </Menu>
+               <Menu fx:id="CorpMenuId" mnemonicParsing="false" text="Корп">
+                   <items>
+                       <MenuItem fx:id="CorpMenuAddCorpId" mnemonicParsing="false" text="Добавление" />
+                       <MenuItem fx:id="CorpMenuZeroingCorpId" mnemonicParsing="false" text="Обнуление" />
+                   </items>
+               </Menu>
+               <Menu fx:id="DeleteMenuId" mnemonicParsing="false" text="Удаление">
+                   <items>
+                       <MenuItem fx:id="DeleteMenuDeletPaymentId" mnemonicParsing="false" text="Удаление приёма платежей" />
+                       <MenuItem fx:id="DeleteMenuDeletDiscountId" mnemonicParsing="false" text="Удаление скидки" />
+                       <MenuItem fx:id="DeleteMenuDeletAmbulatoryId" mnemonicParsing="false" text="Удаление амбулатории" />
+                       <SeparatorMenuItem mnemonicParsing="false" />
+                       <MenuItem fx:id="DeleteMenuRecordReturnId" mnemonicParsing="false" text="Зафиксировать возврат" />
+                   </items>
+               </Menu>
+               <Menu fx:id="OptionsMenuId" mnemonicParsing="false" text="Настройки">
+                   <items>
+                       <MenuItem fx:id="OptionsMenuAccountId" mnemonicParsing="false" text="Аккаунт" />
+                       <MenuItem fx:id="OptionsMenuLogsId" mnemonicParsing="false" text="Логи" />
+                       <MenuItem fx:id="OptionsMenuUsersId" mnemonicParsing="false" text="Пользователи" />
+                       <MenuItem fx:id="OptionsMenuRebookId" mnemonicParsing="false" text="Перебронь" />
+                       <SeparatorMenuItem mnemonicParsing="false" />
+                       <MenuItem fx:id="OptionsMenuAboutId" mnemonicParsing="false" text="О программе" />
+                   </items>
+               </Menu>
+           </menus>
+       </MenuBar>
+      <TextField fx:id="TranIdArea" alignment="CENTER" layoutX="188.0" layoutY="132.0" prefHeight="25.0" prefWidth="225.0" promptText="Введите ID транзакции" />
+      <Button fx:id="ZeroingClientButton" layoutX="328.0" layoutY="163.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Обнулить" />
+      <Label fx:id="InfoQery" layoutX="203.0" layoutY="103.0" text="ОБНУЛЕНИЕ КОРП.КЛИЕНТА" textFill="#0099ff">
          <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Button fx:id="ZeroingClientButton" layoutX="456.0" layoutY="100.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Обнулить" />
-      <RadioButton fx:id="RadioReg00" layoutX="14.0" layoutY="104.0" mnemonicParsing="false" text="Reg00" />
-      <RadioButton fx:id="RadioReg01" layoutX="94.0" layoutY="104.0" mnemonicParsing="false" text="Reg01" />
-      <RadioButton fx:id="RadioReg02" layoutX="166.0" layoutY="104.0" mnemonicParsing="false" text="Reg02" />
-      <RadioButton fx:id="RadioReg03" layoutX="241.0" layoutY="104.0" mnemonicParsing="false" text="Reg03" />
-      <RadioButton fx:id="RadioReg04" layoutX="308.0" layoutY="104.0" mnemonicParsing="false" text="Reg04" />
-      <RadioButton fx:id="RadioReg05" layoutX="374.0" layoutY="104.0" mnemonicParsing="false" text="Reg05" />
-      <Label fx:id="infoLabel" layoutX="13.0" layoutY="183.0" prefHeight="34.0" prefWidth="581.0" text="" textFill="LIMEGREEN">
-         <font>
-            <Font size="23.0" />
-         </font>
-      </Label>
-      <Label fx:id="InfoQery" layoutX="419.0" layoutY="33.0" text="ОБНУЛЕНИЕ КОРП.КЛИЕНТА" textFill="#0099ff" />
-      <Button fx:id="clearButton" layoutX="456.0" layoutY="139.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Очистить" />
+            <Font size="14.0" />
+         </font></Label>
+      <MenuButton fx:id="selectRegistrations" layoutX="188.0" layoutY="163.0" mnemonicParsing="false" text="Регистратор">
+        <items>
+          <MenuItem fx:id="selectReg00" mnemonicParsing="false" text="Reg00" />
+            <MenuItem fx:id="selectReg01" mnemonicParsing="false" text="Reg01" />
+            <MenuItem fx:id="selectReg02" mnemonicParsing="false" text="Reg02" />
+            <MenuItem fx:id="selectReg03" mnemonicParsing="false" text="Reg03" />
+            <MenuItem fx:id="selectReg04" mnemonicParsing="false" text="Reg04" />
+            <MenuItem fx:id="selectReg05" mnemonicParsing="false" text="Reg05" />
+            <MenuItem fx:id="selectAdmin" mnemonicParsing="false" text="Admin" />
+        </items>
+      </MenuButton>
+      <ImageView fx:id="aceptImageId" fitHeight="150.0" fitWidth="200.0" layoutX="226.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../res/3.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -10,13 +10,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import javax.swing.*;
 
 public class SigInController {
-    private String login ;
-    private String password ;
+    private String login ="0000";
+    private String password = "Ba#sE5Ke";
+    private boolean licence = true;
 
     @FXML
     private ResourceBundle resources;
@@ -35,10 +37,18 @@ public class SigInController {
 
     @FXML
     void initialize() {
+
+
         SignInButton.setOnAction(event -> {
-            String userLogin = LoginArea.getText();
-            String userPassword = PasswordArea.getText();
-            checkLogAndPass(userLogin,userPassword);
+            if(licence){
+                String userLogin = LoginArea.getText();
+                String userPassword = PasswordArea.getText();
+                checkLogAndPass(userLogin,userPassword);
+            }else {
+                JOptionPane.showMessageDialog(null,"ПАШЁЛ НАХУЙ");
+                System.exit(1);
+            }
+
         });
     }
 
@@ -46,7 +56,7 @@ public class SigInController {
         if(checkLogAndPassInDB(userLogin,userPassword)){
             SignInButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeletPayment.fxml"));
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingAmbulatory.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {
@@ -55,14 +65,17 @@ public class SigInController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.showAndWait();
+            Image imageIcon = new Image("sample/res/fav.png");
+            stage.getIcons().add(imageIcon);
+            stage.show();
         }
         else {
             JOptionPane.showMessageDialog(null,"НЕ ВЕРНЫЕ ДАННЫЕ");
         }
     }
     private Boolean checkLogAndPassInDB(String userLogin,String userPassword){
-        String SQL = "SELECT [Login] , [Password] FROM BizBoxDLC_Users";
-        return true;
+       if(userLogin.equalsIgnoreCase(login) && userPassword.equalsIgnoreCase(password)){
+           return true;
+       }else return false;
     }
 }

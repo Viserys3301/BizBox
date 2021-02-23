@@ -12,6 +12,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import sample.LogsClass;
@@ -41,12 +43,6 @@ public class ChangeAmbulatoryDateController extends LogsClass {
         }
     }
 
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private MenuBar MainMenuBar;
@@ -121,33 +117,6 @@ public class ChangeAmbulatoryDateController extends LogsClass {
     private TextField TranIdArea;
 
     @FXML
-    private Text titleArea;
-
-    @FXML
-    private Button clearButton;
-
-    @FXML
-    private RadioButton RadioReg00;
-
-    @FXML
-    private RadioButton RadioReg01;
-
-    @FXML
-    private RadioButton RadioReg02;
-
-    @FXML
-    private RadioButton RadioReg03;
-
-    @FXML
-    private RadioButton RadioReg04;
-
-    @FXML
-    private RadioButton RadioReg05;
-
-    @FXML
-    private Label infoLabel;
-
-    @FXML
     private Label InfoQery;
 
     @FXML
@@ -163,7 +132,334 @@ public class ChangeAmbulatoryDateController extends LogsClass {
     private TextField DateYerId;
 
     @FXML
+    private MenuButton selectRegistrations;
+
+    @FXML
+    private MenuItem selectReg00;
+
+    @FXML
+    private MenuItem selectReg01;
+
+    @FXML
+    private MenuItem selectReg02;
+
+    @FXML
+    private MenuItem selectReg03;
+
+    @FXML
+    private MenuItem selectReg04;
+
+    @FXML
+    private MenuItem selectReg05;
+
+    @FXML
+    private MenuItem selectAdmin;
+
+
+    @FXML
+    private ImageView aceptImageId;
+
+    @FXML
     void initialize() {
+        Image imageIcon = new Image("sample/res/fav.png");
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////-----ПЕРЕКЛЮЧЕНИЕ ОКОН-----//////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        QeryMenuZeroingAmbulatoryId.setOnAction(event -> {
+            ChangeAmbulatoryDateButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingAmbulatory.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
+            stage.show();
+        });
+
+        QeryMenuChangePaymentId.setOnAction(event -> {
+            ChangeAmbulatoryDateButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangePayment.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
+            stage.show();
+        });
+
+        QeryMenuChangeDoctorId.setOnAction(event -> {
+            ChangeAmbulatoryDateButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeDoctor.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
+            stage.show();
+        });
+        QeryMenuChangeAmbulatoryDateId.setOnAction(event -> {
+            ChangeAmbulatoryDateButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeAmbulatoryDate.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
+            stage.show();
+        });
+        QeryMenuChangeBirthdateId.setOnAction(event -> {
+            ChangeAmbulatoryDateButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeBirthdate.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
+            stage.show();
+        });
+        QeryMenuEnabledUltrasoundId.setOnAction(event -> {
+            ChangeAmbulatoryDateButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/EnabledUltrasound.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
+            stage.show();
+        });
+        QeryMenuRecoveryUltrasoundId.setOnAction(event -> {
+            ChangeAmbulatoryDateButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/RecoveryUltrasound.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
+            stage.show();
+        });
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        CorpMenuAddCorpId.setOnAction(event -> {
+            ChangeAmbulatoryDateButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/AddCorpClient.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
+            stage.show();
+        });
+
+        CorpMenuZeroingCorpId.setOnAction(event -> {
+            ChangeAmbulatoryDateButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingCorpClient.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
+            stage.show();
+        });
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        DeleteMenuDeletAmbulatoryId.setOnAction(event -> {
+            ChangeAmbulatoryDateButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeletAmbulatory.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
+            stage.show();
+        });
+
+
+        DeleteMenuDeletDiscountId.setOnAction(event -> {
+            ChangeAmbulatoryDateButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeleteDiscount.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
+            stage.show();
+        });
+
+        DeleteMenuDeletPaymentId.setOnAction(event -> {
+            ChangeAmbulatoryDateButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeletPayment.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
+            stage.show();
+        });
+
+        DeleteMenuRecordReturnId.setOnAction(event -> {
+            ChangeAmbulatoryDateButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/RecordReturn.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
+            stage.show();
+        });
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        OptionsMenuAccountId.setOnAction(event -> {
+            ChangeAmbulatoryDateButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/Account.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
+            stage.show();
+        });
+
+        OptionsMenuLogsId.setOnAction(event -> {
+            ChangeAmbulatoryDateButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/CheckLogs.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
+            stage.show();
+        });
+
+        OptionsMenuUsersId.setOnAction(event -> {
+            ChangeAmbulatoryDateButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/Users.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
+            stage.show();
+        });
+
+        OptionsMenuRebookId.setOnAction(event -> {
+            ChangeAmbulatoryDateButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/Rebook.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
+            stage.show();
+        });
+
+        OptionsMenuAboutId.setOnAction(event -> {
+            ChangeAmbulatoryDateButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/fxmlFiles/About.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.getIcons().add(imageIcon);
+            stage.show();
+        });
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         //ПОЛЕ ДЛЯ ID
         TranIdArea.setDisable(true);
@@ -172,87 +468,46 @@ public class ChangeAmbulatoryDateController extends LogsClass {
         DateMonthId.setDisable(true);
         DateYerId.setDisable(true);
 
-        //РЕГИСТРАТОРЫ
-        ToggleGroup group = new ToggleGroup();
-        RadioReg00.setToggleGroup(group);
-        RadioReg01.setToggleGroup(group);
-        RadioReg02.setToggleGroup(group);
-        RadioReg03.setToggleGroup(group);
-        RadioReg04.setToggleGroup(group);
-        RadioReg05.setToggleGroup(group);
 
         //ВЫБОР РЕГИСТРАТОРОВ
-        RadioReg00.setOnAction(event1 -> {
-            regName = "Reg00";
-            Onvisible();
+        selectReg00.setOnAction(event1 -> {
+            Onvisible("Reg00");
         });
-        RadioReg01.setOnAction(event1 -> {
-            regName = "Reg01";
-            Onvisible();
+        selectReg01.setOnAction(event1 -> {
+            Onvisible("Reg01");
         });
-        RadioReg02.setOnAction(event1 -> {
-            regName = "Reg02";
-            Onvisible();
+        selectReg02.setOnAction(event1 -> {
+            Onvisible("Reg02");
         });
-        RadioReg03.setOnAction(event1 -> {
-            regName = "Reg03";
-            Onvisible();
+        selectReg03.setOnAction(event1 -> {
+            Onvisible("Reg03");
         });
-        RadioReg04.setOnAction(event1 -> {
-            regName = "Reg04";
-            Onvisible();
+        selectReg04.setOnAction(event1 -> {
+            Onvisible("Reg04");
         });
-        RadioReg05.setOnAction(event1 -> {
-            regName = "Reg05";
-            Onvisible();
+        selectReg05.setOnAction(event1 -> {
+            Onvisible("Reg05");
+        });
+        selectAdmin.setOnAction(event1 -> {
+            Onvisible("Admin");
         });
 
-
-        clearButton.setOnAction(event -> {
-            TranIdArea.setText("");
-            infoLabel.setText("");
-            RadioReg00.setSelected(false);
-            RadioReg01.setSelected(false);
-            RadioReg02.setSelected(false);
-            RadioReg03.setSelected(false);
-            RadioReg04.setSelected(false);
-            RadioReg05.setSelected(false);
+        ChangeAmbulatoryDateButton.setOnAction(event -> {
+            String tranId = TranIdArea.getText();
+            String newDay = DateDayId.getText();
+            String newMonth = DateMonthId.getText();
+            String newYer = DateYerId.getText();
+            String newDate = "'" + newYer + "/" + newMonth + "/" + newDay + "'";
+            SqlExecutor sqlExecutor = new SqlExecutor();
+            sqlExecutor.changeAmbulatoryDate(tranId,newDate,regName,data);
+            aceptImageId.setVisible(true);
+            sqlExecutor.getAnimation(aceptImageId);
         });
-
     }
 
-    private void changeAmbulatoryDate(String tranId,String newDate)   {
-
-        //СОЗДАНИЕ СТЕЙТМЕНТА
-        Statement stmt = null;
-        try {
-            stmt = con.createStatement();
-
-            String SQL = "UPDATE psPatitem SET rendate =" + newDate + " WHERE FK_psPatRegisters = " + tranId;
-            String SQL_2 = "UPDATE psPatLedgers SET docdate =" + newDate + " WHERE FK_psPatRegisters = " + tranId;
-            String SQL_3 = "UPDATE psPatinv SET rendate =" + newDate + " WHERE FK_psPatRegisters = " + tranId;
-            String SQL_4 = "UPDATE faCRMstr SET ordate =" + newDate + ", postdate =" + newDate + " WHERE FK_psPatRegisters = " + tranId;
-            String SQL_5 = "UPDATE psPatRegisters SET registrydate =" + newDate + " WHERE PK_psPatRegisters = " + tranId;
-
-
-            //УДАЛЕНИЕ ДОЧЕРНИХ ПЛАТЕЖЕЙ
-            stmt.executeUpdate(SQL);
-            stmt.executeUpdate(SQL_2);
-            stmt.executeUpdate(SQL_3);
-            stmt.executeUpdate(SQL_4);
-            stmt.executeUpdate(SQL_5);
-            System.out.println("DONE");
-
-            changeAmbulatoryDateLogs(tranId,regName,data,newDate,stmt);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-
-
-    }
-    private void Onvisible(){
+    private void Onvisible(String regName){
+        selectRegistrations.setText(regName);
+        this.regName = regName;
         TranIdArea.setDisable(false);
         ChangeAmbulatoryDateButton.setDisable(false);
         DateDayId.setDisable(false);

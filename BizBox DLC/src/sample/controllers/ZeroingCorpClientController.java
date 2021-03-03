@@ -115,7 +115,9 @@ public class ZeroingCorpClientController extends LogsClass {
     @FXML
     private ImageView aceptImageId;
 
-    private Image imageIcon = new Image("sample/res/fav.png");
+    @FXML
+    private ImageView aceptImageId2;
+
     @FXML
     void initialize() {
         QeryMenuZeroingAmbulatoryId.setOnAction(event -> {
@@ -221,12 +223,17 @@ public class ZeroingCorpClientController extends LogsClass {
         ZeroingClientButton.setOnAction(event -> {
             String tranId = TranIdArea.getText();
             SqlExecutor sqlExecutor = new SqlExecutor();
-            sqlExecutor.zeroingCorpClient(tranId,regName,data);
-            aceptImageId.setVisible(true);
-            sqlExecutor.getAnimation(aceptImageId);
+            if(sqlExecutor.zeroingCorpClient(tranId,regName,data)){
+                aceptImageId.setVisible(true);
+                sqlExecutor.getAnimation(aceptImageId,1);
+            }else {
+                aceptImageId2.setVisible(true);
+                sqlExecutor.getAnimation(aceptImageId2,0.5f);
+            }
         });
     }
     private void changeFrames(int x){
+        Image imageIcon = new Image("sample/res/fav.png");
         ChangeFrame CF = new ChangeFrame();
         ZeroingClientButton.getScene().getWindow().hide();
         FXMLLoader loader = new FXMLLoader();
@@ -244,6 +251,7 @@ public class ZeroingCorpClientController extends LogsClass {
     }
 
     private void onButton(String regName){
+
         this.regName = regName;
         selectRegistrations.setText(regName);
         TranIdArea.setDisable(false);

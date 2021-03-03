@@ -1,10 +1,9 @@
 package sample.controllers;
 
-import java.io.IOException;
-import java.net.URL;
+import java.io.*;
+import java.util.List;
 
-import java.util.ResourceBundle;
-
+import com.sun.prism.shader.Solid_Color_Loader;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,9 +11,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -22,13 +18,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.*;
 
-import javax.swing.*;
 
 public class CheckLogsController {
 
     private String regId ="'%%'" ;
-    private String dataId ="'%%'";
 
     @FXML
     private MenuItem QeryMenuZeroingAmbulatoryId;
@@ -142,7 +138,7 @@ public class CheckLogsController {
 
     @FXML
     void initialize() {
-        Image imageIcon = new Image("sample/res/fav.png");
+
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -150,300 +146,80 @@ public class CheckLogsController {
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         QeryMenuZeroingAmbulatoryId.setOnAction(event -> {
-            FindLogsButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingAmbulatory.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(1);
         });
 
         QeryMenuChangePaymentId.setOnAction(event -> {
-            FindLogsButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangePayment.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(2);
         });
 
         QeryMenuChangeDoctorId.setOnAction(event -> {
-            FindLogsButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeDoctor.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(3);
         });
         QeryMenuChangeAmbulatoryDateId.setOnAction(event -> {
-            FindLogsButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeAmbulatoryDate.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(4);
         });
         QeryMenuChangeBirthdateId.setOnAction(event -> {
-            FindLogsButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeBirthdate.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(5);
         });
         QeryMenuEnabledUltrasoundId.setOnAction(event -> {
-            FindLogsButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/EnabledUltrasound.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(6);
         });
         QeryMenuRecoveryUltrasoundId.setOnAction(event -> {
-            FindLogsButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/RecoveryUltrasound.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(7);
         });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         CorpMenuAddCorpId.setOnAction(event -> {
-            FindLogsButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/AddCorpClient.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(8);
         });
 
         CorpMenuZeroingCorpId.setOnAction(event -> {
-            FindLogsButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingCorpClient.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(9);
         });
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         DeleteMenuDeletAmbulatoryId.setOnAction(event -> {
-            FindLogsButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeletAmbulatory.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(10);
         });
 
 
         DeleteMenuDeletDiscountId.setOnAction(event -> {
-            FindLogsButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeleteDiscount.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(11);
         });
 
         DeleteMenuDeletPaymentId.setOnAction(event -> {
-            FindLogsButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeletPayment.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(12);
         });
 
         DeleteMenuRecordReturnId.setOnAction(event -> {
-            FindLogsButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/RecordReturn.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(13);
         });
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         OptionsMenuAccountId.setOnAction(event -> {
-            FindLogsButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/Account.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(14);
         });
 
         OptionsMenuLogsId.setOnAction(event -> {
-            FindLogsButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/CheckLogs.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(15);
         });
 
         OptionsMenuUsersId.setOnAction(event -> {
-            FindLogsButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/Users.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(16);
         });
 
         OptionsMenuRebookId.setOnAction(event -> {
-            FindLogsButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/Rebook.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(17);
         });
 
         OptionsMenuAboutId.setOnAction(event -> {
-            FindLogsButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/About.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(18);
         });
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        selectDeletPayment.setOnAction(event -> {
-            dataId = "'Удаление платежа'";
-        });
-
 
         selectReg00.setOnAction(event -> {
             regId = "'Reg00'";
@@ -472,10 +248,9 @@ public class CheckLogsController {
             for (int i = 0; i <LogsTable.getItems().size() ; i++) {
                 logsData.clear();
             }
-            String TranID_FK_TRXNOid = "'%" + FK_TRXNO_Id.getText() + "%'";
-            String TranID_PK_psPatledgersId ="'%" +  PK_psPAtreg_Id.getText() + "%'";
+
             SqlExecutor sqlExecutor = new SqlExecutor();
-            sqlExecutor.findLogs(regId,dataId,TranID_FK_TRXNOid,TranID_PK_psPatledgersId);
+            sqlExecutor.findLogs(regId);
 
             RegColumnsId.setCellValueFactory(new PropertyValueFactory<Logs, String>("regIdListId"));
             DateLogsColumnId.setCellValueFactory(new PropertyValueFactory<Logs, String>("DataListId"));
@@ -483,23 +258,85 @@ public class CheckLogsController {
             PK_pspatColumnId.setCellValueFactory(new PropertyValueFactory<Logs, String>("TranID_PK_psPatledgersListId"));
             dateLogsColumnId.setCellValueFactory(new PropertyValueFactory<Logs, String>("DateListId"));
 
-
             LogsTable.setItems(logsData);
 
         });
 
         upLoadLogsButton.setOnAction(event -> {
-            JOptionPane.showMessageDialog(null,"НЕ ГОТОВО.ОТЪЕБИСЬ");
-
+            loadFile();
         });
+    }
+
+    private void loadFile(){
+
+
+
+        try {
+            //Создание Фaйла
+            FileOutputStream fos;
+            Workbook wb = new HSSFWorkbook();
+            Sheet sh = wb.createSheet("Логи");
+            Row row = sh.createRow(0);
+
+            sh.setColumnWidth(0,5000);
+            Cell RegID = row.createCell(0);
+            sh.setColumnWidth(1,7000);
+            Cell Data = row.createCell(1);
+            sh.setColumnWidth(2,8000);
+            Cell Date = row.createCell(2);
+            sh.setColumnWidth(3,5000);
+            Cell TranIDFK = row.createCell(3);
+            sh.setColumnWidth(4,5000);
+            Cell TranIDPK = row.createCell(4);
+
+            CellStyle style = wb.createCellStyle();
+            style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+            style.setFillForegroundColor(IndexedColors.YELLOW.getIndex());
+            style.setBorderBottom(BorderStyle.MEDIUM);
+            style.setBorderTop(BorderStyle.MEDIUM);
+            style.setBorderLeft(BorderStyle.MEDIUM);
+            style.setBorderRight(BorderStyle.MEDIUM);
+
+            RegID.setCellValue("ID Регистратора");
+            Data.setCellValue("Действия");
+            Date.setCellValue("Дата");
+            TranIDFK.setCellValue("ID услуг");
+            TranIDPK.setCellValue("ID амбулатории");
+
+            RegID.setCellStyle(style);
+            Data.setCellStyle(style);
+            Date.setCellStyle(style);
+            TranIDFK.setCellStyle(style);
+            TranIDPK.setCellStyle(style);
+
+            /////////////////////////////////////////
+
+            for (int j = 1; j <logsData.size() ; j++) {
+                Row nonrow = sh.createRow(j);
+                nonrow.createCell(0).setCellValue(logsData.get(j).getRegIdListId());
+                nonrow.createCell(1).setCellValue(logsData.get(j).getDataListId());
+                nonrow.createCell(2).setCellValue(logsData.get(j).getDateListId());
+                nonrow.createCell(3).setCellValue(logsData.get(j).getTranID_FK_TRXNOListId());
+                nonrow.createCell(4).setCellValue(logsData.get(j).getTranID_PK_psPatledgersListId());
+            }
+
+            ////////////////////////////////////////////
+
+            fos = new FileOutputStream("C:/Users/vdrugov/Desktop/Logs.xls");
+            wb.write(fos);
+            fos.close();
+        } catch (Exception e) {
+            changeFrames(19);
+        }
     }
 
     public static void initData(Logs logs) {
         logsData.add(logs);
     }
     private void changeFrames(int x){
+        Image imageIcon = new Image("sample/res/fav.png");
         ChangeFrame CF = new ChangeFrame();
-        ZeroingClientButton.getScene().getWindow().hide();
+        upLoadLogsButton.getScene().getWindow().hide();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(CF.changeFrame(x)));
         try {

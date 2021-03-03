@@ -7,6 +7,17 @@ public class Logs {
     private String TranID_PK_psPatledgersListId;
     private String DateListId;
 
+    @Override
+    public String toString() {
+        return "Logs{" +
+                "regIdListId='" + regIdListId + '\'' +
+                ", DataListId='" + DataListId + '\'' +
+                ", TranID_FK_TRXNOListId='" + TranID_FK_TRXNOListId + '\'' +
+                ", TranID_PK_psPatledgersListId='" + TranID_PK_psPatledgersListId + '\'' +
+                ", DateListId='" + DateListId + '\'' +
+                '}';
+    }
+
     public Logs(String regIdListId, String dataListId, String tranID_FK_TRXNOListId, String tranID_PK_psPatledgersListId, String dateListId) {
         this.regIdListId = regIdListId;
         DataListId = dataListId;

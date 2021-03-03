@@ -118,296 +118,80 @@ public class DeleteDiscountController extends LogsClass {
     @FXML
     void initialize() {
 
-        Image imageIcon = new Image("sample/res/fav.png");
+
         
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         QeryMenuZeroingAmbulatoryId.setOnAction(event -> {
-            DeletDiscountButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingAmbulatory.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(1);
         });
 
         QeryMenuChangePaymentId.setOnAction(event -> {
-            DeletDiscountButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangePayment.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(2);
         });
 
         QeryMenuChangeDoctorId.setOnAction(event -> {
-            DeletDiscountButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeDoctor.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(3);
         });
         QeryMenuChangeAmbulatoryDateId.setOnAction(event -> {
-            DeletDiscountButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeAmbulatoryDate.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(4);
         });
         QeryMenuChangeBirthdateId.setOnAction(event -> {
-            DeletDiscountButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeBirthdate.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(5);
         });
         QeryMenuEnabledUltrasoundId.setOnAction(event -> {
-            DeletDiscountButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/EnabledUltrasound.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(6);
         });
         QeryMenuRecoveryUltrasoundId.setOnAction(event -> {
-            DeletDiscountButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/RecoveryUltrasound.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(7);
         });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         CorpMenuAddCorpId.setOnAction(event -> {
-            DeletDiscountButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/AddCorpClient.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(8);
         });
 
         CorpMenuZeroingCorpId.setOnAction(event -> {
-            DeletDiscountButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingCorpClient.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(9);
         });
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         DeleteMenuDeletAmbulatoryId.setOnAction(event -> {
-            DeletDiscountButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeletAmbulatory.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(10);
         });
 
 
         DeleteMenuDeletDiscountId.setOnAction(event -> {
-            DeletDiscountButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeleteDiscount.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(11);
         });
 
         DeleteMenuDeletPaymentId.setOnAction(event -> {
-            DeletDiscountButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeletPayment.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(12);
         });
 
         DeleteMenuRecordReturnId.setOnAction(event -> {
-            DeletDiscountButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/RecordReturn.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(13);
         });
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         OptionsMenuAccountId.setOnAction(event -> {
-            DeletDiscountButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/Account.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(14);
         });
 
         OptionsMenuLogsId.setOnAction(event -> {
-            DeletDiscountButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/CheckLogs.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(15);
         });
 
         OptionsMenuUsersId.setOnAction(event -> {
-            DeletDiscountButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/Users.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(16);
         });
 
         OptionsMenuRebookId.setOnAction(event -> {
-            DeletDiscountButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/Rebook.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(17);
         });
 
         OptionsMenuAboutId.setOnAction(event -> {
-            DeletDiscountButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/About.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(18);
         });
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -447,7 +231,7 @@ public class DeleteDiscountController extends LogsClass {
             SqlExecutor sqlExecutor =new SqlExecutor();
             sqlExecutor.deletDiscount(tranId,regName,data);
             aceptImageId.setVisible(true);
-            sqlExecutor.getAnimation(aceptImageId);
+            sqlExecutor.getAnimation(aceptImageId,1);
         });
 
     }
@@ -458,8 +242,9 @@ public class DeleteDiscountController extends LogsClass {
         this.regName =regName;
     }
     private void changeFrames(int x){
+        Image imageIcon = new Image("sample/res/fav.png");
         ChangeFrame CF = new ChangeFrame();
-        ZeroingClientButton.getScene().getWindow().hide();
+        DeletDiscountButton.getScene().getWindow().hide();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(CF.changeFrame(x)));
         try {

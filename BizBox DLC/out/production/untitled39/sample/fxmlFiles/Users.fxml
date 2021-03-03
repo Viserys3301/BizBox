@@ -53,6 +53,7 @@
                   <MenuItem fx:id="OptionsMenuAboutId" mnemonicParsing="false" text="О программе" />
             </items>
           </Menu>
+            <Menu fx:id="OptionsMenuId1" mnemonicParsing="false" style="-fx-background-color: #00FFFF; -fx-border-color: #FF0000;" text="Beta 1.1 (24.02.21)" />
         </menus>
       </MenuBar>
       <TextField fx:id="userIdArea" layoutX="14.0" layoutY="35.0" prefHeight="25.0" prefWidth="462.0" />

@@ -50,6 +50,7 @@
                   <MenuItem fx:id="OptionsMenuAboutId" mnemonicParsing="false" text="О программе" />
             </items>
           </Menu>
+            <Menu fx:id="OptionsMenuId1" mnemonicParsing="false" style="-fx-background-color: #00FFFF; -fx-border-color: #FF0000;" text="Beta 1.1 (24.02.21)" />
         </menus>
       </MenuBar>
       <Text fx:id="InfoText" fill="RED" layoutX="178.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Версия программы Beta 1.0" wrappingWidth="243.13671875">

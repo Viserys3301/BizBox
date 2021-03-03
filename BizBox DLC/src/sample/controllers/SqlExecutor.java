@@ -172,6 +172,7 @@ public class SqlExecutor extends LogsClass {
                 stmt.executeUpdate(SQL_3);
                 stmt.close();
                 con.close();
+
             } catch (SQLException ex) {
                 Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -276,17 +277,42 @@ public class SqlExecutor extends LogsClass {
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////----{ОБНУЛЕНИЕ КОРП КЛИЕНТА}----//////////////////////////////////////////////
-    public void zeroingCorpClient(String tranId,String regName,String data){
+    public boolean zeroingCorpClient(String tranId,String regName,String data ){
+
+        String patId ="";
+        String patId2 = null;
+
+
         String SQL = "exec Update_TRXNO " +tranId +  ", 'COM'";
         try {
             Statement stmt = con.createStatement();
-            stmt.executeUpdate(SQL);
-            zeroingCorpClientsLogs(tranId,regName,data,stmt);
+            String checkCorp = "SELECT FK_emdPatients FROM psPatitem WHERE FK_TRXNO =" + tranId;
+            ResultSet executeQuery = stmt.executeQuery(checkCorp);
+            while (executeQuery.next()) {
+                patId = executeQuery.getString("FK_emdPatients");
+
+            }
+
+            String search = "SELECT psDatacenter_ID FROM Assistance_list WHERE psDatacenter_ID =" + patId;
+            ResultSet executeQuery2 = stmt.executeQuery(search);
+            while (executeQuery2.next()) {
+                patId2 = executeQuery2.getString("psDatacenter_ID");
+            }
+                if(patId2!=null){
+                    stmt.executeUpdate(SQL);
+                    zeroingCorpClientsLogs(tranId,regName,data,stmt);
+                    stmt.close();
+                    con.close();
+                    return true;
+                }else {
+                    JOptionPane.showMessageDialog(null,"ПАЦИЕНТА НЕТ В КОМПАНИИ");
+                }
             stmt.close();
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return false;
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -406,10 +432,8 @@ public class SqlExecutor extends LogsClass {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////----{ЛОГИ}----//////////////////////////////////////////////
-    public void findLogs(String regId,String dataId,String TranID_FK_TRXNOid,String  TranID_PK_psPatledgersId){
-        String SQL = "SELECT RegID,Data,TranID_FK_TRXNO,TranID_PK_psPatledgers,Date FROM RegistryLogs WHERE RegID like " +
-                regId + " OR Data like " + dataId + " OR TranID_FK_TRXNO like " +TranID_FK_TRXNOid +
-                " OR TranID_PK_psPatledgers like " + TranID_PK_psPatledgersId ;
+    public void findLogs(String regId){
+        String SQL = "SELECT RegID,Data,TranID_FK_TRXNO,TranID_PK_psPatledgers,Date FROM RegistryLogs WHERE RegID like " + regId ;
 
         try {
 
@@ -535,23 +559,134 @@ public class SqlExecutor extends LogsClass {
             Logger.getLogger(AddCorpClientController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void addCorpClient(String patId,String refPaid,String companyId,String packageId){
+
+    public boolean addCorpClient(String patId,String refPaid,String companyId,String packageId,boolean close){
+
         try {
+            String isHave = null;
+            String check ="SELECT psDatacenter_ID FROM Assistance_list WHERE psDatacenter_ID =" + patId;
             String SQL = "INSERT INTO Assistance_list (psDatacenter_ID, psDatacenter_REF, Assistance_clients_ID,Assistance_packages_ID, isDiscontinued) VALUES(" + patId + "," + refPaid + "," + companyId + "," + packageId +  "," + "0" +")";
             Statement stmt = con.createStatement();
-            stmt.executeUpdate(SQL);
+
+            ResultSet executeQuery = stmt.executeQuery(check);
+            while (executeQuery.next()) {
+                isHave = executeQuery.getString("psDatacenter_ID");
+            }
+            if(isHave==null){
+                stmt.executeUpdate(SQL);
+                stmt.close();
+                if(close){
+                    con.close();
+                }
+
+                return true;
+            }
+            JOptionPane.showMessageDialog(null,"КЛИЕНТ УЖЕ ИМЕЕТСЯ В КОМПАНИИ" );
+
+                stmt.close();
+                con.close();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
+    public void addNewCorpClient(String firstname,String secondNmae,String corpBirthdate,String gender,String PatIIN,String key,String companyId,String packageId,String refPaid ){
+        Statement stmt = null;
+        try {
+            stmt = con.createStatement();
+            String PK_psDatacenter = null;
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        String SQLDatacenter = "INSERT INTO psDatacenter (hs7dcno,rectype,fullname,fullname2,customname,email,prcountry,billflag,delvflag,lcustomer," +
+                "  lvendor,lemployee,lpatient,ldoctor,lsysuser,lapplicant,localization,prcountrycode) VALUES (0,'P'," +
+                "'"+ firstname +", " + secondNmae + "',' " + secondNmae + " " + firstname + "',' " + secondNmae + " " + firstname +"','" + key +"','Казахстан (Kazakhstan)',0,0,0,0,0,1,0,0,0,'Russian (Russia)',7)";
+            stmt.executeUpdate(SQLDatacenter);
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        String search = "SELECT PK_psDatacenter FROM psDatacenter WHERE fullname = '" + firstname + ", " + secondNmae +"' and email = '" + key + "'";
+        ResultSet executeQuery = stmt.executeQuery(search);
+        while (executeQuery.next()) {
+            PK_psDatacenter = executeQuery.getString("PK_psDatacenter");
+        }
+        String SQLPersonal = "  INSERT INTO psPersonaldata (PK_psPersonalData, firstname,lastname,gender,birthdate,civilstatus,empaddress,cpcountry," +
+                "isBlackAmerican,isAsian,isIndianAmerican,isHispanicLatino,isNativeHawaiian,isWhite,isFictitiousBirthdate,  isnonlocal," +
+                "FK_mscIndustry,FK_mscWorkLevel,empcountrycode,cpcountrycode,isnopersonaldata,isnocommfrmcompany) VALUES " +
+                "( " + PK_psDatacenter + ",'" + secondNmae + "',' " + firstname +"','" + gender + "'," + corpBirthdate +",'M',' Казахстан (Kazakhstan)','Казахстан (Kazakhstan)',0,0,0,0,0,0,0,0,0,0,7,7,0,0)";
+            stmt.executeUpdate(SQLPersonal);
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        String SQLEmdPatient = "INSERT INTO emdPatients (PK_emdPatients,holdacct,confidential,patid,FK_faCustomers,FK_mscContracts,isBlacklisted,PrincipalClass,SAPCode,  " +
+                "FK_faCustomersInteg,FK_facustomersPlan,KeyPersonnel)   VALUES (" + PK_psDatacenter + ",0,0,'" + PatIIN +"',0,0,0,'A',0,0,0,0)";
+            stmt.executeUpdate(SQLEmdPatient);
             stmt.close();
-            con.close();
+            if(refPaid==null){
+                refPaid=PK_psDatacenter;
+            }
+            boolean close =true ;
+            addCorpClient(PK_psDatacenter,refPaid,companyId,packageId,close);
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
+
+    public void addNewCorpClientFromFile(String firstname,String secondNmae,String corpBirthdate,String gender,String PatIIN,String key,String companyId,String packageId,String refPaid,String isGeneral,boolean close){
+
+
+
+        Statement stmt = null;
+        try {
+
+            stmt = con.createStatement();
+            String PK_psDatacenter = null;
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            String SQLDatacenter = "INSERT INTO psDatacenter (hs7dcno,rectype,fullname,fullname2,customname,email,prcountry,billflag,delvflag,lcustomer," +
+                    "  lvendor,lemployee,lpatient,ldoctor,lsysuser,lapplicant,localization,prcountrycode) VALUES (0,'P'," +
+                    "'"+ firstname +", " + secondNmae + "',' " + secondNmae + " " + firstname + "',' " + secondNmae + " " + firstname +"','" + key +"','Казахстан (Kazakhstan)',0,0,0,0,0,1,0,0,0,'Russian (Russia)',7)";
+            stmt.executeUpdate(SQLDatacenter);
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            String search = "SELECT PK_psDatacenter FROM psDatacenter WHERE fullname = '" + firstname + ", " + secondNmae +"' and email = '" + key + "'";
+            ResultSet executeQuery = stmt.executeQuery(search);
+            while (executeQuery.next()) {
+                PK_psDatacenter = executeQuery.getString("PK_psDatacenter");
+            }
+            String SQLPersonal = "  INSERT INTO psPersonaldata (PK_psPersonalData, firstname,lastname,gender,birthdate,civilstatus,empaddress,cpcountry," +
+                    "isBlackAmerican,isAsian,isIndianAmerican,isHispanicLatino,isNativeHawaiian,isWhite,isFictitiousBirthdate,  isnonlocal," +
+                    "FK_mscIndustry,FK_mscWorkLevel,empcountrycode,cpcountrycode,isnopersonaldata,isnocommfrmcompany) VALUES " +
+                    "( " + PK_psDatacenter + ",'" + secondNmae + "',' " + firstname +"','" + gender + "'," + corpBirthdate +",'M',' Казахстан (Kazakhstan)','Казахстан (Kazakhstan)',0,0,0,0,0,0,0,0,0,0,7,7,0,0)";
+            stmt.executeUpdate(SQLPersonal);
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            String SQLEmdPatient = "INSERT INTO emdPatients (PK_emdPatients,holdacct,confidential,patid,FK_faCustomers,FK_mscContracts,isBlacklisted,PrincipalClass,SAPCode,  " +
+                    "FK_faCustomersInteg,FK_facustomersPlan,KeyPersonnel)   VALUES (" + PK_psDatacenter + ",0,0,'" + PatIIN +"',0,0,0,'A',0,0,0,0)";
+            stmt.executeUpdate(SQLEmdPatient);
+            stmt.close();
+
+            if(isGeneral.equalsIgnoreCase("isGeneral")){
+                AddCorpClientController.refPaid = PK_psDatacenter;
+                refPaid=PK_psDatacenter;
+            }else if(isGeneral.equalsIgnoreCase("isFamily")){
+                refPaid = AddCorpClientController.refPaid;
+            }
+
+            addCorpClient(PK_psDatacenter,refPaid,companyId,packageId,close);
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////----{АНИМАЦИЯ}----//////////////////////////////////////////////
 
-    public  void getAnimation(ImageView aceptImageId){
-        RotateTransition rt = new RotateTransition(Duration.seconds(1),aceptImageId);
+    public  void getAnimation(ImageView aceptImageId,float time){
+        RotateTransition rt = new RotateTransition(Duration.seconds(time),aceptImageId);
         rt.setByAngle(360);
         rt.setCycleCount(1);
         rt.setAutoReverse(false);

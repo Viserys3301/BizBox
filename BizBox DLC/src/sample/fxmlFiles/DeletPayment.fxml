@@ -55,6 +55,7 @@
                   <MenuItem fx:id="OptionsMenuAboutId" mnemonicParsing="false" text="О программе" />
             </items>
           </Menu>
+            <Menu fx:id="OptionsMenuId1" mnemonicParsing="false" style="-fx-background-color: #00FFFF; -fx-border-color: #FF0000;" text="Beta 2.0 (03.03.21)" />
         </menus>
       </MenuBar>
       <TextField fx:id="TranIdArea" layoutX="191.0" layoutY="171.0" prefHeight="25.0" prefWidth="225.0" promptText="Введите ID транзакции" />
@@ -76,7 +77,7 @@
       </MenuButton>
       <ImageView fx:id="aceptImageId" fitHeight="150.0" fitWidth="200.0" layoutX="229.0" layoutY="236.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../res/3.jpg" />
+            <Image url="@../res/Image/Complete.jpg" />
          </image>
       </ImageView>
    </children>

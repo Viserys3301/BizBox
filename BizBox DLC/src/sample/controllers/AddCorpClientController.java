@@ -1,12 +1,9 @@
 package sample.controllers;
 
-import java.awt.event.MouseAdapter;
-import java.io.IOException;
-import java.net.URL;
-import java.sql.*;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,24 +11,39 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import javax.swing.*;
 
 public class AddCorpClientController {
+    String patId;
+    static String refPaid;
+
     String companyId;
     String packageId;
+
+    String firstname;
+    String secondNmae;
+
+
+    String birthdateDay;
+    String birthdateMonth;
+    String birthdateYer;
+    String corpBirthdate;
+    String gender;
+    String PatIIN;
+    String key;
+
 
     private static ObservableList<Company> companyList = FXCollections.observableArrayList();
     private static ObservableList<Packages> packagesList = FXCollections.observableArrayList();
@@ -139,6 +151,9 @@ public class AddCorpClientController {
     private ImageView acepImageId;
 
     @FXML
+    private ImageView acepImageId2;
+
+    @FXML
     private TableView<Company> CorpTable;
 
     @FXML
@@ -154,323 +169,160 @@ public class AddCorpClientController {
     private Button findPackageId;
 
     @FXML
+    private Button addFullPatButton;
+
+    @FXML
+    private TextField IINarea;
+
+    @FXML
+    private TextField TextKey;
+
+    @FXML
+    private RadioButton IsHaveRef;
+
+    @FXML
     void initialize() {
-        Image imageIcon = new Image("sample/res/fav.png");
+
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         QeryMenuZeroingAmbulatoryId.setOnAction(event -> {
-            addNewPatId.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingAmbulatory.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(1);
         });
-
         QeryMenuChangePaymentId.setOnAction(event -> {
-            addNewPatId.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangePayment.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(2);
         });
-
         QeryMenuChangeDoctorId.setOnAction(event -> {
-            addNewPatId.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeDoctor.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(3);
         });
         QeryMenuChangeAmbulatoryDateId.setOnAction(event -> {
-            addNewPatId.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeAmbulatoryDate.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(4);
         });
         QeryMenuChangeBirthdateId.setOnAction(event -> {
-            addNewPatId.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ChangeBirthdate.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(5);
         });
         QeryMenuEnabledUltrasoundId.setOnAction(event -> {
-            addNewPatId.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/EnabledUltrasound.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(6);
         });
         QeryMenuRecoveryUltrasoundId.setOnAction(event -> {
-            addNewPatId.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/RecoveryUltrasound.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(7);
         });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         CorpMenuAddCorpId.setOnAction(event -> {
-            addNewPatId.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/AddCorpClient.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(8);
         });
 
         CorpMenuZeroingCorpId.setOnAction(event -> {
-            addNewPatId.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/ZeroingCorpClient.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(9);
         });
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         DeleteMenuDeletAmbulatoryId.setOnAction(event -> {
-            addNewPatId.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeletAmbulatory.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(10);
         });
 
 
         DeleteMenuDeletDiscountId.setOnAction(event -> {
-            addNewPatId.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeleteDiscount.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(11);
         });
 
         DeleteMenuDeletPaymentId.setOnAction(event -> {
-            addNewPatId.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/DeletPayment.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(12);
         });
 
         DeleteMenuRecordReturnId.setOnAction(event -> {
-            addNewPatId.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/RecordReturn.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(13);
         });
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         OptionsMenuAccountId.setOnAction(event -> {
-            addNewPatId.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/Account.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(14);
         });
 
         OptionsMenuLogsId.setOnAction(event -> {
-            addNewPatId.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/CheckLogs.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(15);
         });
 
         OptionsMenuUsersId.setOnAction(event -> {
-            addNewPatId.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/Users.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(16);
         });
 
         OptionsMenuRebookId.setOnAction(event -> {
-            addNewPatId.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/Rebook.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(17);
         });
 
         OptionsMenuAboutId.setOnAction(event -> {
-            addNewPatId.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/fxmlFiles/About.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(imageIcon);
-            stage.show();
+            changeFrames(18);
         });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ToggleGroup group = new ToggleGroup();
+        PatGenderFemaleId.setToggleGroup(group);
+        PatGenderMaleId.setToggleGroup(group);
 
+
+
+        IsHaveRef.setDisable(true);
+        IINarea.setDisable(true);
         patFirstNameId.setDisable(true);
         patSecondNameId.setDisable(true);
-        patMidleNameId.setDisable(true);
         DateDayId.setDisable(true);
         DateMonthId.setDisable(true);
         DateYerId.setDisable(true);
         PatGenderFemaleId.setDisable(true);
         PatGenderMaleId.setDisable(true);
-        LoadExcelFileButton.setDisable(true);
-        addCorpButtonId.setDisable(true);
+        LoadExcelFileButton.setDisable(false);
+
+        findPackageId.setDisable(true);
+        addFullPatButton.setDisable(true);
+
+
+
+
+
+        PatGenderFemaleId.setOnAction(event -> {
+             gender = "Female";
+        });
+        PatGenderMaleId.setOnAction(event -> {
+            gender = "Male";
+        });
+
+        addFullPatButton.setOnAction(event -> {
+             PatIIN = IINarea.getText();
+             firstname = patFirstNameId.getText();
+             secondNmae = patSecondNameId.getText();
+             key = TextKey.getText();
+
+             birthdateDay = DateDayId.getText();
+             birthdateMonth = DateMonthId.getText();
+             birthdateYer = DateYerId.getText();
+             corpBirthdate = "'" + birthdateYer + "-" + birthdateMonth + "-" + birthdateDay + " 00:00:00.000'";
+            SqlExecutor sqlExecutor = new SqlExecutor();
+            companyId= CorpTable.getSelectionModel().getSelectedItem().getId();
+            packageId = PackageTable.getSelectionModel().getSelectedItem().getId();
+            sqlExecutor.addNewCorpClient(firstname,secondNmae,corpBirthdate,gender,PatIIN,key,companyId,packageId,refPaid);
+            acepImageId.setVisible(true);
+            sqlExecutor.getAnimation(acepImageId,1);
+        });
 
         addNewPatId.setOnAction(event -> {
+
+            IsHaveRef.setDisable(false);
+            addFullPatButton.setDisable(false);
             patFirstNameId.setDisable(false);
             patSecondNameId.setDisable(false);
-            patMidleNameId.setDisable(false);
             DateDayId.setDisable(false);
             DateMonthId.setDisable(false);
             DateYerId.setDisable(false);
             PatGenderFemaleId.setDisable(false);
             PatGenderMaleId.setDisable(false);
+            addCorpButtonId.setDisable(false);
+            IINarea.setDisable(false);
 
+            LoadExcelFileButton.setDisable(true);
+            addCorpButtonId.setDisable(true);
             refPatiendId.setDisable(true);
             refPatiendId.setText(null);
             patiendId.setDisable(true);
@@ -478,13 +330,19 @@ public class AddCorpClientController {
         });
 
         addCorpButtonId.setOnAction(event -> {
-            String patId = patiendId.getText();
-            String refPaid = refPatiendId.getText();
+             patId = patiendId.getText();
+             refPaid = refPatiendId.getText();
             packageId = PackageTable.getSelectionModel().getSelectedItem().getId();
+            boolean close = true;
             SqlExecutor sqlExecutor = new SqlExecutor();
-            sqlExecutor.addCorpClient(patId,refPaid,companyId,packageId);
-            acepImageId.setVisible(true);
-            sqlExecutor.getAnimation(acepImageId);
+
+            if(sqlExecutor.addCorpClient(patId,refPaid,companyId,packageId,close)){
+                acepImageId.setVisible(true);
+                sqlExecutor.getAnimation(acepImageId,1);
+            }else {
+                acepImageId2.setVisible(true);
+                sqlExecutor.getAnimation(acepImageId2,0.5f);
+            }
         });
 
         findCorpId.setOnAction(event -> {
@@ -499,6 +357,11 @@ public class AddCorpClientController {
             sqlExecutor.findCompany(companyName);
             CompanyNameId.setCellValueFactory(new PropertyValueFactory<Company, String>("Name"));
             CorpTable.setItems(companyList);
+            findPackageId.setDisable(false);
+        });
+
+        IsHaveRef.setOnAction(event -> {
+            refPaid = JOptionPane.showInputDialog("ВВЕДИТЕ ID ОСНОВНОГО СОТРУДНИКА");
         });
 
         findPackageId.setOnAction(event -> {
@@ -512,6 +375,10 @@ public class AddCorpClientController {
             PackageTable.setItems(packagesList);
         });
 
+        LoadExcelFileButton.setOnAction(event -> {
+            loadFile();
+        });
+
     }
 
     public static void initData(Company company) {
@@ -522,16 +389,44 @@ public class AddCorpClientController {
         packagesList.add(packages);
     }
 
-
-    private void addNewCorpClient(){
-
-    }
     private void loadFile(){
+        int counter = 0;
+        try {
+          counter  = Integer.parseInt(JOptionPane.showInputDialog("УКАЖИТЕ ЧИСЛО ПАЦИЕНТОВ"));
+     }catch (Exception e){
+         JOptionPane.showMessageDialog(null,"НЕКОРРЕКТНЫЕ ДАННЫЕ");
+         return;
+     }
+
+        SqlExecutor sqlExecutor = new SqlExecutor();
+        boolean close = false;
+        try {
+            File file = new File("C:/Users/vdrugov/Desktop/Corp.xlsx");
+            FileInputStream  in = new FileInputStream(file);
+            XSSFWorkbook workbook = new XSSFWorkbook(in);
+            ArrayList<String> corps = new ArrayList<>();
+            for (int i = 0; i <counter ; i++) {
+                for (int j = 0; j <9 ; j++) {
+                    corps.add(workbook.getSheetAt(0).getRow(i).getCell(j).getStringCellValue());
+                }
+                if(i+1 == counter) close =true;
+                sqlExecutor.addNewCorpClientFromFile(corps.get(0),corps.get(1), "'" + corps.get(2) + "'",corps.get(3),corps.get(4),corps.get(5),corps.get(6),corps.get(7),refPaid,corps.get(8),close);
+                System.out.println(corps);
+                corps.clear();
+            }
+            workbook.close();
+            in.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
     private void changeFrames(int x){
+        Image imageIcon = new Image("sample/res/fav.png");
         ChangeFrame CF = new ChangeFrame();
-        ZeroingClientButton.getScene().getWindow().hide();
+        findPackageId.getScene().getWindow().hide();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(CF.changeFrame(x)));
         try {

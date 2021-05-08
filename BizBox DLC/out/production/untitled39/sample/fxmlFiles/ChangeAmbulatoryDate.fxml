@@ -4,15 +4,16 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.ChangeAmbulatoryDateController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.ChangeAmbulatoryDateController">
    <children>
       <MenuBar fx:id="MainMenuBar" layoutX="-9.0" layoutY="2.0" prefHeight="25.0" prefWidth="609.0">
         <menus>
@@ -54,33 +55,33 @@
                   <MenuItem fx:id="OptionsMenuAboutId" mnemonicParsing="false" text="О программе" />
             </items>
           </Menu>
+            <Menu fx:id="OptionsMenuId1" mnemonicParsing="false" style="-fx-background-color: #00FFFF; -fx-border-color: #FF0000;" text="Beta 1.1 (24.02.21)" />
         </menus>
       </MenuBar>
-      <TextField fx:id="TranIdArea" layoutX="316.0" layoutY="61.0" prefHeight="25.0" prefWidth="256.0" />
-      <Text fx:id="titleArea" layoutX="105.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите ID транзакции:" wrappingWidth="203.244140625">
+      <TextField fx:id="TranIdArea" alignment="CENTER" layoutX="137.0" layoutY="144.0" prefHeight="25.0" prefWidth="326.0" promptText="Введите ID амбулатории" />
+      <Label fx:id="InfoQery" layoutX="185.0" layoutY="105.0" prefHeight="20.0" prefWidth="231.0" text="ИЗМЕНЕНИЕ ДАТЫ АМБУЛАТОРИИ" textFill="#0099ff">
          <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Button fx:id="clearButton" layoutX="487.0" layoutY="133.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Очистить" />
-      <RadioButton fx:id="RadioReg00" layoutX="14.0" layoutY="37.0" mnemonicParsing="false" text="Reg00" />
-      <RadioButton fx:id="RadioReg01" layoutX="94.0" layoutY="37.0" mnemonicParsing="false" text="Reg01" />
-      <RadioButton fx:id="RadioReg02" layoutX="166.0" layoutY="37.0" mnemonicParsing="false" text="Reg02" />
-      <RadioButton fx:id="RadioReg03" layoutX="241.0" layoutY="37.0" mnemonicParsing="false" text="Reg03" />
-      <RadioButton fx:id="RadioReg04" layoutX="308.0" layoutY="37.0" mnemonicParsing="false" text="Reg04" />
-      <RadioButton fx:id="RadioReg05" layoutX="374.0" layoutY="37.0" mnemonicParsing="false" text="Reg05" />
-      <Label fx:id="infoLabel" layoutX="18.0" layoutY="207.0" prefHeight="34.0" prefWidth="581.0" text="ГОТОВО" textFill="LIMEGREEN">
-         <font>
-            <Font size="23.0" />
-         </font>
-      </Label>
-      <Label fx:id="InfoQery" layoutX="452.0" layoutY="36.0" prefHeight="19.0" prefWidth="122.0" text="УДАЛЕНИЕ ПЛАТЕЖА" textFill="#0099ff" />
-      <Button fx:id="ChangeAmbulatoryDateButton" layoutX="487.0" layoutY="96.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Изменить" />
-      <TextField fx:id="DateDayId" layoutX="316.0" layoutY="96.0" prefHeight="25.0" prefWidth="44.0" />
-      <TextField fx:id="DateMonthId" layoutX="374.0" layoutY="96.0" prefHeight="25.0" prefWidth="44.0" />
-      <TextField fx:id="DateYerId" layoutX="432.0" layoutY="96.0" prefHeight="25.0" prefWidth="44.0" />
-      <Text layoutX="324.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="День" />
-      <Text layoutX="378.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Месяц" />
-      <Text layoutX="442.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Год" />
+            <Font size="14.0" />
+         </font></Label>
+      <Button fx:id="ChangeAmbulatoryDateButton" layoutX="378.0" layoutY="175.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Изменить" />
+      <TextField fx:id="DateDayId" layoutX="245.0" layoutY="175.0" prefHeight="25.0" prefWidth="44.0" promptText="День" />
+      <TextField fx:id="DateMonthId" layoutX="290.0" layoutY="175.0" prefHeight="25.0" prefWidth="44.0" promptText="Месяц" />
+      <TextField fx:id="DateYerId" layoutX="334.0" layoutY="175.0" prefHeight="25.0" prefWidth="44.0" promptText="Год" />
+      <MenuButton fx:id="selectRegistrations" layoutX="137.0" layoutY="175.0" mnemonicParsing="false" text="Регистраторы">
+        <items>
+          <MenuItem fx:id="selectReg00" mnemonicParsing="false" text="Reg00" />
+            <MenuItem fx:id="selectReg01" mnemonicParsing="false" text="Reg01" />
+            <MenuItem fx:id="selectReg02" mnemonicParsing="false" text="Reg02" />
+            <MenuItem fx:id="selectReg03" mnemonicParsing="false" text="Reg03" />
+            <MenuItem fx:id="selectReg04" mnemonicParsing="false" text="Reg04" />
+            <MenuItem fx:id="selectReg05" mnemonicParsing="false" text="Reg05" />
+            <MenuItem fx:id="selectAdmin" mnemonicParsing="false" text="Admin" />
+        </items>
+      </MenuButton>
+      <ImageView fx:id="aceptImageId" fitHeight="150.0" fitWidth="200.0" layoutX="215.0" layoutY="223.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../res/Image/Complete.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

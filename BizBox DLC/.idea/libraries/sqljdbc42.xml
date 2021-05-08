@@ -1,7 +1,11 @@
 <component name="libraryTable">
   <library name="sqljdbc42">
     <CLASSES>
-      <root url="jar://E:/Java/sqljdbc42.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/sample/res/Library/sqljdbc42.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/sample/res/Library/poi-5.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/sample/res/Library/commons-math3-3.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/sample/res/Library/commons-collections4-4.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/sample/res/Library/commons-codec-1.15.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.RebookController">
+   <children>
+       <MenuBar fx:id="MainMenuBar" layoutX="-9.0" layoutY="2.0" prefHeight="25.0" prefWidth="609.0">
+           <menus>
+               <Menu fx:id="QeryMenuID" mnemonicParsing="false" text="Запросы">
+                   <items>
+                       <MenuItem fx:id="QeryMenuZeroingAmbulatoryId" mnemonicParsing="false" text="Обнуление амбулатории" />
+                       <MenuItem fx:id="QeryMenuChangePaymentId" mnemonicParsing="false" text="Приём платежей Нал/Безнал" />
+                       <MenuItem fx:id="QeryMenuChangeDoctorId" mnemonicParsing="false" text="Изменение врача" />
+                       <SeparatorMenuItem mnemonicParsing="false" />
+                       <MenuItem fx:id="QeryMenuChangeAmbulatoryDateId" mnemonicParsing="false" text="Изменение даты амбулатории" />
+                       <MenuItem fx:id="QeryMenuChangeBirthdateId" mnemonicParsing="false" text="Изменение даты рождения" />
+                       <SeparatorMenuItem mnemonicParsing="false" />
+                       <MenuItem fx:id="QeryMenuEnabledUltrasoundId" mnemonicParsing="false" text="Разблокировка УЗИ" />
+                       <MenuItem fx:id="QeryMenuRecoveryUltrasoundId" mnemonicParsing="false" text="Возврат УЗИ" />
+                   </items>
+               </Menu>
+               <Menu fx:id="CorpMenuId" mnemonicParsing="false" text="Корп">
+                   <items>
+                       <MenuItem fx:id="CorpMenuAddCorpId" mnemonicParsing="false" text="Добавление" />
+                       <MenuItem fx:id="CorpMenuZeroingCorpId" mnemonicParsing="false" text="Обнуление" />
+                   </items>
+               </Menu>
+               <Menu fx:id="DeleteMenuId" mnemonicParsing="false" text="Удаление">
+                   <items>
+                       <MenuItem fx:id="DeleteMenuDeletPaymentId" mnemonicParsing="false" text="Удаление приёма платежей" />
+                       <MenuItem fx:id="DeleteMenuDeletDiscountId" mnemonicParsing="false" text="Удаление скидки" />
+                       <MenuItem fx:id="DeleteMenuDeletAmbulatoryId" mnemonicParsing="false" text="Удаление амбулатории" />
+                       <SeparatorMenuItem mnemonicParsing="false" />
+                       <MenuItem fx:id="DeleteMenuRecordReturnId" mnemonicParsing="false" text="Зафиксировать возврат" />
+                   </items>
+               </Menu>
+               <Menu fx:id="OptionsMenuId" mnemonicParsing="false" text="Настройки">
+                   <items>
+                       <MenuItem fx:id="OptionsMenuAccountId" mnemonicParsing="false" text="Аккаунт" />
+                       <MenuItem fx:id="OptionsMenuLogsId" mnemonicParsing="false" text="Логи" />
+                       <MenuItem fx:id="OptionsMenuUsersId" mnemonicParsing="false" text="Пользователи" />
+                       <MenuItem fx:id="OptionsMenuRebookId" mnemonicParsing="false" text="Перебронь" />
+                       <SeparatorMenuItem mnemonicParsing="false" />
+                       <MenuItem fx:id="OptionsMenuAboutId" mnemonicParsing="false" text="О программе" />
+                   </items>
+               </Menu>
+               <Menu fx:id="OptionsMenuId1" mnemonicParsing="false" style="-fx-background-color: #00FFFF; -fx-border-color: #FF0000;" text="Beta 2.0 (03.03.21)" />
+           </menus>
+       </MenuBar>
+      <TextField fx:id="patNameId" layoutX="14.0" layoutY="38.0" prefHeight="25.0" prefWidth="483.0" promptText="Ф.И.О. пациента" />
+      <Button fx:id="findPatientButton" layoutX="507.0" layoutY="38.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" text="Поиск" />
+      <TableView fx:id="RebookTabel" layoutX="14.0" layoutY="71.0" prefHeight="317.0" prefWidth="573.0">
+        <columns>
+          <TableColumn fx:id="PatNameColumnId" prefWidth="156.0" text="Ф.И.О.">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem fx:id="computerNameColumnId" mnemonicParsing="false" text="Компьютер" />
+                    </items>
+                  </ContextMenu>
+               </contextMenu>
+            </TableColumn>
+            <TableColumn fx:id="DateCreatePatientColumnId" prefWidth="133.0" text="Дата записи" />
+            <TableColumn fx:id="DateRebookColumnId" prefWidth="123.0" text="Дата переброни" />
+            <TableColumn fx:id="NewDatePatientColumnId" prefWidth="159.0" text="Новая дата" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

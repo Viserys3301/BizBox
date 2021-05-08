@@ -15,39 +15,11 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class EnabledUltrasoundController {
-
-    //СОЕДИНЕНИЕ С БАЗОЙ
-    private String instanceName = "10.0.9.4\\hcdbsrv";
-    private String databaseName = "HCDB";
-    private String userName = "sa";
-    private String pass = "Ba#sE5Ke";
-    private String connectionUrl = "jdbc:sqlserver://%1$s;databaseName=%2$s;user=%3$s;password=%4$s;";
-    private String connectionString = String.format(connectionUrl, instanceName, databaseName, userName, pass);
-    Connection con;
-
-    {
-        try {
-            con = DriverManager.getConnection(connectionString);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private MenuBar MainMenuBar;
-
-    @FXML
-    private Menu QeryMenuID;
 
     @FXML
     private MenuItem QeryMenuZeroingAmbulatoryId;
@@ -71,16 +43,10 @@ public class EnabledUltrasoundController {
     private MenuItem QeryMenuRecoveryUltrasoundId;
 
     @FXML
-    private Menu CorpMenuId;
-
-    @FXML
     private MenuItem CorpMenuAddCorpId;
 
     @FXML
     private MenuItem CorpMenuZeroingCorpId;
-
-    @FXML
-    private Menu DeleteMenuId;
 
     @FXML
     private MenuItem DeleteMenuDeletPaymentId;
@@ -93,9 +59,6 @@ public class EnabledUltrasoundController {
 
     @FXML
     private MenuItem DeleteMenuRecordReturnId;
-
-    @FXML
-    private Menu OptionsMenuId;
 
     @FXML
     private MenuItem OptionsMenuAccountId;
@@ -113,44 +76,119 @@ public class EnabledUltrasoundController {
     private MenuItem OptionsMenuAboutId;
 
     @FXML
-    private Label infoLabel;
-
-    @FXML
-    private Label InfoQery;
-
-    @FXML
     private TextField TranIdArea;
 
     @FXML
     private Button EnabledUltrasoundButton;
 
     @FXML
+    private ImageView aceptImageId;
+
+    @FXML
     void initialize() {
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////-----ПЕРЕКЛЮЧЕНИЕ ОКОН-----//////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        QeryMenuZeroingAmbulatoryId.setOnAction(event -> {
+            changeFrames(1);
+        });
+
+        QeryMenuChangePaymentId.setOnAction(event -> {
+            changeFrames(2);
+        });
+
+        QeryMenuChangeDoctorId.setOnAction(event -> {
+            changeFrames(3);
+        });
+        QeryMenuChangeAmbulatoryDateId.setOnAction(event -> {
+            changeFrames(4);
+        });
+        QeryMenuChangeBirthdateId.setOnAction(event -> {
+            changeFrames(5);
+        });
+        QeryMenuEnabledUltrasoundId.setOnAction(event -> {
+            changeFrames(6);
+        });
+        QeryMenuRecoveryUltrasoundId.setOnAction(event -> {
+            changeFrames(7);
+        });
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        CorpMenuAddCorpId.setOnAction(event -> {
+            changeFrames(8);
+        });
+
+        CorpMenuZeroingCorpId.setOnAction(event -> {
+            changeFrames(9);
+        });
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        DeleteMenuDeletAmbulatoryId.setOnAction(event -> {
+            changeFrames(10);
+        });
+
+
+        DeleteMenuDeletDiscountId.setOnAction(event -> {
+            changeFrames(11);
+        });
+
+        DeleteMenuDeletPaymentId.setOnAction(event -> {
+            changeFrames(12);
+        });
+
+        DeleteMenuRecordReturnId.setOnAction(event -> {
+            changeFrames(13);
+        });
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        OptionsMenuAccountId.setOnAction(event -> {
+            changeFrames(14);
+        });
+
+        OptionsMenuLogsId.setOnAction(event -> {
+            changeFrames(15);
+        });
+
+        OptionsMenuUsersId.setOnAction(event -> {
+            changeFrames(16);
+        });
+
+        OptionsMenuRebookId.setOnAction(event -> {
+            changeFrames(17);
+        });
+
+        OptionsMenuAboutId.setOnAction(event -> {
+            changeFrames(18);
+        });
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         EnabledUltrasoundButton.setOnAction(event -> {
             String tranId = TranIdArea.getText();
-            enabledUltrasound(tranId);
+            SqlExecutor sqlExecutor = new SqlExecutor();
+           sqlExecutor.enabledUltrasound(tranId);
+            aceptImageId.setVisible(true);
+            sqlExecutor.getAnimation(aceptImageId,1);
         });
     }
-
-    private void enabledUltrasound(String tranId){
-        Statement stmt = null;
+    private void changeFrames(int x){
+        Image imageIcon = new Image("sample/res/fav.png");
+        ChangeFrame CF = new ChangeFrame();
+        EnabledUltrasoundButton.getScene().getWindow().hide();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(CF.changeFrame(x)));
         try {
-            String SQL = "SELECT PK_psExamResultMstr FROM psExamResultMstr WHERE FK_TRXNO =" + tranId;
-
-            String ultrasoundId = "";
-
-            stmt = con.createStatement();
-
-            ResultSet executeQuery = stmt.executeQuery(SQL);
-
-            while (executeQuery.next()) {
-                ultrasoundId = executeQuery.getString("PK_psPatledgers");
-            }
-            String SQL_2 = "UPDATE psExamResultMstr SET isCheckedOut = 0 WHERE PK_psExamResultMstr = " + ultrasoundId;
-
-        } catch (SQLException e) {
+            loader.load();
+        } catch (IOException e) {
             e.printStackTrace();
         }
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.getIcons().add(imageIcon);
+        stage.show();
     }
 }

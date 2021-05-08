@@ -4,17 +4,19 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.ChangePaymentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.ChangePaymentController">
    <children>
       <MenuBar fx:id="MainMenuBar" layoutX="-9.0" layoutY="2.0" prefHeight="25.0" prefWidth="609.0">
         <menus>
@@ -56,36 +58,40 @@
                   <MenuItem fx:id="OptionsMenuAboutId" mnemonicParsing="false" text="О программе" />
             </items>
           </Menu>
+            <Menu fx:id="OptionsMenuId1" mnemonicParsing="false" style="-fx-background-color: #00FFFF; -fx-border-color: #FF0000;" text="Beta 2.0 (03.03.21)" />
         </menus>
       </MenuBar>
-      <TextField fx:id="TranIdArea" layoutX="241.0" layoutY="117.0" prefHeight="25.0" prefWidth="225.0" />
-      <Text fx:id="titleArea" layoutX="19.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите Ф.И.О пациента:" wrappingWidth="249.244140625">
+      <TextField fx:id="TranIdArea" layoutX="14.0" layoutY="148.0" prefHeight="25.0" prefWidth="467.0" promptText="Введите Ф.И.О пациента" />
+      <Button fx:id="changePaymentButton" layoutX="485.0" layoutY="101.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" text="Применить" />
+      <Label fx:id="InfoQery" layoutX="218.0" layoutY="69.0" prefHeight="20.0" prefWidth="155.0" text="ИЗМЕНЕНИЕ ПЛАТЕЖА" textFill="#0099ff">
          <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Button fx:id="changePaymentButton" layoutX="476.0" layoutY="67.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" text="Применить" />
-      <RadioButton fx:id="RadioReg00" layoutX="15.0" layoutY="37.0" mnemonicParsing="false" text="Reg00" />
-      <RadioButton fx:id="RadioReg01" layoutX="77.0" layoutY="37.0" mnemonicParsing="false" text="Reg01" />
-      <RadioButton fx:id="RadioReg02" layoutX="144.0" layoutY="37.0" mnemonicParsing="false" text="Reg02" />
-      <RadioButton fx:id="RadioReg03" layoutX="206.0" layoutY="37.0" mnemonicParsing="false" text="Reg03" />
-      <RadioButton fx:id="RadioReg04" layoutX="268.0" layoutY="37.0" mnemonicParsing="false" text="Reg04" />
-      <RadioButton fx:id="RadioReg05" layoutX="326.0" layoutY="37.0" mnemonicParsing="false" text="Reg05" />
-      <Label fx:id="infoLabel" layoutX="476.0" layoutY="143.0" prefHeight="34.0" prefWidth="101.0" text="ГОТОВО" textFill="LIMEGREEN">
-         <font>
-            <Font size="23.0" />
-         </font>
-      </Label>
-      <Label fx:id="InfoQery" layoutX="436.0" layoutY="36.0" prefHeight="19.0" prefWidth="138.0" text="ИЗМЕНЕНИЕ ПЛАТЕЖА" textFill="#0099ff" />
-      <RadioButton fx:id="ChangeToCash" layoutX="49.0" layoutY="71.0" mnemonicParsing="false" text="НАЛИЧНЫЙ РАСЧЁТ" />
-      <RadioButton fx:id="ChangeToCard" layoutX="234.0" layoutY="71.0" mnemonicParsing="false" text="БЕЗНАЛИЧНЫЙ РАСЧЁТ" />
-      <Button fx:id="findPatientPayment" layoutX="476.0" layoutY="117.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" text="Поиск" />
+            <Font size="14.0" />
+         </font></Label>
+      <RadioButton fx:id="ChangeToCash" layoutX="161.0" layoutY="105.0" mnemonicParsing="false" text="НАЛИЧНЫЙ РАСЧЁТ" />
+      <RadioButton fx:id="ChangeToCard" layoutX="326.0" layoutY="105.0" mnemonicParsing="false" text="БЕЗНАЛИЧНЫЙ РАСЧЁТ" />
+      <Button fx:id="findPatientPayment" layoutX="485.0" layoutY="148.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" text="Поиск" />
       <TableView fx:id="PatPaymentTable" layoutX="12.0" layoutY="179.0" prefHeight="213.0" prefWidth="575.0">
         <columns>
-          <TableColumn fx:id="PatPaymentTableName" prefWidth="286.0" text="Имя" />
-          <TableColumn fx:id="PatPaymentTableCash" prefWidth="146.0" text="Наличный" />
-            <TableColumn fx:id="PatPaymentTableCard" prefWidth="142.0" text="Безналичный" />
+          <TableColumn fx:id="PatPaymentTableName" prefWidth="211.0" text="Имя" />
+          <TableColumn fx:id="PatPaymentTableCash" prefWidth="174.0" text="Безналичный" />
+            <TableColumn fx:id="PatPaymentTableCard" prefWidth="189.0" text="Наличный" />
         </columns>
       </TableView>
+      <MenuButton fx:id="selectRegistrations" layoutX="22.0" layoutY="101.0" mnemonicParsing="false" text="Регистраторы">
+        <items>
+          <MenuItem fx:id="selectReg00" mnemonicParsing="false" text="Reg00" />
+            <MenuItem fx:id="selectReg01" mnemonicParsing="false" text="Reg01" />
+            <MenuItem fx:id="selectReg02" mnemonicParsing="false" text="Reg02" />
+            <MenuItem fx:id="selectReg03" mnemonicParsing="false" text="Reg03" />
+            <MenuItem fx:id="selectReg04" mnemonicParsing="false" text="Reg04" />
+            <MenuItem fx:id="selectReg05" mnemonicParsing="false" text="Reg05" />
+            <MenuItem fx:id="selectAdmin" mnemonicParsing="false" text="Admin" />
+        </items>
+      </MenuButton>
+      <ImageView fx:id="aceptImageId" fitHeight="65.0" fitWidth="87.0" layoutX="503.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../res/Image/Complete.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

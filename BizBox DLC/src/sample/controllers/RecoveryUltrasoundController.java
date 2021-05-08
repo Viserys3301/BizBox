@@ -1,11 +1,7 @@
 package sample.controllers;
 
 import java.io.IOException;
-import java.net.URL;
-import java.sql.*;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,42 +18,17 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class RecoveryUltrasoundController {
 
 
-    //СОЕДИНЕНИЕ С БАЗОЙ
-    private String instanceName = "10.0.9.4\\hcdbsrv";
-    private String databaseName = "HCDB";
-    private String userName = "sa";
-    private String pass = "Ba#sE5Ke";
-    private String connectionUrl = "jdbc:sqlserver://%1$s;databaseName=%2$s;user=%3$s;password=%4$s;";
-    private String connectionString = String.format(connectionUrl, instanceName, databaseName, userName, pass);
-    Connection con;
-
-    {
-        try {
-            con = DriverManager.getConnection(connectionString);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
 
-    private ObservableList<Services> servicesData = FXCollections.observableArrayList();
+    private static ObservableList<Services> servicesData = FXCollections.observableArrayList();
 
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private MenuBar MainMenuBar;
-
-    @FXML
-    private Menu QeryMenuID;
 
     @FXML
     private MenuItem QeryMenuZeroingAmbulatoryId;
@@ -81,16 +52,10 @@ public class RecoveryUltrasoundController {
     private MenuItem QeryMenuRecoveryUltrasoundId;
 
     @FXML
-    private Menu CorpMenuId;
-
-    @FXML
     private MenuItem CorpMenuAddCorpId;
 
     @FXML
     private MenuItem CorpMenuZeroingCorpId;
-
-    @FXML
-    private Menu DeleteMenuId;
 
     @FXML
     private MenuItem DeleteMenuDeletPaymentId;
@@ -103,9 +68,6 @@ public class RecoveryUltrasoundController {
 
     @FXML
     private MenuItem DeleteMenuRecordReturnId;
-
-    @FXML
-    private Menu OptionsMenuId;
 
     @FXML
     private MenuItem OptionsMenuAccountId;
@@ -121,12 +83,6 @@ public class RecoveryUltrasoundController {
 
     @FXML
     private MenuItem OptionsMenuAboutId;
-
-    @FXML
-    private Label infoLabel;
-
-    @FXML
-    private Label InfoQery;
 
     @FXML
     private TextField TranIdArea;
@@ -146,56 +102,143 @@ public class RecoveryUltrasoundController {
     @FXML
     private Button FindServicesButton;
 
+    @FXML
+    private ImageView aceptImageId;
 
     @FXML
     void initialize() {
 
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////-----ПЕРЕКЛЮЧЕНИЕ ОКОН-----//////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        QeryMenuZeroingAmbulatoryId.setOnAction(event -> {
+            changeFrames(1);
+        });
+
+        QeryMenuChangePaymentId.setOnAction(event -> {
+            changeFrames(2);
+        });
+
+        QeryMenuChangeDoctorId.setOnAction(event -> {
+            changeFrames(3);
+        });
+        QeryMenuChangeAmbulatoryDateId.setOnAction(event -> {
+            changeFrames(4);
+        });
+        QeryMenuChangeBirthdateId.setOnAction(event -> {
+            changeFrames(5);
+        });
+        QeryMenuEnabledUltrasoundId.setOnAction(event -> {
+            changeFrames(6);
+        });
+        QeryMenuRecoveryUltrasoundId.setOnAction(event -> {
+            changeFrames(7);
+        });
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        CorpMenuAddCorpId.setOnAction(event -> {
+            changeFrames(8);
+        });
+
+        CorpMenuZeroingCorpId.setOnAction(event -> {
+            changeFrames(9);
+        });
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        DeleteMenuDeletAmbulatoryId.setOnAction(event -> {
+            changeFrames(10);
+        });
+
+
+        DeleteMenuDeletDiscountId.setOnAction(event -> {
+            changeFrames(11);
+        });
+
+        DeleteMenuDeletPaymentId.setOnAction(event -> {
+            changeFrames(12);
+        });
+
+        DeleteMenuRecordReturnId.setOnAction(event -> {
+            changeFrames(13);
+        });
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        OptionsMenuAccountId.setOnAction(event -> {
+            changeFrames(14);
+        });
+
+        OptionsMenuLogsId.setOnAction(event -> {
+            changeFrames(15);
+        });
+
+        OptionsMenuUsersId.setOnAction(event -> {
+            changeFrames(16);
+        });
+
+        OptionsMenuRebookId.setOnAction(event -> {
+            changeFrames(17);
+        });
+
+        OptionsMenuAboutId.setOnAction(event -> {
+            changeFrames(18);
+        });
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        RecoveryUltrasoundButton.setDisable(true);
+
         RecoveryUltrasoundButton.setOnAction(event -> {
             String servicesId= UltrasoundTable.getSelectionModel().getSelectedItem().getId();
-            recoveryUltrasound(servicesId);
+            SqlExecutor sqlExecutor = new SqlExecutor();
+            sqlExecutor.recoveryUltrasound(servicesId);
+            aceptImageId.setVisible(true);
+            sqlExecutor.getAnimation(aceptImageId,1);
+        });
+
+        FindServicesButton.setOnAction(event -> {
+            RecoveryUltrasoundButton.setDisable(false);
+            for (int i = 0; i <UltrasoundTable.getItems().size() ; i++) {
+                servicesData.clear();
+            }
+            //СТРОКА ПОИСКА
+            String servicesName = TranIdArea.getText();
+            SqlExecutor sqlExecutor = new SqlExecutor();
+            sqlExecutor.findServices(servicesName);
+
+
+            UltrasoundNameId.setCellValueFactory(new PropertyValueFactory<Services, String>("Name"));
+            UltrasoundId.setCellValueFactory(new PropertyValueFactory<Services, String>("ID"));
+            UltrasoundTable.setItems(servicesData);
         });
     }
 
-    private void recoveryUltrasound(String servicesId){
-
-        String SQL  = "UPDATE psExamResultMstr SET withresultflag = 0 WHERE PK_psExamResultMstr ="+servicesId;
-
-
-        Statement stmt = null;
-        try {
-            stmt = con.createStatement();
-            stmt.executeUpdate(SQL);
-            infoLabel.setText("ГОТОВО");
-            stmt.close();
-            con.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-
-
-    }
-    private void findServices(String servicesName){
-        try {
-            Statement stmt = con.createStatement();
-            String SQL  = "SELECT dbo.udf_GetItemDescription(FK_iwItems) as servicesName, PK_psExamResultMstr FROM psExamResultMstr WHERE FK_TRXNO =" + servicesName;
-            ResultSet executeQuery = stmt.executeQuery(SQL);
-
-
-            while (executeQuery.next()) {
-                initData(new Services(executeQuery.getString("servicesName"),executeQuery.getString("PK_psExamResultMstr")));
-            }
-
-            stmt.close();
-            //  con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(DeletPaymentController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    private void initData(Services services) {
+    public static void initData(Services services) {
         servicesData.add(services);
     }
-
+    private void changeFrames(int x){
+        Image imageIcon = new Image("sample/res/fav.png");
+        ChangeFrame CF = new ChangeFrame();
+        FindServicesButton.getScene().getWindow().hide();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(CF.changeFrame(x)));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.getIcons().add(imageIcon);
+        stage.show();
+    }
 }
 
 
